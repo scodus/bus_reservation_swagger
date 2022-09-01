@@ -1,0 +1,202 @@
+openapi: 3.0.0
+info:
+  title: Influencer
+  description: Influencer
+  version: '1.0'
+  x-logo:
+    url: https://github.com/joolfe/logoBanner.png
+    backgroundColor: '#FFFFFF'
+    altText: logo
+  termsOfService: '#'
+  contact:
+    name: Scodus
+    url: https://scodus.com
+    email: scodusnp@gmail.com
+  license:
+    name: MIT
+    url: https://es.wikipedia.org/wiki/Licencia_MIT
+servers:
+  - url: http://{{url}}
+components:
+  securitySchemes:
+    noauthAuth:
+      type: http
+      scheme: noauth
+    bearerAuth:
+      type: http
+      scheme: bearer
+paths:
+  /register:
+    post:
+      tags:
+        - default
+      summary: register
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                  example: tomnjerry
+                last_name:
+                  type: string
+                  example: jerry
+                phone:
+                  type: integer
+                  example: '987654321'
+                email:
+                  type: string
+                  example: tomnjerry8963@gmail.com
+                password:
+                  type: string
+                  example: P@ssw0rd
+                password_confirmation:
+                  type: string
+                  example: P@ssw0rd
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /login:
+    post:
+      tags:
+        - default
+      summary: login
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: tomnjerry8963@gmail.com
+                password:
+                  type: string
+                  example: P@ssw0rd
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /refresh-token/{refresh_token}:
+    post:
+      tags:
+        - default
+      summary: refresh token
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties: {}
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: refresh_token
+          in: path
+          schema:
+            type: string
+          required: true
+          example: >-
+            def50200fbdfe725738593ac96310f20f99ca8603e5b264e6e80797934bae8ddeba553e10f66468103f50c247e57315869e76d2c8e011738216d579022558d186d4c1736d6c2a3a79d2fd88abd5d5911b2aa1abf805d87fe322bf1ce334e889700eb660b8ac3a2c39b0a5fd93de065cc5e5e5d426f6c4f89bce9f122730d96ee2a450bb26fdf7bbb9b7d548f1e2fceaa7e583407087d4c2fb7a5883f198e068666956e33c45c4fce61e5288acfcf231112f34d3edf6f6e2e6ec1e66a5ad3422e6e2a991041f76c86d65540bd023b471fa72deb4d1a8560a5a4912430464e94765729d77a75fc95bcb961fa792f5897ce9f179b71e59ea24d61631a3a935e8030398c33c68bf4e27e29fe6964c68ec73c5df05893bdb6d99b0ed59132b476bd5fe08f23db266c61c5b2a247334e938bc1fd962d34798bc1d966f0df853d2cfff6e64e59356dc557d20d40c9fcbd68193fee9046c4544f152f73aeb5ed9c3ce46bfae8f431
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /resend-account-verification-mail:
+    post:
+      tags:
+        - default
+      summary: resend email verification mail
+      requestBody:
+        content: {}
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /reset-password-mail:
+    post:
+      tags:
+        - default
+      summary: send reset password mail
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: tomnjerry8963@gmail.com
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /reset-password:
+    post:
+      tags:
+        - default
+      summary: reset password
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  example: P@ssw0rd
+                password_confirmation:
+                  type: string
+                  example: P@ssw0rd
+                token:
+                  type: string
+                  example: >-
+                    A5C7IKsPYLX6iCrHlQUmHdbQGX8CXSHN0TiW2nygkIn7EzJlKGBjXtiF1SGyU0Xm
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /search-bus:
+    get:
+      tags:
+        - default
+      summary: search bus
+      parameters:
+        - name: from
+          in: query
+          schema:
+            type: string
+        - name: to
+          in: query
+          schema:
+            type: string
+        - name: date
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /location:
+    get:
+      tags:
+        - default
+      summary: main location
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}

@@ -1,0 +1,264 @@
+{
+	"info": {
+		"_postman_id": "0e0959e3-79ed-4f09-bf29-b3a467767e63",
+		"name": "bus client",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16179347"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "first_name",
+							"value": "tomnjerry",
+							"type": "text"
+						},
+						{
+							"key": "last_name",
+							"value": "jerry",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "987654321",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "tomnjerry8963@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "P@ssw0rd",
+							"type": "text"
+						},
+						{
+							"key": "password_confirmation",
+							"value": "P@ssw0rd",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/register",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "tomnjerry8963@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "P@ssw0rd",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "refresh token",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{url}}/refresh-token/:refresh_token",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"refresh-token",
+						":refresh_token"
+					],
+					"variable": [
+						{
+							"key": "refresh_token",
+							"value": "def50200fbdfe725738593ac96310f20f99ca8603e5b264e6e80797934bae8ddeba553e10f66468103f50c247e57315869e76d2c8e011738216d579022558d186d4c1736d6c2a3a79d2fd88abd5d5911b2aa1abf805d87fe322bf1ce334e889700eb660b8ac3a2c39b0a5fd93de065cc5e5e5d426f6c4f89bce9f122730d96ee2a450bb26fdf7bbb9b7d548f1e2fceaa7e583407087d4c2fb7a5883f198e068666956e33c45c4fce61e5288acfcf231112f34d3edf6f6e2e6ec1e66a5ad3422e6e2a991041f76c86d65540bd023b471fa72deb4d1a8560a5a4912430464e94765729d77a75fc95bcb961fa792f5897ce9f179b71e59ea24d61631a3a935e8030398c33c68bf4e27e29fe6964c68ec73c5df05893bdb6d99b0ed59132b476bd5fe08f23db266c61c5b2a247334e938bc1fd962d34798bc1d966f0df853d2cfff6e64e59356dc557d20d40c9fcbd68193fee9046c4544f152f73aeb5ed9c3ce46bfae8f431"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "resend email verification mail",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{customer_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/resend-account-verification-mail",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"resend-account-verification-mail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "send reset password mail",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "tomnjerry8963@gmail.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/reset-password-mail",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"reset-password-mail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reset password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "password",
+							"value": "P@ssw0rd",
+							"type": "text"
+						},
+						{
+							"key": "password_confirmation",
+							"value": "P@ssw0rd",
+							"type": "text"
+						},
+						{
+							"key": "token",
+							"value": "A5C7IKsPYLX6iCrHlQUmHdbQGX8CXSHN0TiW2nygkIn7EzJlKGBjXtiF1SGyU0Xm",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/reset-password",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"reset-password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search bus",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/search-bus?from&to&date",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"search-bus"
+					],
+					"query": [
+						{
+							"key": "from",
+							"value": null
+						},
+						{
+							"key": "to",
+							"value": null
+						},
+						{
+							"key": "date",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "main location",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/location",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"location"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
