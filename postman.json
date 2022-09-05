@@ -7,6 +7,114 @@
 	},
 	"item": [
 		{
+			"name": "booking",
+			"item": [
+				{
+					"name": "store booking",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{client_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"schedule_id\": 51,\n    \"route_id\": 1,\n    \"drop_location\": \"drop location here\",\n    \"rate\": 2000,\n    \"qty\": 4,\n    \"discount\": \"\",\n    \"total\": 8000,\n    \"contact_name\": \"Lal Bahadur\",\n    \"contact_phone\": \"98713264\",\n    \"paid\": 4000,\n    \"due\": 4000,\n    \"return\": 0,\n    \"bus_details\": \"detail on bus here\",\n    \"seat_id\": [23, 34, 45, 55],\n    \"sub_route_price\": \"\"   \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/booking",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "bus schedule",
+			"item": [
+				{
+					"name": "search bus",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/search-bus-schedule?from=1&to=8&date=2079-05-30",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"search-bus-schedule"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "1"
+								},
+								{
+									"key": "to",
+									"value": "8"
+								},
+								{
+									"key": "date",
+									"value": "2079-05-30"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get bus seat",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/get-bus-seats/:bus_schedule_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"get-bus-seats",
+								":bus_schedule_id"
+							],
+							"variable": [
+								{
+									"key": "bus_schedule_id",
+									"value": "51"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "register",
 			"request": {
 				"method": "POST",
@@ -47,11 +155,12 @@
 					]
 				},
 				"url": {
-					"raw": "{{url}}/register",
+					"raw": "{{url}}/api/register",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
+						"api",
 						"register"
 					]
 				}
@@ -114,7 +223,7 @@
 					"variable": [
 						{
 							"key": "refresh_token",
-							"value": "def50200fbdfe725738593ac96310f20f99ca8603e5b264e6e80797934bae8ddeba553e10f66468103f50c247e57315869e76d2c8e011738216d579022558d186d4c1736d6c2a3a79d2fd88abd5d5911b2aa1abf805d87fe322bf1ce334e889700eb660b8ac3a2c39b0a5fd93de065cc5e5e5d426f6c4f89bce9f122730d96ee2a450bb26fdf7bbb9b7d548f1e2fceaa7e583407087d4c2fb7a5883f198e068666956e33c45c4fce61e5288acfcf231112f34d3edf6f6e2e6ec1e66a5ad3422e6e2a991041f76c86d65540bd023b471fa72deb4d1a8560a5a4912430464e94765729d77a75fc95bcb961fa792f5897ce9f179b71e59ea24d61631a3a935e8030398c33c68bf4e27e29fe6964c68ec73c5df05893bdb6d99b0ed59132b476bd5fe08f23db266c61c5b2a247334e938bc1fd962d34798bc1d966f0df853d2cfff6e64e59356dc557d20d40c9fcbd68193fee9046c4544f152f73aeb5ed9c3ce46bfae8f431"
+							"value": "def502000263688399a9344b687391c9a2712ce3e6b69a8ec98aad1f60ef015d55fd960c0b2eeeb1870f94b18118302cad35d408f89784912bdfdb6d24464c3194c5c46f1bd63030a3b2de9c78adddc38a1cea8db8b9c0bdaf07cc5e6591bfd22f81c569b86754f0c0f623e0e7869b73497d4ba8f9418904d7a3c9227e25f86c641b3e8cbe8bd6fa269629e986bb9d563f9db2fcacb360d5ebc74ce88ec11b1d9f283f53e41fca38e5d2f3f1a8811087c3046efda4ce60d4e3a26e00d624501d79e04a8abce021dea012fed966a5791161fd33795f8a85f4ac60c131692099d14d7b44200036c275b8d2240523b17b834665d2781215feff70a202e09c2c2e30a5aa5eb6423ece167c2749e27eca0ec60d1fea25037d30884e49cefa3d3af1d7a6c158ef42da268226f433e9c000ff64e536e941f57410fc58d8d3f033f58872797f42044df2d1c21321c7e106f06087ff5b8af043db4f2a20481b18b1c310d874f640c0"
 						}
 					]
 				}
@@ -213,41 +322,32 @@
 			"response": []
 		},
 		{
-			"name": "search bus",
+			"name": "location",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{url}}/search-bus?from&to&date",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"search-bus"
-					],
-					"query": [
+				"auth": {
+					"type": "bearer",
+					"bearer": [
 						{
-							"key": "from",
-							"value": null
-						},
-						{
-							"key": "to",
-							"value": null
-						},
-						{
-							"key": "date",
-							"value": null
+							"key": "token",
+							"value": "{{admin_token}}",
+							"type": "string"
 						}
 					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "main location",
-			"request": {
+				},
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "{{url}}/location",
 					"host": [
