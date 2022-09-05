@@ -66,7 +66,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /search-bus-schedule:
+  /search-bus:
     get:
       tags:
         - bus schedule

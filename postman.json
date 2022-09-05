@@ -56,12 +56,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/search-bus-schedule?from=1&to=8&date=2079-05-30",
+							"raw": "{{url}}/search-bus?from=1&to=8&date=2079-05-30",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"search-bus-schedule"
+								"search-bus"
 							],
 							"query": [
 								{
