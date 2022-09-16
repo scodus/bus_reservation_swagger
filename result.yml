@@ -30,24 +30,38 @@ tags:
   - name: bus schedule
 paths:
   /pre-booking:
-    post:
+    get:
       tags:
         - bus booking
       summary: pre booking
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                schedule_id: 51
-                seat_id:
-                  - '26 '
-                  - '37'
-                  - '27'
-                  - '38'
       security:
         - bearerAuth: []
+      parameters:
+        - name: schedule_id
+          in: query
+          schema:
+            type: integer
+          example: '51'
+        - name: seat_id[]
+          in: query
+          schema:
+            type: integer
+          example: '26'
+        - name: seat_id[]
+          in: query
+          schema:
+            type: integer
+          example: '37'
+        - name: seat_id[]
+          in: query
+          schema:
+            type: integer
+          example: '27'
+        - name: seat_id[]
+          in: query
+          schema:
+            type: integer
+          example: '38'
       responses:
         '200':
           description: Successful response

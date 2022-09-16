@@ -11,6 +11,9 @@
 			"item": [
 				{
 					"name": "pre booking",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -22,11 +25,11 @@
 								}
 							]
 						},
-						"method": "POST",
+						"method": "GET",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"schedule_id\": 51,\n    \"seat_id\": [\n        \"26 \",\n        \"37\",\n        \"27\",\n        \"38\"\n    ]\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -34,12 +37,34 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/pre-booking",
+							"raw": "{{url}}/pre-booking?schedule_id=51&seat_id[]=26&seat_id[]=37&seat_id[]=27&seat_id[]=38",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"pre-booking"
+							],
+							"query": [
+								{
+									"key": "schedule_id",
+									"value": "51"
+								},
+								{
+									"key": "seat_id[]",
+									"value": "26"
+								},
+								{
+									"key": "seat_id[]",
+									"value": "37"
+								},
+								{
+									"key": "seat_id[]",
+									"value": "27"
+								},
+								{
+									"key": "seat_id[]",
+									"value": "38"
+								}
 							]
 						}
 					},
