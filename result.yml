@@ -67,6 +67,33 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /pre-booking-time:
+    post:
+      tags:
+        - bus booking
+      summary: pre booking time
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                schedule_id:
+                  type: integer
+                  example: '51'
+                seat_id[]:
+                  type: integer
+                  example: '38'
+                _method:
+                  type: string
+                  example: patch
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /bus-booking:
     post:
       tags:

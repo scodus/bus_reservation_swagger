@@ -71,6 +71,68 @@
 					"response": []
 				},
 				{
+					"name": "pre booking time",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{customer_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "schedule_id",
+									"value": "51",
+									"type": "text"
+								},
+								{
+									"key": "seat_id[]",
+									"value": "26",
+									"type": "text"
+								},
+								{
+									"key": "seat_id[]",
+									"value": "37",
+									"type": "text"
+								},
+								{
+									"key": "seat_id[]",
+									"value": "27",
+									"type": "text"
+								},
+								{
+									"key": "seat_id[]",
+									"value": "38",
+									"type": "text"
+								},
+								{
+									"key": "_method",
+									"value": "patch",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/pre-booking-time",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"pre-booking-time"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "store booking",
 					"request": {
 						"auth": {
