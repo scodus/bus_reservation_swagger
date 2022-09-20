@@ -37,7 +37,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/pre-booking?schedule_id=51&seat_id[]=26&seat_id[]=37&seat_id[]=27&seat_id[]=38",
+							"raw": "{{url}}/pre-booking?schedule_id=55&seat_id[]=26&seat_id[]=37&seat_id[]=27&seat_id[]=38&from=1&to=17&date=2079-06-07",
 							"host": [
 								"{{url}}"
 							],
@@ -47,7 +47,7 @@
 							"query": [
 								{
 									"key": "schedule_id",
-									"value": "51"
+									"value": "55"
 								},
 								{
 									"key": "seat_id[]",
@@ -64,6 +64,18 @@
 								{
 									"key": "seat_id[]",
 									"value": "38"
+								},
+								{
+									"key": "from",
+									"value": "1"
+								},
+								{
+									"key": "to",
+									"value": "17"
+								},
+								{
+									"key": "date",
+									"value": "2079-06-07"
 								}
 							]
 						}
@@ -71,7 +83,7 @@
 					"response": []
 				},
 				{
-					"name": "pre booking time",
+					"name": "pre booking timeout",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -112,21 +124,16 @@
 									"key": "seat_id[]",
 									"value": "38",
 									"type": "text"
-								},
-								{
-									"key": "_method",
-									"value": "patch",
-									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{url}}/pre-booking-time",
+							"raw": "{{url}}/pre-booking-timeout",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"pre-booking-time"
+								"pre-booking-timeout"
 							]
 						}
 					},
@@ -205,7 +212,7 @@
 							"variable": [
 								{
 									"key": "booking_id",
-									"value": "215"
+									"value": "219"
 								}
 							]
 						}
@@ -250,7 +257,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/search-bus?from=1&to=2&date=2079-05-31",
+							"raw": "{{url}}/search-bus?from=1&to=16&date=2079-05-30",
 							"host": [
 								"{{url}}"
 							],
@@ -264,11 +271,11 @@
 								},
 								{
 									"key": "to",
-									"value": "2"
+									"value": "16"
 								},
 								{
 									"key": "date",
-									"value": "2079-05-31"
+									"value": "2079-05-30"
 								}
 							]
 						}
@@ -301,6 +308,95 @@
 									"key": "bus_schedule_id",
 									"value": "51"
 								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{customer_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/user-detail",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user-detail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{customer_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "username",
+									"type": "text"
+								},
+								{
+									"key": "first_name",
+									"value": "firstname",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "lastname",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "987654321",
+									"type": "text"
+								},
+								{
+									"key": "ip_address",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/user-detail",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user-detail"
 							]
 						}
 					},

@@ -28,6 +28,7 @@ components:
 tags:
   - name: bus booking
   - name: bus schedule
+  - name: user
 paths:
   /pre-booking:
     get:
@@ -41,7 +42,7 @@ paths:
           in: query
           schema:
             type: integer
-          example: '51'
+          example: '55'
         - name: seat_id[]
           in: query
           schema:
@@ -62,16 +63,31 @@ paths:
           schema:
             type: integer
           example: '38'
+        - name: from
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: to
+          in: query
+          schema:
+            type: integer
+          example: '17'
+        - name: date
+          in: query
+          schema:
+            type: string
+          example: '2079-06-07'
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /pre-booking-time:
+  /pre-booking-timeout:
     post:
       tags:
         - bus booking
-      summary: pre booking time
+      summary: pre booking timeout
       requestBody:
         content:
           multipart/form-data:
@@ -84,9 +100,6 @@ paths:
                 seat_id[]:
                   type: integer
                   example: '38'
-                _method:
-                  type: string
-                  example: patch
       security:
         - bearerAuth: []
       responses:
@@ -167,7 +180,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '215'
+          example: '219'
       responses:
         '200':
           description: Successful response
@@ -200,12 +213,12 @@ paths:
           in: query
           schema:
             type: integer
-          example: '2'
+          example: '16'
         - name: date
           in: query
           schema:
             type: string
-          example: '2079-05-31'
+          example: '2079-05-30'
       responses:
         '200':
           description: Successful response
@@ -223,6 +236,49 @@ paths:
             type: integer
           required: true
           example: '51'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /user-detail:
+    get:
+      tags:
+        - user
+      summary: get
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - user
+      summary: update
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  example: username
+                first_name:
+                  type: string
+                  example: firstname
+                last_name:
+                  type: string
+                  example: lastname
+                phone:
+                  type: integer
+                  example: '987654321'
+                ip_address:
+                  type: string
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: Successful response
