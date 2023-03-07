@@ -237,7 +237,7 @@ paths:
     get:
       tags:
         - user
-      summary: get
+      summary: get profile
       security:
         - bearerAuth: []
       responses:
@@ -248,7 +248,7 @@ paths:
     post:
       tags:
         - user
-      summary: update
+      summary: update profile
       requestBody:
         content:
           multipart/form-data:
@@ -262,13 +262,43 @@ paths:
                   type: string
                   example: customer
                 last_name:
-                  type: integer
-                  example: '1'
+                  type: string
+                  example: 1 test
                 phone:
                   type: integer
                   example: '9876543210'
                 ip_address:
                   type: string
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /password-change:
+    post:
+      tags:
+        - user
+      summary: change password
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                old_password:
+                  type: integer
+                  example: '1234'
+                new_password:
+                  type: integer
+                  example: '12345'
+                new_password_confirmation:
+                  type: integer
+                  example: '12345'
+                _method:
+                  type: string
+                  example: PUT
       security:
         - bearerAuth: []
       responses:
