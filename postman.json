@@ -440,17 +440,11 @@
 									]
 								},
 								"url": {
-									"raw": "http://127.0.0.1:8000/api/payment/esewa/success",
-									"protocol": "http",
+									"raw": "{{url}}/payment/esewa/success",
 									"host": [
-										"127",
-										"0",
-										"0",
-										"1"
+										"{{url}}"
 									],
-									"port": "8000",
 									"path": [
-										"api",
 										"payment",
 										"esewa",
 										"success"
@@ -475,17 +469,11 @@
 									]
 								},
 								"url": {
-									"raw": "http://127.0.0.1:8000/api/payment/esewa/fail",
-									"protocol": "http",
+									"raw": "{{url}}/payment/esewa/fail",
 									"host": [
-										"127",
-										"0",
-										"0",
-										"1"
+										"{{url}}"
 									],
-									"port": "8000",
 									"path": [
-										"api",
 										"payment",
 										"esewa",
 										"fail"
@@ -535,17 +523,11 @@
 									]
 								},
 								"url": {
-									"raw": "http://127.0.0.1:8000/api/payment/khalti/success",
-									"protocol": "http",
+									"raw": "{{url}}/payment/khalti/success",
 									"host": [
-										"127",
-										"0",
-										"0",
-										"1"
+										"{{url}}"
 									],
-									"port": "8000",
 									"path": [
-										"api",
 										"payment",
 										"khalti",
 										"success"
@@ -564,17 +546,11 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "http://127.0.0.1:8000/api/payment/khalti/fail",
-									"protocol": "http",
+									"raw": "{{url}}/payment/khalti/fail",
 									"host": [
-										"127",
-										"0",
-										"0",
-										"1"
+										"{{url}}"
 									],
-									"port": "8000",
 									"path": [
-										"api",
 										"payment",
 										"khalti",
 										"fail"
@@ -603,17 +579,11 @@
 									}
 								},
 								"url": {
-									"raw": "http://127.0.0.1:8000/api/payment/connectips/success",
-									"protocol": "http",
+									"raw": "{{url}}/payment/connectips/success",
 									"host": [
-										"127",
-										"0",
-										"0",
-										"1"
+										"{{url}}"
 									],
-									"port": "8000",
 									"path": [
-										"api",
 										"payment",
 										"connectips",
 										"success"
@@ -638,17 +608,11 @@
 									]
 								},
 								"url": {
-									"raw": "http://127.0.0.1:8000/api/payment/connectips/fail",
-									"protocol": "http",
+									"raw": "{{url}}/payment/connectips/fail",
 									"host": [
-										"127",
-										"0",
-										"0",
-										"1"
+										"{{url}}"
 									],
-									"port": "8000",
 									"path": [
-										"api",
 										"payment",
 										"connectips",
 										"fail"
@@ -677,17 +641,11 @@
 									}
 								},
 								"url": {
-									"raw": "http://127.0.0.1:8000/api/payment/prabhupay/success",
-									"protocol": "http",
+									"raw": "{{url}}/payment/prabhupay/success",
 									"host": [
-										"127",
-										"0",
-										"0",
-										"1"
+										"{{url}}"
 									],
-									"port": "8000",
 									"path": [
-										"api",
 										"payment",
 										"prabhupay",
 										"success"
@@ -724,17 +682,11 @@
 									]
 								},
 								"url": {
-									"raw": "http://127.0.0.1:8000/api/payment/prabhupay/fail",
-									"protocol": "http",
+									"raw": "{{url}}/payment/prabhupay/fail",
 									"host": [
-										"127",
-										"0",
-										"0",
-										"1"
+										"{{url}}"
 									],
-									"port": "8000",
 									"path": [
-										"api",
 										"payment",
 										"prabhupay",
 										"fail"
@@ -763,17 +715,11 @@
 									}
 								},
 								"url": {
-									"raw": "http://127.0.0.1:8000/api/payment/fonepay/success",
-									"protocol": "http",
+									"raw": "{{url}}/payment/fonepay/success",
 									"host": [
-										"127",
-										"0",
-										"0",
-										"1"
+										"{{url}}"
 									],
-									"port": "8000",
 									"path": [
-										"api",
 										"payment",
 										"fonepay",
 										"success"
@@ -798,17 +744,11 @@
 									]
 								},
 								"url": {
-									"raw": "http://127.0.0.1:8000/api/payment/fonepay/fail",
-									"protocol": "http",
+									"raw": "{{url}}/payment/fonepay/fail",
 									"host": [
-										"127",
-										"0",
-										"0",
-										"1"
+										"{{url}}"
 									],
-									"port": "8000",
 									"path": [
-										"api",
 										"payment",
 										"fonepay",
 										"fail"
@@ -862,12 +802,11 @@
 					]
 				},
 				"url": {
-					"raw": "{{url}}/api/register",
+					"raw": "{{url}}/register",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
-						"api",
 						"register"
 					]
 				}
@@ -945,21 +884,6 @@
 				},
 				"method": "POST",
 				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "email",
-							"value": "customer1@customer.com",
-							"type": "text"
-						},
-						{
-							"key": "password",
-							"value": "1234",
-							"type": "text"
-						}
-					]
-				},
 				"url": {
 					"raw": "{{url}}/logout",
 					"host": [

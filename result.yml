@@ -17,7 +17,6 @@ info:
     url: https://es.wikipedia.org/wiki/Licencia_MIT
 servers:
   - url: http://{{url}}
-  - url: http://127.0.0.1:8000
 components:
   securitySchemes:
     bearerAuth:
@@ -276,7 +275,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/payment/esewa/success:
+  /payment/esewa/success:
     post:
       tags:
         - payment > esewa
@@ -301,7 +300,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/payment/esewa/fail:
+  /payment/esewa/fail:
     post:
       tags:
         - payment > esewa
@@ -320,7 +319,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/payment/khalti/success:
+  /payment/khalti/success:
     post:
       tags:
         - payment > khalti
@@ -351,7 +350,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/payment/khalti/fail:
+  /payment/khalti/fail:
     post:
       tags:
         - payment > khalti
@@ -367,7 +366,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/payment/connectips/success:
+  /payment/connectips/success:
     post:
       tags:
         - payment > connectips
@@ -390,7 +389,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/payment/connectips/fail:
+  /payment/connectips/fail:
     post:
       tags:
         - payment > connectips
@@ -409,7 +408,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/payment/prabhupay/success:
+  /payment/prabhupay/success:
     post:
       tags:
         - payment > prabhupay
@@ -429,7 +428,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/payment/prabhupay/fail:
+  /payment/prabhupay/fail:
     post:
       tags:
         - payment > prabhupay
@@ -454,7 +453,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/payment/fonepay/success:
+  /payment/fonepay/success:
     post:
       tags:
         - payment > fonepay
@@ -477,7 +476,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/payment/fonepay/fail:
+  /payment/fonepay/fail:
     post:
       tags:
         - payment > fonepay
@@ -496,7 +495,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/register:
+  /register:
     post:
       tags:
         - default
@@ -558,17 +557,7 @@ paths:
         - default
       summary: logout
       requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                  example: customer1@customer.com
-                password:
-                  type: integer
-                  example: '1234'
+        content: {}
       security:
         - bearerAuth: []
       responses:
