@@ -17,12 +17,12 @@
       "url": "https://github.com/joolfe/logoBanner.png",
       "backgroundColor": "#FFFFFF",
       "altText": "logo"
-    },
-    "servers": [
-      {
-        "url": "https://buspark.scodus.com/api",
-        "description": "Base URL"
-      }
-    ]
-  }
+    }
+  },
+  "servers": [
+    {
+      "url": "https://buspark.scodus.com/api",
+      "description": "Base URL"
+    }
+  ]
 }
