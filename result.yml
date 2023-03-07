@@ -262,8 +262,8 @@ paths:
                   type: string
                   example: customer
                 last_name:
-                  type: string
-                  example: test
+                  type: integer
+                  example: '1'
                 phone:
                   type: integer
                   example: '9876543210'
@@ -655,7 +655,7 @@ paths:
         - default
       summary: location
       security:
-        - bearerAuth: []
+        - noauthAuth: []
       responses:
         '200':
           description: Successful response
