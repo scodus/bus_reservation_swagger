@@ -323,7 +323,7 @@
 			"name": "user",
 			"item": [
 				{
-					"name": "get",
+					"name": "get profile",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -350,7 +350,7 @@
 					"response": []
 				},
 				{
-					"name": "update",
+					"name": "update profile",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -370,7 +370,8 @@
 								{
 									"key": "username",
 									"value": "customer1",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "first_name",
@@ -379,7 +380,7 @@
 								},
 								{
 									"key": "last_name",
-									"value": "1",
+									"value": "1 test",
 									"type": "text"
 								},
 								{
@@ -401,6 +402,58 @@
 							],
 							"path": [
 								"user-detail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{customer_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "old_password",
+									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "new_password",
+									"value": "12345",
+									"type": "text"
+								},
+								{
+									"key": "new_password_confirmation",
+									"value": "12345",
+									"type": "text"
+								},
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/password-change",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"password-change"
 							]
 						}
 					},
