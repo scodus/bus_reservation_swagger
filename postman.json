@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "0f43f06e-1057-43ed-9490-e542df0199ed",
+		"_postman_id": "4b210fb3-09df-45b5-a6f4-335f2fece9f9",
 		"name": "bus client",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "15009917"
@@ -549,28 +549,38 @@
 									"mode": "formdata",
 									"formdata": [
 										{
-											"key": "token",
-											"value": "VGMyaKVDQQyorBiQ3W99WL",
+											"key": "pidx",
+											"value": "HPBVsH2gkbAyK3PsGEsSQh",
 											"type": "text"
 										},
 										{
 											"key": "amount",
-											"value": "2500",
+											"value": "2000",
 											"type": "text"
 										},
 										{
 											"key": "mobile",
-											"value": "9876543210",
+											"value": "9800000001",
 											"type": "text"
 										},
 										{
-											"key": "product_identity",
-											"value": "342",
+											"key": "purchase_order_id",
+											"value": "373",
 											"type": "text"
 										},
 										{
-											"key": "product_name",
-											"value": "ticket",
+											"key": "purchase_order_name",
+											"value": "test",
+											"type": "text"
+										},
+										{
+											"key": "txnId",
+											"value": "TuVk37VvA5PMgrAjm2rrtD",
+											"type": "text"
+										},
+										{
+											"key": "transaction_id",
+											"value": "TuVk37VvA5PMgrAjm2rrtD",
 											"type": "text"
 										}
 									]
@@ -595,8 +605,15 @@
 								"method": "POST",
 								"header": [],
 								"body": {
-									"mode": "raw",
-									"raw": ""
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "booking_id",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										}
+									]
 								},
 								"url": {
 									"raw": "{{url}}/payment/khalti/fail",
@@ -607,6 +624,55 @@
 										"payment",
 										"khalti",
 										"fail"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "transaction_initiate-payment POST",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// pm.visualizer.set();"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{customer_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"return_url\": \"http://localhost:3000/ticket-info\",\r\n\"website_url\": \"http://localhost:3000\",\r\n\"amount\":2000,\r\n\"purchase_order_id\": 111,\r\n\"purchase_order_name\": \"test\",\r\n\"modes\": [\"KHALTI\"]\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/payment/khalti/initiate",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"payment",
+										"khalti",
+										"initiate"
 									]
 								}
 							},
@@ -890,11 +956,23 @@
 						{
 							"key": "email",
 							"value": "customer1@customer.com",
-							"type": "text"
+							"type": "text",
+							"disabled": true
 						},
 						{
 							"key": "password",
 							"value": "1234",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "popep97100@klblogs.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "P@ssw0rd",
 							"type": "text"
 						}
 					]

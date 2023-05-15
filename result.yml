@@ -361,21 +361,27 @@ paths:
             schema:
               type: object
               properties:
-                token:
+                pidx:
                   type: string
-                  example: VGMyaKVDQQyorBiQ3W99WL
+                  example: HPBVsH2gkbAyK3PsGEsSQh
                 amount:
                   type: integer
-                  example: '2500'
+                  example: '2000'
                 mobile:
                   type: integer
-                  example: '9876543210'
-                product_identity:
+                  example: '9800000001'
+                purchase_order_id:
                   type: integer
-                  example: '342'
-                product_name:
+                  example: '373'
+                purchase_order_name:
                   type: string
-                  example: ticket
+                  example: test
+                txnId:
+                  type: string
+                  example: TuVk37VvA5PMgrAjm2rrtD
+                transaction_id:
+                  type: string
+                  example: TuVk37VvA5PMgrAjm2rrtD
       responses:
         '200':
           description: Successful response
@@ -388,10 +394,37 @@ paths:
       summary: transaction_failure POST
       requestBody:
         content:
-          '*/*':
+          multipart/form-data:
             schema:
-              type: string
-              example: '""'
+              type: object
+              properties:
+                booking_id:
+                  type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /payment/khalti/initiate:
+    post:
+      tags:
+        - payment > khalti
+      summary: transaction_initiate-payment POST
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                return_url: http://localhost:3000/ticket-info
+                website_url: http://localhost:3000
+                amount: 2000
+                purchase_order_id: 111
+                purchase_order_name: test
+                modes:
+                  - KHALTI
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: Successful response
@@ -573,10 +606,10 @@ paths:
               properties:
                 email:
                   type: string
-                  example: customer1@customer.com
+                  example: popep97100@klblogs.com
                 password:
-                  type: integer
-                  example: '1234'
+                  type: string
+                  example: P@ssw0rd
       responses:
         '200':
           description: Successful response
