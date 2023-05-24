@@ -3,7 +3,8 @@
 		"_postman_id": "4b210fb3-09df-45b5-a6f4-335f2fece9f9",
 		"name": "bus client",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "15009917"
+		"_exporter_id": "15009917",
+		"_collection_link": "https://lunar-robot-597788.postman.co/workspace/Bikash's-Workspace~07b4d747-08b6-4eac-9f94-41a4bad205fa/collection/15009917-4b210fb3-09df-45b5-a6f4-335f2fece9f9?action=share&creator=15009917&source=collection_link"
 	},
 	"item": [
 		{
@@ -37,7 +38,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/pre-booking?schedule_id=69&seat_id[]=6&seat_id[]=7&from=1&to=2&date=2079-08-29",
+							"raw": "{{url}}/pre-booking?schedule_id=92&seat_id[]=51&seat_id[]=7&seat_id[]=27&from=1&to=2&date=2080-02-05",
 							"host": [
 								"{{url}}"
 							],
@@ -47,11 +48,11 @@
 							"query": [
 								{
 									"key": "schedule_id",
-									"value": "69"
+									"value": "92"
 								},
 								{
 									"key": "seat_id[]",
-									"value": "6"
+									"value": "51"
 								},
 								{
 									"key": "seat_id[]",
@@ -59,8 +60,7 @@
 								},
 								{
 									"key": "seat_id[]",
-									"value": "27",
-									"disabled": true
+									"value": "27"
 								},
 								{
 									"key": "seat_id[]",
@@ -77,7 +77,7 @@
 								},
 								{
 									"key": "date",
-									"value": "2079-08-29"
+									"value": "2080-02-05"
 								}
 							]
 						}
@@ -160,7 +160,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"schedule_id\": 69,\n    \"route_id\": 1,\n    \"drop_location\": \"drop location here\",\n    \"rate\": 2500,\n    \"qty\": 1,\n    \"discount\": \"\",\n    \"total\": 1000,\n    \"contact_name\": \"Lal Bahadur\",\n    \"contact_phone\": \"98713264\",\n    \"paid\": \"\",\n    \"due\": \"\",\n    \"return\": \"\",\n    \"bus_details\": \"asdasd\",\n    \"seat_id\": [\n        \"6\",\n        \"7\"\n    ],  \n    \"payment_status\": \"pending\",\n    \"status\" : \"OnBooking\"\n}",
+							"raw": "{\n    \"schedule_id\": 69,\n    \"route_id\": 1,\n    \"drop_location\": \"drop location here\",\n    \"rate\": 2500,\n    \"qty\": 1,\n    \"discount\": \"\",\n    \"total\": 1000,\n    \"contact_name\": \"Lal Bahadur\",\n    \"contact_phone\": \"98713264\",\n    \"paid\": \"\",\n    \"due\": \"\",\n    \"return\": \"\",\n    \"bus_details\": \"asdasd\",\n    \"seat_id\": [\n        \"6\",\n        \"7\"\n    ],\n    \"payment_status\": \"pending\",\n    \"status\": \"OnBooking\",\n    \"t_price\": 1200\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -261,7 +261,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/search-bus?from=1&to=2&date=2079-08-29",
+							"raw": "{{url}}/search-bus?from=1&to=2&date=2080-02-09",
 							"host": [
 								"{{url}}"
 							],
@@ -279,7 +279,7 @@
 								},
 								{
 									"key": "date",
-									"value": "2079-08-29"
+									"value": "2080-02-09"
 								}
 							]
 						}
@@ -310,7 +310,7 @@
 							"variable": [
 								{
 									"key": "bus_schedule_id",
-									"value": "69"
+									"value": "95"
 								}
 							]
 						}
@@ -955,25 +955,25 @@
 					"formdata": [
 						{
 							"key": "email",
-							"value": "customer1@customer.com",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "password",
-							"value": "1234",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "email",
-							"value": "popep97100@klblogs.com",
+							"value": "augxdeveloper@gmail.com",
 							"type": "text"
 						},
 						{
 							"key": "password",
 							"value": "P@ssw0rd",
 							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "popep97100@klblogs.com",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "P@ssw0rd",
+							"type": "text",
+							"disabled": true
 						}
 					]
 				},
@@ -1099,7 +1099,7 @@
 			"response": []
 		},
 		{
-			"name": "send reset password mail",
+			"name": "reset password mail",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -1145,7 +1145,7 @@
 						},
 						{
 							"key": "token",
-							"value": "A5C7IKsPYLX6iCrHlQUmHdbQGX8CXSHN0TiW2nygkIn7EzJlKGBjXtiF1SGyU0Xm",
+							"value": "12231",
 							"type": "text"
 						}
 					]

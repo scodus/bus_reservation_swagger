@@ -49,12 +49,12 @@ paths:
           in: query
           schema:
             type: integer
-          example: '69'
+          example: '92'
         - name: seat_id[]
           in: query
           schema:
             type: integer
-          example: '6'
+          example: '51'
         - name: from
           in: query
           schema:
@@ -69,7 +69,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '2079-08-29'
+          example: '2080-02-05'
       responses:
         '200':
           description: Successful response
@@ -128,6 +128,7 @@ paths:
                   - '7'
                 payment_status: pending
                 status: OnBooking
+                t_price: 1200
       security:
         - bearerAuth: []
       responses:
@@ -210,7 +211,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '2079-08-29'
+          example: '2080-02-09'
       responses:
         '200':
           description: Successful response
@@ -227,7 +228,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '69'
+          example: '95'
       responses:
         '200':
           description: Successful response
@@ -671,7 +672,7 @@ paths:
     post:
       tags:
         - default
-      summary: send reset password mail
+      summary: reset password mail
       requestBody:
         content:
           multipart/form-data:
@@ -704,9 +705,8 @@ paths:
                   type: string
                   example: P@ssw0rd
                 token:
-                  type: string
-                  example: >-
-                    A5C7IKsPYLX6iCrHlQUmHdbQGX8CXSHN0TiW2nygkIn7EzJlKGBjXtiF1SGyU0Xm
+                  type: integer
+                  example: '12231'
       responses:
         '200':
           description: Successful response
