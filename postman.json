@@ -160,7 +160,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"schedule_id\": 69,\n    \"route_id\": 1,\n    \"drop_location\": \"drop location here\",\n    \"rate\": 2500,\n    \"qty\": 1,\n    \"discount\": \"\",\n    \"total\": 1000,\n    \"contact_name\": \"Lal Bahadur\",\n    \"contact_phone\": \"98713264\",\n    \"paid\": \"\",\n    \"due\": \"\",\n    \"return\": \"\",\n    \"bus_details\": \"asdasd\",\n    \"seat_id\": [\n        \"6\",\n        \"7\"\n    ],\n    \"payment_status\": \"pending\",\n    \"status\": \"OnBooking\",\n    \"t_price\": 1200\n}",
+							"raw": "{\n    \"schedule_id\": 69,\n    \"route_id\": 1,\n    \"drop_location\": \"drop location here\",\n    \"rate\": 2500,\n    \"qty\": 1,\n    \"discount\": \"\",\n    \"total\": 1000,\n    \"contact_name\": \"Lal Bahadur\",\n    \"contact_phone\": \"98713264\",\n    \"paid\": \"\",\n    \"due\": \"\",\n    \"return\": \"\",\n    \"bus_details\": \"asdasd\",\n    \"seat_id\": [\n        \"6\",\n        \"7\"\n    ],\n    \"payment_status\": \"pending\",\n    \"status\": \"OnBooking\",\n    \"t_price\": 1200,\n    \"sub_route_price\": [\n        {\n            \"from_id\": 1,\n            \"to_id\": 9,\n            \"sub_route_from\": \"KTM\",\n            \"sub_route_to\": \"Kohalpur\",\n            \"price\": 16,\n            \"discount\": 8\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"

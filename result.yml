@@ -129,6 +129,13 @@ paths:
                 payment_status: pending
                 status: OnBooking
                 t_price: 1200
+                sub_route_price:
+                  - from_id: 1
+                    to_id: 9
+                    sub_route_from: KTM
+                    sub_route_to: Kohalpur
+                    price: 16
+                    discount: 8
       security:
         - bearerAuth: []
       responses:
