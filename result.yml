@@ -218,7 +218,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '2080-02-09'
+          example: '2080-02-30'
       responses:
         '200':
           description: Successful response
