@@ -36,6 +36,9 @@ tags:
   - name: payment > connectips
   - name: payment > prabhupay
   - name: payment > fonepay
+  - name: site-setting
+  - name: banner
+  - name: contact-us
 paths:
   /pre-booking:
     get:
@@ -218,7 +221,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '2080-02-30'
+          example: '2080-02-32'
       responses:
         '200':
           description: Successful response
@@ -562,6 +565,51 @@ paths:
                 booking_id:
                   type: integer
                   example: '102'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /site-setting:
+    get:
+      tags:
+        - site-setting
+      summary: site-setting
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /banner:
+    get:
+      tags:
+        - banner
+      summary: banner
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /contact-us:
+    post:
+      tags:
+        - contact-us
+      summary: contact us
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: A B
+                subject:
+                  type: string
+                  example: abc
+                message:
+                  type: string
+                  example: adsfghjk
       responses:
         '200':
           description: Successful response

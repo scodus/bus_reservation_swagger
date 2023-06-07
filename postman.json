@@ -261,7 +261,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/search-bus?from=1&to=2&date=2080-02-30",
+							"raw": "{{url}}/search-bus?from=1&to=2&date=2080-02-32",
 							"host": [
 								"{{url}}"
 							],
@@ -279,7 +279,12 @@
 								},
 								{
 									"key": "date",
-									"value": "2080-02-30"
+									"value": "2080-02-32"
+								},
+								{
+									"key": "shift",
+									"value": "day",
+									"disabled": true
 								}
 							]
 						}
@@ -877,6 +882,92 @@
 							"response": []
 						}
 					]
+				}
+			]
+		},
+		{
+			"name": "site-setting",
+			"item": [
+				{
+					"name": "site-setting",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/site-setting",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"site-setting"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "banner",
+			"item": [
+				{
+					"name": "banner",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/banner",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"banner"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "contact-us",
+			"item": [
+				{
+					"name": "contact us",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "A B",
+									"type": "text"
+								},
+								{
+									"key": "subject",
+									"value": "abc",
+									"type": "text"
+								},
+								{
+									"key": "message",
+									"value": "adsfghjk",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/contact-us",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"contact-us"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
