@@ -239,12 +239,22 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/my-booking",
+							"raw": "{{url}}/my-booking?from_id=2080-03-01&to_date=2080-03-31",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"my-booking"
+							],
+							"query": [
+								{
+									"key": "from_id",
+									"value": "2080-03-01"
+								},
+								{
+									"key": "to_date",
+									"value": "2080-03-31"
+								}
 							]
 						}
 					},
@@ -261,7 +271,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/search-bus?from=1&to=2&date=2080-02-32",
+							"raw": "{{url}}/search-bus?from=1&to=2&date=2080-02-29&shift=night",
 							"host": [
 								"{{url}}"
 							],
@@ -279,12 +289,11 @@
 								},
 								{
 									"key": "date",
-									"value": "2080-02-32"
+									"value": "2080-02-29"
 								},
 								{
 									"key": "shift",
-									"value": "day",
-									"disabled": true
+									"value": "night"
 								}
 							]
 						}
@@ -964,6 +973,46 @@
 							],
 							"path": [
 								"contact-us"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "association",
+			"item": [
+				{
+					"name": "association",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/association",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"association"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "association single",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/association/test7",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"association",
+								"test7"
 							]
 						}
 					},

@@ -39,6 +39,7 @@ tags:
   - name: site-setting
   - name: banner
   - name: contact-us
+  - name: association
 paths:
   /pre-booking:
     get:
@@ -196,6 +197,17 @@ paths:
       summary: my booking
       security:
         - bearerAuth: []
+      parameters:
+        - name: from_id
+          in: query
+          schema:
+            type: string
+          example: '2080-03-01'
+        - name: to_date
+          in: query
+          schema:
+            type: string
+          example: '2080-03-31'
       responses:
         '200':
           description: Successful response
@@ -221,7 +233,12 @@ paths:
           in: query
           schema:
             type: string
-          example: '2080-02-32'
+          example: '2080-02-29'
+        - name: shift
+          in: query
+          schema:
+            type: string
+          example: night
       responses:
         '200':
           description: Successful response
@@ -610,6 +627,26 @@ paths:
                 message:
                   type: string
                   example: adsfghjk
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /association:
+    get:
+      tags:
+        - association
+      summary: association
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /association/test7:
+    get:
+      tags:
+        - association
+      summary: association single
       responses:
         '200':
           description: Successful response
