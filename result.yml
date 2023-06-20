@@ -202,11 +202,13 @@ paths:
           in: query
           schema:
             type: string
+          description: Departure Date From
           example: '2080-03-01'
         - name: to_date
           in: query
           schema:
             type: string
+          description: Departure Date To
           example: '2080-03-31'
       responses:
         '200':
@@ -627,6 +629,12 @@ paths:
                 message:
                   type: string
                   example: adsfghjk
+                email:
+                  type: string
+                  example: xyz@gmail.com
+                phone_no:
+                  type: integer
+                  example: '9876543210'
       responses:
         '200':
           description: Successful response
@@ -699,10 +707,10 @@ paths:
               properties:
                 email:
                   type: string
-                  example: popep97100@klblogs.com
+                  example: customer1@customer.com
                 password:
-                  type: string
-                  example: P@ssw0rd
+                  type: integer
+                  example: '1234'
       responses:
         '200':
           description: Successful response

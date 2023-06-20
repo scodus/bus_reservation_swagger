@@ -249,11 +249,13 @@
 							"query": [
 								{
 									"key": "from_id",
-									"value": "2080-03-01"
+									"value": "2080-03-01",
+									"description": "Departure Date From"
 								},
 								{
 									"key": "to_date",
-									"value": "2080-03-31"
+									"value": "2080-03-31",
+									"description": "Departure Date To"
 								}
 							]
 						}
@@ -963,6 +965,16 @@
 									"key": "message",
 									"value": "adsfghjk",
 									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "xyz@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "phone_no",
+									"value": "9876543210",
+									"type": "text"
 								}
 							]
 						},
@@ -1096,12 +1108,14 @@
 						{
 							"key": "email",
 							"value": "augxdeveloper@gmail.com",
-							"type": "text"
+							"type": "text",
+							"disabled": true
 						},
 						{
 							"key": "password",
 							"value": "P@ssw0rd",
-							"type": "text"
+							"type": "text",
+							"disabled": true
 						},
 						{
 							"key": "email",
@@ -1114,6 +1128,16 @@
 							"value": "P@ssw0rd",
 							"type": "text",
 							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "customer1@customer.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "text"
 						}
 					]
 				},
