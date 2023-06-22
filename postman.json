@@ -38,7 +38,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/pre-booking?schedule_id=92&seat_id[]=51&seat_id[]=7&seat_id[]=27&from=1&to=2&date=2080-02-05",
+							"raw": "{{url}}/pre-booking?schedule_id=101&seat_id[]=42&seat_id[]=43&from=1&to=2&date=2080-03-31",
 							"host": [
 								"{{url}}"
 							],
@@ -48,24 +48,15 @@
 							"query": [
 								{
 									"key": "schedule_id",
-									"value": "92"
+									"value": "101"
 								},
 								{
 									"key": "seat_id[]",
-									"value": "51"
+									"value": "42"
 								},
 								{
 									"key": "seat_id[]",
-									"value": "7"
-								},
-								{
-									"key": "seat_id[]",
-									"value": "27"
-								},
-								{
-									"key": "seat_id[]",
-									"value": "38",
-									"disabled": true
+									"value": "43"
 								},
 								{
 									"key": "from",
@@ -77,7 +68,7 @@
 								},
 								{
 									"key": "date",
-									"value": "2080-02-05"
+									"value": "2080-03-31"
 								}
 							]
 						}
@@ -104,30 +95,18 @@
 							"formdata": [
 								{
 									"key": "schedule_id",
-									"value": "69",
+									"value": "101",
 									"type": "text"
 								},
 								{
 									"key": "seat_id[]",
-									"value": "6",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "seat_id[]",
-									"value": "7",
+									"value": "42",
 									"type": "text"
 								},
 								{
 									"key": "seat_id[]",
-									"value": "8",
+									"value": "43",
 									"type": "text"
-								},
-								{
-									"key": "seat_id[]",
-									"value": "38",
-									"type": "text",
-									"disabled": true
 								}
 							]
 						},
@@ -160,7 +139,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"schedule_id\": 69,\n    \"route_id\": 1,\n    \"drop_location\": \"drop location here\",\n    \"rate\": 2500,\n    \"qty\": 1,\n    \"discount\": \"\",\n    \"total\": 1000,\n    \"contact_name\": \"Lal Bahadur\",\n    \"contact_phone\": \"98713264\",\n    \"paid\": \"\",\n    \"due\": \"\",\n    \"return\": \"\",\n    \"bus_details\": \"asdasd\",\n    \"seat_id\": [\n        \"6\",\n        \"7\"\n    ],\n    \"payment_status\": \"pending\",\n    \"status\": \"OnBooking\",\n    \"t_price\": 1200,\n    \"sub_route_price\": [\n        {\n            \"from_id\": 1,\n            \"to_id\": 9,\n            \"sub_route_from\": \"KTM\",\n            \"sub_route_to\": \"Kohalpur\",\n            \"price\": 16,\n            \"discount\": 8\n        }\n    ]\n}",
+							"raw": "{\n    \"schedule_id\": 101,\n    \"route_id\": 1,\n    \"drop_location\": \"DJE\",\n    \"rate\": 15,\n    \"qty\": 2,\n    \"discount\": \"\",\n    \"total\": 30,\n    \"contact_name\": \"Lal Bahadur\",\n    \"contact_phone\": \"98713264\",\n    \"paid\": \"\",\n    \"due\": \"\",\n    \"return\": \"\",\n    \"bus_details\": \"\",\n    \"seat_id\": [\n        \"42\",\n        \"43\"\n    ],\n    \"payment_status\": \"pending\",\n    \"status\": \"OnBooking\",\n    \"t_price\": 30,\n    \"sub_route_price\": [\n        {\n            \"from_id\": \"\",\n            \"to_id\": \"\",\n            \"sub_route_from\": \"\",\n            \"sub_route_to\": \"\",\n            \"price\": \"\",\n            \"discount\": \"\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -239,7 +218,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/my-booking?from_id=2080-03-01&to_date=2080-03-31",
+							"raw": "{{url}}/my-booking?from_date=2080-03-01&to_date=2080-03-31",
 							"host": [
 								"{{url}}"
 							],
@@ -248,7 +227,7 @@
 							],
 							"query": [
 								{
-									"key": "from_id",
+									"key": "from_date",
 									"value": "2080-03-01",
 									"description": "Departure Date From"
 								},
@@ -273,7 +252,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/search-bus?from=1&to=2&date=2080-02-29&shift=night",
+							"raw": "{{url}}/search-bus?from=1&to=2&date=2080-03-31&shift=night",
 							"host": [
 								"{{url}}"
 							],
@@ -291,7 +270,7 @@
 								},
 								{
 									"key": "date",
-									"value": "2080-02-29"
+									"value": "2080-03-31"
 								},
 								{
 									"key": "shift",
@@ -326,7 +305,7 @@
 							"variable": [
 								{
 									"key": "bus_schedule_id",
-									"value": "95"
+									"value": "101"
 								}
 							]
 						}

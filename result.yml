@@ -53,12 +53,12 @@ paths:
           in: query
           schema:
             type: integer
-          example: '92'
+          example: '101'
         - name: seat_id[]
           in: query
           schema:
             type: integer
-          example: '51'
+          example: '42'
         - name: from
           in: query
           schema:
@@ -73,7 +73,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '2080-02-05'
+          example: '2080-03-31'
       responses:
         '200':
           description: Successful response
@@ -92,10 +92,10 @@ paths:
               properties:
                 schedule_id:
                   type: integer
-                  example: '69'
+                  example: '101'
                 seat_id[]:
                   type: integer
-                  example: '38'
+                  example: '43'
       security:
         - bearerAuth: []
       responses:
@@ -114,32 +114,32 @@ paths:
             schema:
               type: object
               example:
-                schedule_id: 69
+                schedule_id: 101
                 route_id: 1
-                drop_location: drop location here
-                rate: 2500
-                qty: 1
+                drop_location: DJE
+                rate: 15
+                qty: 2
                 discount: ''
-                total: 1000
+                total: 30
                 contact_name: Lal Bahadur
                 contact_phone: '98713264'
                 paid: ''
                 due: ''
                 return: ''
-                bus_details: asdasd
+                bus_details: ''
                 seat_id:
-                  - '6'
-                  - '7'
+                  - '42'
+                  - '43'
                 payment_status: pending
                 status: OnBooking
-                t_price: 1200
+                t_price: 30
                 sub_route_price:
-                  - from_id: 1
-                    to_id: 9
-                    sub_route_from: KTM
-                    sub_route_to: Kohalpur
-                    price: 16
-                    discount: 8
+                  - from_id: ''
+                    to_id: ''
+                    sub_route_from: ''
+                    sub_route_to: ''
+                    price: ''
+                    discount: ''
       security:
         - bearerAuth: []
       responses:
@@ -198,7 +198,7 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: from_id
+        - name: from_date
           in: query
           schema:
             type: string
@@ -235,7 +235,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '2080-02-29'
+          example: '2080-03-31'
         - name: shift
           in: query
           schema:
@@ -257,7 +257,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '95'
+          example: '101'
       responses:
         '200':
           description: Successful response
