@@ -285,20 +285,15 @@ paths:
             schema:
               type: object
               properties:
-                username:
-                  type: string
-                  example: customer1
                 first_name:
                   type: string
                   example: customer
                 last_name:
-                  type: string
-                  example: 1 test
-                phone:
                   type: integer
-                  example: '9876543210'
-                ip_address:
+                  example: '1'
+                image:
                   type: string
+                  format: binary
       security:
         - bearerAuth: []
       responses:

@@ -384,30 +384,19 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "username",
-									"value": "customer1",
-									"type": "text",
-									"disabled": true
-								},
-								{
 									"key": "first_name",
 									"value": "customer",
 									"type": "text"
 								},
 								{
 									"key": "last_name",
-									"value": "1 test",
+									"value": "1",
 									"type": "text"
 								},
 								{
-									"key": "phone",
-									"value": "9876543210",
-									"type": "text"
-								},
-								{
-									"key": "ip_address",
-									"value": "",
-									"type": "text"
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/August/Downloads/Compressed/test-images/1.jpg"
 								}
 							]
 						},
