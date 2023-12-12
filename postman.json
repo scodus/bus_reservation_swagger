@@ -1,10 +1,10 @@
 {
 	"info": {
 		"_postman_id": "4b210fb3-09df-45b5-a6f4-335f2fece9f9",
-		"name": "bus client",
+		"name": "buspark client apis",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "15009917",
-		"_collection_link": "https://lunar-robot-597788.postman.co/workspace/Bikash's-Workspace~07b4d747-08b6-4eac-9f94-41a4bad205fa/collection/15009917-4b210fb3-09df-45b5-a6f4-335f2fece9f9?action=share&creator=15009917&source=collection_link"
+		"_collection_link": "https://bikash-projects.postman.co/workspace/Bikash's-Workspace~07b4d747-08b6-4eac-9f94-41a4bad205fa/collection/15009917-4b210fb3-09df-45b5-a6f4-335f2fece9f9?action=share&source=collection_link&creator=15009917"
 	},
 	"item": [
 		{
@@ -38,7 +38,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/pre-booking?schedule_id=101&seat_id[]=42&seat_id[]=43&from=1&to=2&date=2080-03-31",
+							"raw": "{{url}}/pre-booking?from=1&to=2&schedule_id=127&date=2080-05-31&seat_id[]=54",
 							"host": [
 								"{{url}}"
 							],
@@ -46,18 +46,6 @@
 								"pre-booking"
 							],
 							"query": [
-								{
-									"key": "schedule_id",
-									"value": "101"
-								},
-								{
-									"key": "seat_id[]",
-									"value": "42"
-								},
-								{
-									"key": "seat_id[]",
-									"value": "43"
-								},
 								{
 									"key": "from",
 									"value": "1"
@@ -67,8 +55,26 @@
 									"value": "2"
 								},
 								{
+									"key": "schedule_id",
+									"value": "127"
+								},
+								{
 									"key": "date",
-									"value": "2080-03-31"
+									"value": "2080-05-31"
+								},
+								{
+									"key": "seat_id[]",
+									"value": "54"
+								},
+								{
+									"key": "seat_id[]",
+									"value": "46",
+									"disabled": true
+								},
+								{
+									"key": "seat_id[]",
+									"value": "49",
+									"disabled": true
 								}
 							]
 						}
@@ -95,18 +101,25 @@
 							"formdata": [
 								{
 									"key": "schedule_id",
-									"value": "101",
-									"type": "text"
-								},
-								{
-									"key": "seat_id[]",
-									"value": "42",
+									"value": "125",
 									"type": "text"
 								},
 								{
 									"key": "seat_id[]",
 									"value": "43",
 									"type": "text"
+								},
+								{
+									"key": "seat_id[]",
+									"value": "46",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "seat_id[]",
+									"value": "49",
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
@@ -139,7 +152,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"schedule_id\": 101,\n    \"route_id\": 1,\n    \"drop_location\": \"DJE\",\n    \"rate\": 15,\n    \"qty\": 2,\n    \"discount\": \"\",\n    \"total\": 30,\n    \"contact_name\": \"Lal Bahadur\",\n    \"contact_phone\": \"98713264\",\n    \"paid\": \"\",\n    \"due\": \"\",\n    \"return\": \"\",\n    \"bus_details\": \"\",\n    \"seat_id\": [\n        \"42\",\n        \"43\"\n    ],\n    \"payment_status\": \"pending\",\n    \"status\": \"OnBooking\",\n    \"t_price\": 30,\n    \"sub_route_price\": [\n        {\n            \"from_id\": \"\",\n            \"to_id\": \"\",\n            \"sub_route_from\": \"\",\n            \"sub_route_to\": \"\",\n            \"price\": \"\",\n            \"discount\": \"\"\n        }\n    ]\n}",
+							"raw": "{\n    \"schedule_id\": 127,\n    \"route_id\": 1,\n    \"drop_location\": \"DJE\",\n    \"rate\": 15,\n    // \"qty\": 1,\n    // \"discount\": 2,\n    // \"total\": 30,\n    \"contact_name\": \"XYZ  augx\",\n    \"contact_phone\": \"98713264\",\n    // \"paid\": \"\",\n    // \"due\": \"\",\n    // \"return\": \"\",\n    \"bus_details\": \"\",\n    \"seat_id\": [\n        // \"43\"\n        // ,\n        \"54\"\n    ]\n    // \"payment_status\": \"pending\",\n    // \"status\": \"OnBooking\",\n    // \"t_price\": 30,\n    ,\n    \"sub_route_price\": \"\"\n    // {\n    //     \"from_id\": \"\",\n    //     \"to_id\": \"\",\n    //     \"sub_route_from\": \"\",\n    //     \"sub_route_to\": \"\",\n    //     \"price\": \"\",\n    //     \"discount\": \"\"\n    // }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -159,7 +172,7 @@
 					"response": []
 				},
 				{
-					"name": "cancel booking",
+					"name": "cancel whole booking",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -173,15 +186,6 @@
 						},
 						"method": "POST",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"schedule_id\": 51,\n    \"route_id\": 1,\n    \"drop_location\": \"drop location here\",\n    \"rate\": 2500,\n    \"qty\": 4,\n    \"discount\": \"\",\n    \"total\": 10000,\n    \"contact_name\": \"Lal Bahadur\",\n    \"contact_phone\": \"98713264\",\n    \"paid\": \"\",\n    \"due\": \"\",\n    \"return\": \"\",\n    \"bus_details\": \"asdasd\",\n    \"seat_id\": [\n        \"24\",\n        \"35\",\n        \"25\",\n        \"36\"\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
 							"raw": "{{url}}/bus-booking/:booking_id/cancel",
 							"host": [
@@ -195,7 +199,7 @@
 							"variable": [
 								{
 									"key": "booking_id",
-									"value": "219"
+									"value": "555"
 								}
 							]
 						}
@@ -203,7 +207,7 @@
 					"response": []
 				},
 				{
-					"name": "my booking",
+					"name": "my booking history",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -218,7 +222,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/my-booking?from_date=2080-03-01&to_date=2080-03-31",
+							"raw": "{{url}}/my-booking?from_date=2080-03-31&to_date=2080-03-31",
 							"host": [
 								"{{url}}"
 							],
@@ -228,7 +232,7 @@
 							"query": [
 								{
 									"key": "from_date",
-									"value": "2080-03-01",
+									"value": "2080-03-31",
 									"description": "Departure Date From"
 								},
 								{
@@ -250,9 +254,16 @@
 					"name": "search bus",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
 						"url": {
-							"raw": "{{url}}/search-bus?from=1&to=2&date=2080-03-31&shift=night",
+							"raw": "{{url}}/search-bus?from=1&to=2&date=2080-05-28",
 							"host": [
 								"{{url}}"
 							],
@@ -269,12 +280,13 @@
 									"value": "2"
 								},
 								{
-									"key": "date",
-									"value": "2080-03-31"
+									"key": "shift",
+									"value": "night",
+									"disabled": true
 								},
 								{
-									"key": "shift",
-									"value": "night"
+									"key": "date",
+									"value": "2080-05-28"
 								}
 							]
 						}
@@ -305,7 +317,7 @@
 							"variable": [
 								{
 									"key": "bus_schedule_id",
-									"value": "101"
+									"value": "125"
 								}
 							]
 						}
@@ -317,6 +329,54 @@
 		{
 			"name": "user",
 			"item": [
+				{
+					"name": "social",
+					"item": [
+						{
+							"name": "login callback",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/login/:provider/callback?token=",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"login",
+										":provider",
+										"callback"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": ""
+										}
+									],
+									"variable": [
+										{
+											"key": "provider",
+											"value": "google",
+											"description": "type:google,facebook "
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
 				{
 					"name": "get profile",
 					"request": {
@@ -442,6 +502,300 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "tomnjerry",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "jerry",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "987654321",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "tomnjerry8963@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "P@ssw0rd",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "P@ssw0rd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json()\r",
+									"pm.environment.set('customer_token', response.token)\r",
+									"pm.environment.set('refresh_token', response.refresh_token)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "augxdeveloper@gmail.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "P@ssw0rd",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "popep97100@klblogs.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "P@ssw0rd",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "customer1@customer.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{customer_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/logout",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refresh token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json()\r",
+									"pm.environment.set('customer_token', response.data.access_token)\r",
+									"pm.environment.set('refresh_token', response.data.refresh_token)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/refresh-token/:refresh_token",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"refresh-token",
+								":refresh_token"
+							],
+							"variable": [
+								{
+									"key": "refresh_token",
+									"value": "{{refresh_token}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "resend email verification mail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{customer_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/resend-account-verification-mail",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"resend-account-verification-mail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reset password mail",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "tomnjerry8963@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/reset-password-mail",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"reset-password-mail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reset password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "password",
+									"value": "P@ssw0rd",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "P@ssw0rd",
+									"type": "text"
+								},
+								{
+									"key": "token",
+									"value": "12231",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/reset-password",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"reset-password"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -525,7 +879,7 @@
 					"name": "khalti",
 					"item": [
 						{
-							"name": "transaction_success-verification POST",
+							"name": "transaction_success-verification v2",
 							"request": {
 								"method": "POST",
 								"header": [],
@@ -534,7 +888,7 @@
 									"formdata": [
 										{
 											"key": "pidx",
-											"value": "HPBVsH2gkbAyK3PsGEsSQh",
+											"value": "Hx2sWTCDfidjpVTvgv2Q9o",
 											"type": "text"
 										},
 										{
@@ -578,6 +932,109 @@
 										"payment",
 										"khalti",
 										"success"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "transaction_success-verification v1",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "pidx",
+											"value": "dH8yXAvRYdUSJ2EsDcbzWB",
+											"type": "text"
+										},
+										{
+											"key": "amount",
+											"value": "2000",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "9860898042",
+											"type": "text"
+										},
+										{
+											"key": "purchase_order_id",
+											"value": "614",
+											"type": "text"
+										},
+										{
+											"key": "purchase_order_name",
+											"value": "hamro job",
+											"type": "text"
+										},
+										{
+											"key": "txnId",
+											"value": "cBpJjFvZdiUFAqfJWJTV3a",
+											"type": "text"
+										},
+										{
+											"key": "transaction_id",
+											"value": "cBpJjFvZdiUFAqfJWJTV3a",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/payment/khalti/success/app",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"payment",
+										"khalti",
+										"success",
+										"app"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "verification v1",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Key test_secret_key_8cd8d5a4ec4d44b18d7c75863457308f",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"token\":\"BsZ3iarPqQB4puqQ3jSCsQ\",\r\n    \"amount\": 2000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://khalti.com/api/v2/payment/verify/",
+									"protocol": "https",
+									"host": [
+										"khalti",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"payment",
+										"verify",
+										""
 									]
 								}
 							},
@@ -657,6 +1114,45 @@
 										"payment",
 										"khalti",
 										"initiate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Lookup v2",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Key test_secret_key_8cd8d5a4ec4d44b18d7c75863457308f",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"pidx\": \"Hx2sWTCDfidjpVTvgv2Q9o\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://a.khalti.com/api/v2/epayment/lookup/",
+									"protocol": "https",
+									"host": [
+										"a",
+										"khalti",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"epayment",
+										"lookup",
+										""
 									]
 								}
 							},
@@ -909,6 +1405,334 @@
 			]
 		},
 		{
+			"name": "association",
+			"item": [
+				{
+					"name": "association",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/association",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"association"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "association single",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/association/test7",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"association",
+								"test7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "location",
+			"item": [
+				{
+					"name": "location list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/location",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"location"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "location main list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/location/main",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"location",
+								"main"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "location sub list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/location/sub",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"location",
+								"sub"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "our service, gallery",
+			"item": [
+				{
+					"name": "our service",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/our-service/all",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"our-service",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "our service paginated",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/our-service?limit=8&page=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"our-service"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "8"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "our service single id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/our-service/by/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"our-service",
+								"by",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "our service single by slug",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/our-service/:slug",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"our-service",
+								":slug"
+							],
+							"variable": [
+								{
+									"key": "slug",
+									"value": "quae-id-aut-commodo"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "our service gallery",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/our-service/:id/gallery/all",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"our-service",
+								":id",
+								"gallery",
+								"all"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "our service gallery paginated",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/our-service/:id/gallery?limit=8&page=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"our-service",
+								":id",
+								"gallery"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "8"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "our service gallery single by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/our-service-gallery/by/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"our-service-gallery",
+								"by",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "22"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "contact-us",
 			"item": [
 				{
@@ -959,372 +1783,6 @@
 					"response": []
 				}
 			]
-		},
-		{
-			"name": "association",
-			"item": [
-				{
-					"name": "association",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/association",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"association"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "association single",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/association/test7",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"association",
-								"test7"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "register",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "first_name",
-							"value": "tomnjerry",
-							"type": "text"
-						},
-						{
-							"key": "last_name",
-							"value": "jerry",
-							"type": "text"
-						},
-						{
-							"key": "phone",
-							"value": "987654321",
-							"type": "text"
-						},
-						{
-							"key": "email",
-							"value": "tomnjerry8963@gmail.com",
-							"type": "text"
-						},
-						{
-							"key": "password",
-							"value": "P@ssw0rd",
-							"type": "text"
-						},
-						{
-							"key": "password_confirmation",
-							"value": "P@ssw0rd",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "{{url}}/register",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"register"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "login",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"const response = pm.response.json()\r",
-							"pm.environment.set('customer_token', response.token)\r",
-							"pm.environment.set('refresh_token', response.refresh_token)"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "email",
-							"value": "augxdeveloper@gmail.com",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "password",
-							"value": "P@ssw0rd",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "email",
-							"value": "popep97100@klblogs.com",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "password",
-							"value": "P@ssw0rd",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "email",
-							"value": "customer1@customer.com",
-							"type": "text"
-						},
-						{
-							"key": "password",
-							"value": "1234",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "{{url}}/login",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"login"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "logout",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{customer_token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "{{url}}/logout",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"logout"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "refresh token",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"const response = pm.response.json()\r",
-							"pm.environment.set('customer_token', response.data.access_token)\r",
-							"pm.environment.set('refresh_token', response.data.refresh_token)"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": []
-				},
-				"url": {
-					"raw": "{{url}}/refresh-token/:refresh_token",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"refresh-token",
-						":refresh_token"
-					],
-					"variable": [
-						{
-							"key": "refresh_token",
-							"value": "{{refresh_token}}"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "resend email verification mail",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{customer_token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "{{url}}/resend-account-verification-mail",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"resend-account-verification-mail"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "reset password mail",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "email",
-							"value": "tomnjerry8963@gmail.com",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "{{url}}/reset-password-mail",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"reset-password-mail"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "reset password",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "password",
-							"value": "P@ssw0rd",
-							"type": "text"
-						},
-						{
-							"key": "password_confirmation",
-							"value": "P@ssw0rd",
-							"type": "text"
-						},
-						{
-							"key": "token",
-							"value": "12231",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "{{url}}/reset-password",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"reset-password"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "location",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{url}}/location",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"location"
-					]
-				}
-			},
-			"response": []
 		}
 	]
 }
