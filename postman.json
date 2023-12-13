@@ -349,7 +349,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{url}}/login/:provider/callback?token=",
+									"raw": "{{url}}/login/:provider/callback?token=ya29.a0AfB_byD-kB-zX-G1M7l-VcZvA_Y8N89ny9FwDKblk_AXR3o1BkZOUy1uEeyb0IP_tZgVX3x7UL2l4zmTq7W-HPy5pnWfaM8Qa1r3aW0CMDmww5mCFkoGaN9Cxgb8EwJyUTfk0J7wDkVRCtv_vewJ8J11y-SZWT66UbTZaCgYKAf8SARISFQHGX2MiNv-Mc6F7Le13t4uP1pDsaw0171",
 									"host": [
 										"{{url}}"
 									],
@@ -361,7 +361,7 @@
 									"query": [
 										{
 											"key": "token",
-											"value": ""
+											"value": "ya29.a0AfB_byD-kB-zX-G1M7l-VcZvA_Y8N89ny9FwDKblk_AXR3o1BkZOUy1uEeyb0IP_tZgVX3x7UL2l4zmTq7W-HPy5pnWfaM8Qa1r3aW0CMDmww5mCFkoGaN9Cxgb8EwJyUTfk0J7wDkVRCtv_vewJ8J11y-SZWT66UbTZaCgYKAf8SARISFQHGX2MiNv-Mc6F7Le13t4uP1pDsaw0171"
 										}
 									],
 									"variable": [
