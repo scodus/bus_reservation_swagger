@@ -1,333 +1,14 @@
 {
 	"info": {
-		"_postman_id": "4b210fb3-09df-45b5-a6f4-335f2fece9f9",
-		"name": "buspark client apis",
+		"_postman_id": "5f141dcd-4073-4737-832a-cacb187b2021",
+		"name": "BUSPARK Client/Customer APIs",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "15009917",
-		"_collection_link": "https://bikash-projects.postman.co/workspace/Bikash's-Workspace~07b4d747-08b6-4eac-9f94-41a4bad205fa/collection/15009917-4b210fb3-09df-45b5-a6f4-335f2fece9f9?action=share&source=collection_link&creator=15009917"
+		"_collection_link": "https://bikash-projects.postman.co/workspace/Bikash's-Workspace~07b4d747-08b6-4eac-9f94-41a4bad205fa/collection/15009917-5f141dcd-4073-4737-832a-cacb187b2021?action=share&source=collection_link&creator=15009917"
 	},
 	"item": [
 		{
-			"name": "bus booking",
-			"item": [
-				{
-					"name": "pre booking",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{customer_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/pre-booking?from=1&to=2&schedule_id=127&date=2080-05-31&seat_id[]=54",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"pre-booking"
-							],
-							"query": [
-								{
-									"key": "from",
-									"value": "1"
-								},
-								{
-									"key": "to",
-									"value": "2"
-								},
-								{
-									"key": "schedule_id",
-									"value": "127"
-								},
-								{
-									"key": "date",
-									"value": "2080-05-31"
-								},
-								{
-									"key": "seat_id[]",
-									"value": "54"
-								},
-								{
-									"key": "seat_id[]",
-									"value": "46",
-									"disabled": true
-								},
-								{
-									"key": "seat_id[]",
-									"value": "49",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "pre booking timeout",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{customer_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "schedule_id",
-									"value": "125",
-									"type": "text"
-								},
-								{
-									"key": "seat_id[]",
-									"value": "43",
-									"type": "text"
-								},
-								{
-									"key": "seat_id[]",
-									"value": "46",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "seat_id[]",
-									"value": "49",
-									"type": "text",
-									"disabled": true
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/pre-booking-timeout",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"pre-booking-timeout"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "store booking",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{customer_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"schedule_id\": 127,\n    \"route_id\": 1,\n    \"drop_location\": \"DJE\",\n    \"rate\": 15,\n    // \"qty\": 1,\n    // \"discount\": 2,\n    // \"total\": 30,\n    \"contact_name\": \"XYZ  augx\",\n    \"contact_phone\": \"98713264\",\n    // \"paid\": \"\",\n    // \"due\": \"\",\n    // \"return\": \"\",\n    \"bus_details\": \"\",\n    \"seat_id\": [\n        // \"43\"\n        // ,\n        \"54\"\n    ]\n    // \"payment_status\": \"pending\",\n    // \"status\": \"OnBooking\",\n    // \"t_price\": 30,\n    ,\n    \"sub_route_price\": \"\"\n    // {\n    //     \"from_id\": \"\",\n    //     \"to_id\": \"\",\n    //     \"sub_route_from\": \"\",\n    //     \"sub_route_to\": \"\",\n    //     \"price\": \"\",\n    //     \"discount\": \"\"\n    // }\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/bus-booking",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"bus-booking"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "cancel whole booking",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{customer_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/bus-booking/:booking_id/cancel",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"bus-booking",
-								":booking_id",
-								"cancel"
-							],
-							"variable": [
-								{
-									"key": "booking_id",
-									"value": "555"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "my booking history",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{customer_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/my-booking?from_date=2080-03-31&to_date=2080-03-31",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"my-booking"
-							],
-							"query": [
-								{
-									"key": "from_date",
-									"value": "2080-03-31",
-									"description": "Departure Date From"
-								},
-								{
-									"key": "to_date",
-									"value": "2080-03-31",
-									"description": "Departure Date To"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "bus schedule",
-			"item": [
-				{
-					"name": "search bus",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text",
-								"disabled": true
-							}
-						],
-						"url": {
-							"raw": "{{url}}/search-bus?from=1&to=2&date=2080-05-28",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"search-bus"
-							],
-							"query": [
-								{
-									"key": "from",
-									"value": "1"
-								},
-								{
-									"key": "to",
-									"value": "2"
-								},
-								{
-									"key": "shift",
-									"value": "night",
-									"disabled": true
-								},
-								{
-									"key": "date",
-									"value": "2080-05-28"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get bus seat",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/get-bus-seats/:bus_schedule_id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"get-bus-seats",
-								":bus_schedule_id"
-							],
-							"variable": [
-								{
-									"key": "bus_schedule_id",
-									"value": "125"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "user",
+			"name": "Authentication",
 			"item": [
 				{
 					"name": "social",
@@ -339,7 +20,9 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											""
+											"const response = pm.response.json()",
+											"pm.environment.set('access_token', response.data.token)",
+											"pm.environment.set('refresh_token', response.data.refresh_token)"
 										],
 										"type": "text/javascript"
 									}
@@ -349,11 +32,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{url}}/login/:provider/callback?token=ya29.a0AfB_byD-kB-zX-G1M7l-VcZvA_Y8N89ny9FwDKblk_AXR3o1BkZOUy1uEeyb0IP_tZgVX3x7UL2l4zmTq7W-HPy5pnWfaM8Qa1r3aW0CMDmww5mCFkoGaN9Cxgb8EwJyUTfk0J7wDkVRCtv_vewJ8J11y-SZWT66UbTZaCgYKAf8SARISFQHGX2MiNv-Mc6F7Le13t4uP1pDsaw0171",
+									"raw": "{{url}}/api/login/:provider/callback?token=ya29.a0AfB_byB43ueGGGkUA2qKbWMagbPzUgBbGk1hEQH0oH5Nq3XLVlOg02bf-1u_jYpca9OVJYqlJq5LfvYl0CaEe-dAK6vMmjEKTzJj5aE2mfwVA9MKt4X0aDDOBXHu34y7FuXsnp_dup2_FURod6Yp8Pma_U-AzH0gW94SaCgYKATMSARISFQHGX2MiiZoFL1yKXHx4Pin8iajn_Q0171",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
+										"api",
 										"login",
 										":provider",
 										"callback"
@@ -361,14 +45,13 @@
 									"query": [
 										{
 											"key": "token",
-											"value": "ya29.a0AfB_byD-kB-zX-G1M7l-VcZvA_Y8N89ny9FwDKblk_AXR3o1BkZOUy1uEeyb0IP_tZgVX3x7UL2l4zmTq7W-HPy5pnWfaM8Qa1r3aW0CMDmww5mCFkoGaN9Cxgb8EwJyUTfk0J7wDkVRCtv_vewJ8J11y-SZWT66UbTZaCgYKAf8SARISFQHGX2MiNv-Mc6F7Le13t4uP1pDsaw0171"
+											"value": "ya29.a0AfB_byB43ueGGGkUA2qKbWMagbPzUgBbGk1hEQH0oH5Nq3XLVlOg02bf-1u_jYpca9OVJYqlJq5LfvYl0CaEe-dAK6vMmjEKTzJj5aE2mfwVA9MKt4X0aDDOBXHu34y7FuXsnp_dup2_FURod6Yp8Pma_U-AzH0gW94SaCgYKATMSARISFQHGX2MiiZoFL1yKXHx4Pin8iajn_Q0171"
 										}
 									],
 									"variable": [
 										{
 											"key": "provider",
-											"value": "google",
-											"description": "type:google,facebook "
+											"value": "google"
 										}
 									]
 								}
@@ -385,7 +68,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{customer_token}}",
+									"value": "{{access_token}}",
 									"type": "string"
 								}
 							]
@@ -393,11 +76,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/user-detail",
+							"raw": "{{url}}/api/user-detail",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
 								"user-detail"
 							]
 						}
@@ -412,7 +96,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{customer_token}}",
+									"value": "{{access_token}}",
 									"type": "string"
 								}
 							]
@@ -440,11 +124,12 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/user-detail",
+							"raw": "{{url}}/api/user-detail",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
 								"user-detail"
 							]
 						}
@@ -459,7 +144,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{customer_token}}",
+									"value": "{{access_token}}",
 									"type": "string"
 								}
 							]
@@ -492,11 +177,12 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/password-change",
+							"raw": "{{url}}/api/password-change",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
 								"password-change"
 							]
 						}
@@ -544,11 +230,12 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/register",
+							"raw": "{{url}}/api/register",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
 								"register"
 							]
 						}
@@ -563,8 +250,8 @@
 							"script": {
 								"exec": [
 									"const response = pm.response.json()\r",
-									"pm.environment.set('customer_token', response.token)\r",
-									"pm.environment.set('refresh_token', response.refresh_token)"
+									"pm.environment.set('access_token', response.data.token)\r",
+									"pm.environment.set('refresh_token', response.data.refresh_token)"
 								],
 								"type": "text/javascript"
 							}
@@ -609,15 +296,22 @@
 									"key": "password",
 									"value": "1234",
 									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "admin@admin.com",
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
 						"url": {
-							"raw": "{{url}}/login",
+							"raw": "{{url}}/api/login",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
 								"login"
 							]
 						}
@@ -643,7 +337,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{customer_token}}",
+									"value": "{{access_token}}",
 									"type": "string"
 								}
 							]
@@ -651,11 +345,12 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/logout",
+							"raw": "{{url}}/api/logout",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
 								"logout"
 							]
 						}
@@ -670,7 +365,7 @@
 							"script": {
 								"exec": [
 									"const response = pm.response.json()\r",
-									"pm.environment.set('customer_token', response.data.access_token)\r",
+									"pm.environment.set('access_token', response.data.token)\r",
 									"pm.environment.set('refresh_token', response.data.refresh_token)"
 								],
 								"type": "text/javascript"
@@ -688,11 +383,12 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/refresh-token/:refresh_token",
+							"raw": "{{url}}/api/refresh-token/:refresh_token",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
 								"refresh-token",
 								":refresh_token"
 							],
@@ -714,7 +410,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{customer_token}}",
+									"value": "{{access_token}}",
 									"type": "string"
 								}
 							]
@@ -722,11 +418,12 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/resend-account-verification-mail",
+							"raw": "{{url}}/api/resend-account-verification-mail",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
 								"resend-account-verification-mail"
 							]
 						}
@@ -749,11 +446,12 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/reset-password-mail",
+							"raw": "{{url}}/api/reset-password-mail",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
 								"reset-password-mail"
 							]
 						}
@@ -786,12 +484,755 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/reset-password",
+							"raw": "{{url}}/api/reset-password",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
 								"reset-password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "association",
+			"item": [
+				{
+					"name": "association",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/association",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"association"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "association single",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/association/test7",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"association",
+								"test7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "banner",
+			"item": [
+				{
+					"name": "banner",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/banner",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"banner"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "bus booking",
+			"item": [
+				{
+					"name": "pre booking",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/pre-booking?from=1&to=2&schedule_id=127&date=2080-05-31&seat_id[]=54",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"pre-booking"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "1"
+								},
+								{
+									"key": "to",
+									"value": "2"
+								},
+								{
+									"key": "schedule_id",
+									"value": "127"
+								},
+								{
+									"key": "date",
+									"value": "2080-05-31"
+								},
+								{
+									"key": "seat_id[]",
+									"value": "54"
+								},
+								{
+									"key": "seat_id[]",
+									"value": "46",
+									"disabled": true
+								},
+								{
+									"key": "seat_id[]",
+									"value": "49",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pre booking timeout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "schedule_id",
+									"value": "125",
+									"type": "text"
+								},
+								{
+									"key": "seat_id[]",
+									"value": "43",
+									"type": "text"
+								},
+								{
+									"key": "seat_id[]",
+									"value": "46",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "seat_id[]",
+									"value": "49",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/pre-booking-timeout",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"pre-booking-timeout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store booking",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"schedule_id\": 127,\n    \"route_id\": 1,\n    \"drop_location\": \"DJE\",\n    \"rate\": 15,\n    // \"qty\": 1,\n    // \"discount\": 2,\n    // \"total\": 30,\n    \"contact_name\": \"XYZ  augx\",\n    \"contact_phone\": \"98713264\",\n    // \"paid\": ,\n    // \"due\": ,\n    // \"return\": ,\n    \"bus_details\": \"\",\n    \"seat_id\": [\n        // 43\n        // ,\n        54\n    ]\n    // \"payment_status\": \"pending\",\n    // \"status\": \"OnBooking\",\n    // \"t_price\": 30,\n    ,\n    \"sub_route_price\": null\n    // {\n    //     \"from_id\": ,\n    //     \"to_id\": ,\n    //     \"sub_route_from\": ,\n    //     \"sub_route_to\": ,\n    //     \"price\":,\n    //     \"discount\": \n    // }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/bus-booking",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"bus-booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cancel whole booking",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/bus-booking/:booking_id/cancel",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"bus-booking",
+								":booking_id",
+								"cancel"
+							],
+							"variable": [
+								{
+									"key": "booking_id",
+									"value": "555"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "my booking history",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/my-booking?from_date=2080-03-31&to_date=2080-03-31",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"my-booking"
+							],
+							"query": [
+								{
+									"key": "from_date",
+									"value": "2080-03-31",
+									"description": "Departure Date From"
+								},
+								{
+									"key": "to_date",
+									"value": "2080-03-31",
+									"description": "Departure Date To"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "bus schedule",
+			"item": [
+				{
+					"name": "search bus",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/search-bus?from=1&to=2&date=2080-05-28",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"search-bus"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "1"
+								},
+								{
+									"key": "to",
+									"value": "2"
+								},
+								{
+									"key": "shift",
+									"value": "night",
+									"disabled": true
+								},
+								{
+									"key": "date",
+									"value": "2080-05-28"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get bus seat",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/get-bus-seats/:bus_schedule_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"get-bus-seats",
+								":bus_schedule_id"
+							],
+							"variable": [
+								{
+									"key": "bus_schedule_id",
+									"value": "125"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "contact-us",
+			"item": [
+				{
+					"name": "contact us",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "A B",
+									"type": "text"
+								},
+								{
+									"key": "subject",
+									"value": "abc",
+									"type": "text"
+								},
+								{
+									"key": "message",
+									"value": "adsfghjk",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "xyz@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "phone_no",
+									"value": "9876543210",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/contact-us",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"contact-us"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "location",
+			"item": [
+				{
+					"name": "location list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/location",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"location"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "location main list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/location/main",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"location",
+								"main"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "location sub list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/location/sub",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"location",
+								"sub"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "our service, gallery",
+			"item": [
+				{
+					"name": "our service",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/our-service/all",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"our-service",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "our service paginated",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/our-service?limit=8&page=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"our-service"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "8"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "our service single id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/our-service/by/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"our-service",
+								"by",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "our service single by slug",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/our-service/:slug",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"our-service",
+								":slug"
+							],
+							"variable": [
+								{
+									"key": "slug",
+									"value": "quae-id-aut-commodo"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "our service gallery",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/our-service/:id/gallery/all",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"our-service",
+								":id",
+								"gallery",
+								"all"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "our service gallery paginated",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/our-service/:id/gallery?limit=8&page=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"our-service",
+								":id",
+								"gallery"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "8"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "our service gallery single by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/our-service-gallery/by/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"our-service-gallery",
+								"by",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "22"
+								}
 							]
 						}
 					},
@@ -831,11 +1272,12 @@
 									]
 								},
 								"url": {
-									"raw": "{{url}}/payment/esewa/success",
+									"raw": "{{url}}/api/payment/esewa/success",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
+										"api",
 										"payment",
 										"esewa",
 										"success"
@@ -860,11 +1302,12 @@
 									]
 								},
 								"url": {
-									"raw": "{{url}}/payment/esewa/fail",
+									"raw": "{{url}}/api/payment/esewa/fail",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
+										"api",
 										"payment",
 										"esewa",
 										"fail"
@@ -924,11 +1367,12 @@
 									]
 								},
 								"url": {
-									"raw": "{{url}}/payment/khalti/success",
+									"raw": "{{url}}/api/payment/khalti/success",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
+										"api",
 										"payment",
 										"khalti",
 										"success"
@@ -983,11 +1427,12 @@
 									]
 								},
 								"url": {
-									"raw": "{{url}}/payment/khalti/success/app",
+									"raw": "{{url}}/api/payment/khalti/success/app",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
+										"api",
 										"payment",
 										"khalti",
 										"success",
@@ -1057,11 +1502,12 @@
 									]
 								},
 								"url": {
-									"raw": "{{url}}/payment/khalti/fail",
+									"raw": "{{url}}/api/payment/khalti/fail",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
+										"api",
 										"payment",
 										"khalti",
 										"fail"
@@ -1106,11 +1552,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/payment/khalti/initiate",
+									"raw": "{{url}}/api/payment/khalti/initiate",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
+										"api",
 										"payment",
 										"khalti",
 										"initiate"
@@ -1178,11 +1625,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/payment/connectips/success",
+									"raw": "{{url}}/api/payment/connectips/success",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
+										"api",
 										"payment",
 										"connectips",
 										"success"
@@ -1207,11 +1655,12 @@
 									]
 								},
 								"url": {
-									"raw": "{{url}}/payment/connectips/fail",
+									"raw": "{{url}}/api/payment/connectips/fail",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
+										"api",
 										"payment",
 										"connectips",
 										"fail"
@@ -1240,11 +1689,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/payment/prabhupay/success",
+									"raw": "{{url}}/api/payment/prabhupay/success",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
+										"api",
 										"payment",
 										"prabhupay",
 										"success"
@@ -1281,11 +1731,12 @@
 									]
 								},
 								"url": {
-									"raw": "{{url}}/payment/prabhupay/fail",
+									"raw": "{{url}}/api/payment/prabhupay/fail",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
+										"api",
 										"payment",
 										"prabhupay",
 										"fail"
@@ -1314,11 +1765,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/payment/fonepay/success",
+									"raw": "{{url}}/api/payment/fonepay/success",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
+										"api",
 										"payment",
 										"fonepay",
 										"success"
@@ -1343,11 +1795,12 @@
 									]
 								},
 								"url": {
-									"raw": "{{url}}/payment/fonepay/fail",
+									"raw": "{{url}}/api/payment/fonepay/fail",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
+										"api",
 										"payment",
 										"fonepay",
 										"fail"
@@ -1369,414 +1822,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/site-setting",
+							"raw": "{{url}}/api/site-setting",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
 								"site-setting"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "banner",
-			"item": [
-				{
-					"name": "banner",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/banner",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"banner"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "association",
-			"item": [
-				{
-					"name": "association",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/association",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"association"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "association single",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/association/test7",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"association",
-								"test7"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "location",
-			"item": [
-				{
-					"name": "location list",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/location",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"location"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "location main list",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/location/main",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"location",
-								"main"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "location sub list",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/location/sub",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"location",
-								"sub"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "our service, gallery",
-			"item": [
-				{
-					"name": "our service",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/our-service/all",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"our-service",
-								"all"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "our service paginated",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/our-service?limit=8&page=1",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"our-service"
-							],
-							"query": [
-								{
-									"key": "limit",
-									"value": "8"
-								},
-								{
-									"key": "page",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "our service single id",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/our-service/by/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"our-service",
-								"by",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "our service single by slug",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/our-service/:slug",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"our-service",
-								":slug"
-							],
-							"variable": [
-								{
-									"key": "slug",
-									"value": "quae-id-aut-commodo"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "our service gallery",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/our-service/:id/gallery/all",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"our-service",
-								":id",
-								"gallery",
-								"all"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "our service gallery paginated",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/our-service/:id/gallery?limit=8&page=1",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"our-service",
-								":id",
-								"gallery"
-							],
-							"query": [
-								{
-									"key": "limit",
-									"value": "8"
-								},
-								{
-									"key": "page",
-									"value": "1"
-								}
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "our service gallery single by id",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/our-service-gallery/by/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"our-service-gallery",
-								"by",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "22"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "contact-us",
-			"item": [
-				{
-					"name": "contact us",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "name",
-									"value": "A B",
-									"type": "text"
-								},
-								{
-									"key": "subject",
-									"value": "abc",
-									"type": "text"
-								},
-								{
-									"key": "message",
-									"value": "adsfghjk",
-									"type": "text"
-								},
-								{
-									"key": "email",
-									"value": "xyz@gmail.com",
-									"type": "text"
-								},
-								{
-									"key": "phone_no",
-									"value": "9876543210",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/contact-us",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"contact-us"
 							]
 						}
 					},

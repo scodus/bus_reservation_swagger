@@ -16,7 +16,7 @@ info:
     name: MIT
     url: https://es.wikipedia.org/wiki/Licencia_MIT
 servers:
-  - url: https://buspark.scodus.com/api
+  - url: https://buspark.scodus.com
     description: Base URL
 components:
   securitySchemes:
@@ -27,10 +27,15 @@ components:
       type: http
       scheme: noauth
 tags:
+  - name: Authentication
+  - name: Authentication > social
+  - name: association
+  - name: banner
   - name: bus booking
   - name: bus schedule
-  - name: user
-  - name: user > social
+  - name: contact-us
+  - name: location
+  - name: our service, gallery
   - name: payment
   - name: payment > esewa
   - name: payment > khalti
@@ -38,13 +43,281 @@ tags:
   - name: payment > prabhupay
   - name: payment > fonepay
   - name: site-setting
-  - name: banner
-  - name: association
-  - name: location
-  - name: our service, gallery
-  - name: contact-us
 paths:
-  /pre-booking:
+  /api/login/{provider}/callback:
+    get:
+      tags:
+        - Authentication > social
+      summary: login callback
+      parameters:
+        - name: token
+          in: query
+          schema:
+            type: string
+          example: >-
+            ya29.a0AfB_byB43ueGGGkUA2qKbWMagbPzUgBbGk1hEQH0oH5Nq3XLVlOg02bf-1u_jYpca9OVJYqlJq5LfvYl0CaEe-dAK6vMmjEKTzJj5aE2mfwVA9MKt4X0aDDOBXHu34y7FuXsnp_dup2_FURod6Yp8Pma_U-AzH0gW94SaCgYKATMSARISFQHGX2MiiZoFL1yKXHx4Pin8iajn_Q0171
+        - name: provider
+          in: path
+          schema:
+            type: string
+          required: true
+          example: google
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/user-detail:
+    get:
+      tags:
+        - Authentication
+      summary: get profile
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Authentication
+      summary: update profile
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                  example: customer
+                last_name:
+                  type: integer
+                  example: '1'
+                image:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/password-change:
+    post:
+      tags:
+        - Authentication
+      summary: change password
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                old_password:
+                  type: integer
+                  example: '1234'
+                new_password:
+                  type: integer
+                  example: '12345'
+                new_password_confirmation:
+                  type: integer
+                  example: '12345'
+                _method:
+                  type: string
+                  example: PUT
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/register:
+    post:
+      tags:
+        - Authentication
+      summary: register
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                  example: tomnjerry
+                last_name:
+                  type: string
+                  example: jerry
+                phone:
+                  type: integer
+                  example: '987654321'
+                email:
+                  type: string
+                  example: tomnjerry8963@gmail.com
+                password:
+                  type: string
+                  example: P@ssw0rd
+                password_confirmation:
+                  type: string
+                  example: P@ssw0rd
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/login:
+    post:
+      tags:
+        - Authentication
+      summary: login
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: admin@admin.com
+                password:
+                  type: integer
+                  example: '1234'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/logout:
+    post:
+      tags:
+        - Authentication
+      summary: logout
+      requestBody:
+        content: {}
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/refresh-token/{refresh_token}:
+    post:
+      tags:
+        - Authentication
+      summary: refresh token
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: refresh_token
+          in: path
+          schema:
+            type: string
+          required: true
+          example: '{{refresh_token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/resend-account-verification-mail:
+    post:
+      tags:
+        - Authentication
+      summary: resend email verification mail
+      requestBody:
+        content: {}
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/reset-password-mail:
+    post:
+      tags:
+        - Authentication
+      summary: reset password mail
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: tomnjerry8963@gmail.com
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/reset-password:
+    post:
+      tags:
+        - Authentication
+      summary: reset password
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  example: P@ssw0rd
+                password_confirmation:
+                  type: string
+                  example: P@ssw0rd
+                token:
+                  type: integer
+                  example: '12231'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/association:
+    get:
+      tags:
+        - association
+      summary: association
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/association/test7:
+    get:
+      tags:
+        - association
+      summary: association single
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/banner:
+    get:
+      tags:
+        - banner
+      summary: banner
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/pre-booking:
     get:
       tags:
         - bus booking
@@ -82,7 +355,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /pre-booking-timeout:
+  /api/pre-booking-timeout:
     post:
       tags:
         - bus booking
@@ -106,7 +379,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /bus-booking:
+  /api/bus-booking:
     post:
       tags:
         - bus booking
@@ -125,8 +398,8 @@ paths:
                 contact_phone: '98713264'
                 bus_details: ''
                 seat_id:
-                  - '54'
-                sub_route_price: ''
+                  - 54
+                sub_route_price: null
       security:
         - bearerAuth: []
       responses:
@@ -134,7 +407,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /bus-booking/{booking_id}/cancel:
+  /api/bus-booking/{booking_id}/cancel:
     post:
       tags:
         - bus booking
@@ -155,7 +428,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /my-booking:
+  /api/my-booking:
     get:
       tags:
         - bus booking
@@ -180,7 +453,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /search-bus:
+  /api/search-bus:
     get:
       tags:
         - bus schedule
@@ -206,7 +479,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /get-bus-seats/{bus_schedule_id}:
+  /api/get-bus-seats/{bus_schedule_id}:
     get:
       tags:
         - bus schedule
@@ -223,251 +496,200 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /login/{provider}/callback:
-    get:
-      tags:
-        - user > social
-      summary: login callback
-      parameters:
-        - name: token
-          in: query
-          schema:
-            type: string
-          example: >-
-            ya29.a0AfB_byD-kB-zX-G1M7l-VcZvA_Y8N89ny9FwDKblk_AXR3o1BkZOUy1uEeyb0IP_tZgVX3x7UL2l4zmTq7W-HPy5pnWfaM8Qa1r3aW0CMDmww5mCFkoGaN9Cxgb8EwJyUTfk0J7wDkVRCtv_vewJ8J11y-SZWT66UbTZaCgYKAf8SARISFQHGX2MiNv-Mc6F7Le13t4uP1pDsaw0171
-        - name: provider
-          in: path
-          schema:
-            type: string
-          required: true
-          description: 'type:google,facebook '
-          example: google
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /user-detail:
-    get:
-      tags:
-        - user
-      summary: get profile
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
+  /api/contact-us:
     post:
       tags:
-        - user
-      summary: update profile
+        - contact-us
+      summary: contact us
       requestBody:
         content:
           multipart/form-data:
             schema:
               type: object
               properties:
-                first_name:
+                name:
                   type: string
-                  example: customer
-                last_name:
-                  type: integer
-                  example: '1'
-                image:
+                  example: A B
+                subject:
                   type: string
-                  format: binary
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /password-change:
-    post:
-      tags:
-        - user
-      summary: change password
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                old_password:
-                  type: integer
-                  example: '1234'
-                new_password:
-                  type: integer
-                  example: '12345'
-                new_password_confirmation:
-                  type: integer
-                  example: '12345'
-                _method:
+                  example: abc
+                message:
                   type: string
-                  example: PUT
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /register:
-    post:
-      tags:
-        - user
-      summary: register
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                first_name:
-                  type: string
-                  example: tomnjerry
-                last_name:
-                  type: string
-                  example: jerry
-                phone:
-                  type: integer
-                  example: '987654321'
+                  example: adsfghjk
                 email:
                   type: string
-                  example: tomnjerry8963@gmail.com
-                password:
-                  type: string
-                  example: P@ssw0rd
-                password_confirmation:
-                  type: string
-                  example: P@ssw0rd
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /login:
-    post:
-      tags:
-        - user
-      summary: login
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                  example: customer1@customer.com
-                password:
+                  example: xyz@gmail.com
+                phone_no:
                   type: integer
-                  example: '1234'
+                  example: '9876543210'
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /logout:
-    post:
+  /api/location:
+    get:
       tags:
-        - user
-      summary: logout
-      requestBody:
-        content: {}
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /refresh-token/{refresh_token}:
-    post:
-      tags:
-        - user
-      summary: refresh token
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
+        - location
+      summary: location list
       security:
         - noauthAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/location/main:
+    get:
+      tags:
+        - location
+      summary: location main list
+      security:
+        - noauthAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/location/sub:
+    get:
+      tags:
+        - location
+      summary: location sub list
+      security:
+        - noauthAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/our-service/all:
+    get:
+      tags:
+        - our service, gallery
+      summary: our service
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/our-service:
+    get:
+      tags:
+        - our service, gallery
+      summary: our service paginated
       parameters:
-        - name: refresh_token
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '8'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/our-service/by/{id}:
+    get:
+      tags:
+        - our service, gallery
+      summary: our service single id
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/our-service/{slug}:
+    get:
+      tags:
+        - our service, gallery
+      summary: our service single by slug
+      parameters:
+        - name: slug
           in: path
           schema:
             type: string
           required: true
-          example: '{{refresh_token}}'
+          example: quae-id-aut-commodo
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /resend-account-verification-mail:
-    post:
+  /api/our-service/{id}/gallery/all:
+    get:
       tags:
-        - user
-      summary: resend email verification mail
-      requestBody:
-        content: {}
-      security:
-        - bearerAuth: []
+        - our service, gallery
+      summary: our service gallery
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /reset-password-mail:
-    post:
+  /api/our-service/{id}/gallery:
+    get:
       tags:
-        - user
-      summary: reset password mail
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                  example: tomnjerry8963@gmail.com
+        - our service, gallery
+      summary: our service gallery paginated
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '8'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /reset-password:
-    post:
+  /api/our-service-gallery/by/{id}:
+    get:
       tags:
-        - user
-      summary: reset password
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                password:
-                  type: string
-                  example: P@ssw0rd
-                password_confirmation:
-                  type: string
-                  example: P@ssw0rd
-                token:
-                  type: integer
-                  example: '12231'
+        - our service, gallery
+      summary: our service gallery single by id
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '22'
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /payment/esewa/success:
+  /api/payment/esewa/success:
     post:
       tags:
         - payment > esewa
@@ -492,7 +714,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /payment/esewa/fail:
+  /api/payment/esewa/fail:
     post:
       tags:
         - payment > esewa
@@ -511,7 +733,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /payment/khalti/success:
+  /api/payment/khalti/success:
     post:
       tags:
         - payment > khalti
@@ -548,7 +770,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /payment/khalti/success/app:
+  /api/payment/khalti/success/app:
     post:
       tags:
         - payment > khalti
@@ -614,7 +836,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /payment/khalti/fail:
+  /api/payment/khalti/fail:
     post:
       tags:
         - payment > khalti
@@ -632,7 +854,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /payment/khalti/initiate:
+  /api/payment/khalti/initiate:
     post:
       tags:
         - payment > khalti
@@ -680,7 +902,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /payment/connectips/success:
+  /api/payment/connectips/success:
     post:
       tags:
         - payment > connectips
@@ -703,7 +925,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /payment/connectips/fail:
+  /api/payment/connectips/fail:
     post:
       tags:
         - payment > connectips
@@ -722,7 +944,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /payment/prabhupay/success:
+  /api/payment/prabhupay/success:
     post:
       tags:
         - payment > prabhupay
@@ -742,7 +964,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /payment/prabhupay/fail:
+  /api/payment/prabhupay/fail:
     post:
       tags:
         - payment > prabhupay
@@ -767,7 +989,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /payment/fonepay/success:
+  /api/payment/fonepay/success:
     post:
       tags:
         - payment > fonepay
@@ -790,7 +1012,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /payment/fonepay/fail:
+  /api/payment/fonepay/fail:
     post:
       tags:
         - payment > fonepay
@@ -809,234 +1031,11 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /site-setting:
+  /api/site-setting:
     get:
       tags:
         - site-setting
       summary: site-setting
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /banner:
-    get:
-      tags:
-        - banner
-      summary: banner
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /association:
-    get:
-      tags:
-        - association
-      summary: association
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /association/test7:
-    get:
-      tags:
-        - association
-      summary: association single
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /location:
-    get:
-      tags:
-        - location
-      summary: location list
-      security:
-        - noauthAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /location/main:
-    get:
-      tags:
-        - location
-      summary: location main list
-      security:
-        - noauthAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /location/sub:
-    get:
-      tags:
-        - location
-      summary: location sub list
-      security:
-        - noauthAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /our-service/all:
-    get:
-      tags:
-        - our service, gallery
-      summary: our service
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /our-service:
-    get:
-      tags:
-        - our service, gallery
-      summary: our service paginated
-      parameters:
-        - name: limit
-          in: query
-          schema:
-            type: integer
-          example: '8'
-        - name: page
-          in: query
-          schema:
-            type: integer
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /our-service/by/{id}:
-    get:
-      tags:
-        - our service, gallery
-      summary: our service single id
-      parameters:
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /our-service/{slug}:
-    get:
-      tags:
-        - our service, gallery
-      summary: our service single by slug
-      parameters:
-        - name: slug
-          in: path
-          schema:
-            type: string
-          required: true
-          example: quae-id-aut-commodo
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /our-service/{id}/gallery/all:
-    get:
-      tags:
-        - our service, gallery
-      summary: our service gallery
-      parameters:
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /our-service/{id}/gallery:
-    get:
-      tags:
-        - our service, gallery
-      summary: our service gallery paginated
-      parameters:
-        - name: limit
-          in: query
-          schema:
-            type: integer
-          example: '8'
-        - name: page
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /our-service-gallery/by/{id}:
-    get:
-      tags:
-        - our service, gallery
-      summary: our service gallery single by id
-      parameters:
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '22'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /contact-us:
-    post:
-      tags:
-        - contact-us
-      summary: contact us
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                  example: A B
-                subject:
-                  type: string
-                  example: abc
-                message:
-                  type: string
-                  example: adsfghjk
-                email:
-                  type: string
-                  example: xyz@gmail.com
-                phone_no:
-                  type: integer
-                  example: '9876543210'
       responses:
         '200':
           description: Successful response
