@@ -23,6 +23,10 @@
     {
       "url": "https://buspark.scodus.com",
       "description": "Base URL"
+    },
+    {
+      "url": "https://ticketing.madani.com.np",
+      "description": "Base URL"
     }
   ]
 }
