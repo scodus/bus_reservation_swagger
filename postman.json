@@ -290,18 +290,24 @@
 								{
 									"key": "email",
 									"value": "customer1@customer.com",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "password",
 									"value": "1234",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "email",
-									"value": "admin@admin.com",
-									"type": "text",
-									"disabled": true
+									"value": "augxdeveloper@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "P@ssw0rd",
+									"type": "text"
 								}
 							]
 						},
@@ -564,6 +570,87 @@
 			]
 		},
 		{
+			"name": "bus schedule",
+			"item": [
+				{
+					"name": "search bus",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/search-bus?from=1&to=12&date=2080-11-01",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"search-bus"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "1"
+								},
+								{
+									"key": "to",
+									"value": "12"
+								},
+								{
+									"key": "shift",
+									"value": "night",
+									"disabled": true
+								},
+								{
+									"key": "date",
+									"value": "2080-11-01"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get bus seat",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/get-bus-seats/:bus_schedule_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"get-bus-seats",
+								":bus_schedule_id"
+							],
+							"variable": [
+								{
+									"key": "bus_schedule_id",
+									"value": "88"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "bus booking",
 			"item": [
 				{
@@ -594,7 +681,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/pre-booking?from=1&to=2&schedule_id=127&date=2080-05-31&seat_id[]=54",
+							"raw": "{{url}}/api/pre-booking?from=1&to=12&schedule_id=88&date=2080-11-01&seat_id[]=74&seat_id[]=75",
 							"host": [
 								"{{url}}"
 							],
@@ -609,24 +696,23 @@
 								},
 								{
 									"key": "to",
-									"value": "2"
+									"value": "12"
 								},
 								{
 									"key": "schedule_id",
-									"value": "127"
+									"value": "88"
 								},
 								{
 									"key": "date",
-									"value": "2080-05-31"
+									"value": "2080-11-01"
 								},
 								{
 									"key": "seat_id[]",
-									"value": "54"
+									"value": "74"
 								},
 								{
 									"key": "seat_id[]",
-									"value": "46",
-									"disabled": true
+									"value": "75"
 								},
 								{
 									"key": "seat_id[]",
@@ -658,19 +744,18 @@
 							"formdata": [
 								{
 									"key": "schedule_id",
-									"value": "125",
+									"value": "88",
 									"type": "text"
 								},
 								{
 									"key": "seat_id[]",
-									"value": "43",
+									"value": "74",
 									"type": "text"
 								},
 								{
 									"key": "seat_id[]",
-									"value": "46",
-									"type": "text",
-									"disabled": true
+									"value": "75",
+									"type": "text"
 								},
 								{
 									"key": "seat_id[]",
@@ -710,7 +795,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"schedule_id\": 127,\n    \"route_id\": 1,\n    \"drop_location\": \"DJE\",\n    \"rate\": 15,\n    // \"qty\": 1,\n    // \"discount\": 2,\n    // \"total\": 30,\n    \"contact_name\": \"XYZ  augx\",\n    \"contact_phone\": \"98713264\",\n    // \"paid\": ,\n    // \"due\": ,\n    // \"return\": ,\n    \"bus_details\": \"\",\n    \"seat_id\": [\n        // 43\n        // ,\n        54\n    ]\n    // \"payment_status\": \"pending\",\n    // \"status\": \"OnBooking\",\n    // \"t_price\": 30,\n    ,\n    \"sub_route_price\": null\n    // {\n    //     \"from_id\": ,\n    //     \"to_id\": ,\n    //     \"sub_route_from\": ,\n    //     \"sub_route_to\": ,\n    //     \"price\":,\n    //     \"discount\": \n    // }\n}",
+							"raw": "{\n    \"schedule_id\": 88,\n    \"route_id\": 1,\n    \"drop_location\": \"DJE\",\n    \"pickup_location\": \"kalanki\",\n    // \"rate\": 15,\n    // \"qty\": 1,\n    // \"discount\": 2,\n    // \"total\": 30,\n    \"contact_name\": \"XYZ  augx\",\n    \"contact_phone\": \"98713264\",\n    // \"paid\": ,\n    // \"due\": ,\n    // \"return\": ,\n    // \"bus_details\": \"\",\n    \"seat_id\": [\n        74\n        ,\n        75\n    ]\n    // \"payment_status\": \"pending\",\n    // \"status\": \"OnBooking\",\n    // \"t_price\": 30,\n    ,\n    \"sub_route_price\": \n    // null\n    {\n        \"from_id\": null,\n        \"to_id\": null,\n        \"sub_route_from\": null,\n        \"sub_route_to\": null,\n        \"price\": null,\n        \"discount\":null \n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -800,87 +885,6 @@
 									"key": "to_date",
 									"value": "2080-03-31",
 									"description": "Departure Date To"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "bus schedule",
-			"item": [
-				{
-					"name": "search bus",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text",
-								"disabled": true
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/search-bus?from=1&to=2&date=2080-05-28",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"search-bus"
-							],
-							"query": [
-								{
-									"key": "from",
-									"value": "1"
-								},
-								{
-									"key": "to",
-									"value": "2"
-								},
-								{
-									"key": "shift",
-									"value": "night",
-									"disabled": true
-								},
-								{
-									"key": "date",
-									"value": "2080-05-28"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get bus seat",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/get-bus-seats/:bus_schedule_id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"get-bus-seats",
-								":bus_schedule_id"
-							],
-							"variable": [
-								{
-									"key": "bus_schedule_id",
-									"value": "125"
 								}
 							]
 						}
