@@ -11,7 +11,7 @@
 			"name": "Authentication",
 			"item": [
 				{
-					"name": "social",
+					"name": "social login",
 					"item": [
 						{
 							"name": "login callback",
@@ -61,188 +61,6 @@
 					]
 				},
 				{
-					"name": "get profile",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/api/user-detail",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"user-detail"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update profile",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "first_name",
-									"value": "customer",
-									"type": "text"
-								},
-								{
-									"key": "last_name",
-									"value": "1",
-									"type": "text"
-								},
-								{
-									"key": "image",
-									"type": "file",
-									"src": "/C:/Users/August/Downloads/Compressed/test-images/1.jpg"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/user-detail",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"user-detail"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "change password",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "old_password",
-									"value": "1234",
-									"type": "text"
-								},
-								{
-									"key": "new_password",
-									"value": "12345",
-									"type": "text"
-								},
-								{
-									"key": "new_password_confirmation",
-									"value": "12345",
-									"type": "text"
-								},
-								{
-									"key": "_method",
-									"value": "PUT",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/password-change",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"password-change"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "register",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "first_name",
-									"value": "tomnjerry",
-									"type": "text"
-								},
-								{
-									"key": "last_name",
-									"value": "jerry",
-									"type": "text"
-								},
-								{
-									"key": "phone",
-									"value": "987654321",
-									"type": "text"
-								},
-								{
-									"key": "email",
-									"value": "tomnjerry8963@gmail.com",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "P@ssw0rd",
-									"type": "text"
-								},
-								{
-									"key": "password_confirmation",
-									"value": "P@ssw0rd",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/register",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"register"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "login",
 					"event": [
 						{
@@ -290,24 +108,24 @@
 								{
 									"key": "email",
 									"value": "customer1@customer.com",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "password",
 									"value": "1234",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "email",
 									"value": "augxdeveloper@gmail.com",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "password",
 									"value": "P@ssw0rd",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
@@ -409,6 +227,188 @@
 					"response": []
 				},
 				{
+					"name": "user detail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/user-detail",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user-detail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user detail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "customer",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/August/Downloads/Compressed/test-images/1.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/user-detail",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user-detail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "password change",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "old_password",
+									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "new_password",
+									"value": "12345",
+									"type": "text"
+								},
+								{
+									"key": "new_password_confirmation",
+									"value": "12345",
+									"type": "text"
+								},
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/password-change",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"password-change"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "tomnjerry",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "jerry",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "987654321",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "customer110@customer.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "P@ssw0rd",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "P@ssw0rd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "resend email verification mail",
 					"request": {
 						"auth": {
@@ -431,6 +431,67 @@
 							"path": [
 								"api",
 								"resend-account-verification-mail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "resend email verification mail otp",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/resend-account-verification-mail",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"resend-account-verification-mail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "account verification",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "token",
+									"value": "12231",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/account-verification",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"account-verification"
 							]
 						}
 					},
@@ -465,6 +526,67 @@
 					"response": []
 				},
 				{
+					"name": "reset password mail otp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "tomnjerry8963@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/reset-password-mail-otp",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"reset-password-mail-otp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reset password otp verification",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "token",
+									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/reset-password-otp-verification",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"reset-password-otp-verification"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "reset password",
 					"request": {
 						"method": "POST",
@@ -486,6 +608,12 @@
 									"key": "token",
 									"value": "12231",
 									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "",
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
@@ -497,6 +625,34 @@
 							"path": [
 								"api",
 								"reset-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/delete-user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"delete-user"
 							]
 						}
 					},
@@ -513,13 +669,43 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/association",
+							"raw": "{{url}}/api/association?paginate=1&limit=5&page=1&search_keyword=&status=Enabled&highlight=",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"association"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1",
+									"description": "1||0"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "search_keyword",
+									"value": "",
+									"description": "||name"
+								},
+								{
+									"key": "status",
+									"value": "Enabled",
+									"description": "||Enabled,Disabled"
+								},
+								{
+									"key": "highlight",
+									"value": "",
+									"description": "1||0"
+								}
 							]
 						}
 					},
@@ -555,13 +741,31 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/banner",
+							"raw": "{{url}}/api/banner?paginate=1&limit=5&page=1&search_keyword=",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"banner"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								}
 							]
 						}
 					},
@@ -585,7 +789,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/search-bus?from=1&to=12&date=2080-11-01",
+							"raw": "{{url}}/api/search-bus?paginate=1&limit=5&page=1&from=1&to=9&date=2080-11-30&shift=",
 							"host": [
 								"{{url}}"
 							],
@@ -595,21 +799,33 @@
 							],
 							"query": [
 								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
 									"key": "from",
 									"value": "1"
 								},
 								{
 									"key": "to",
-									"value": "12"
-								},
-								{
-									"key": "shift",
-									"value": "night",
-									"disabled": true
+									"value": "9"
 								},
 								{
 									"key": "date",
-									"value": "2080-11-01"
+									"value": "2080-11-30"
+								},
+								{
+									"key": "shift",
+									"value": "",
+									"description": "||null,all,day,night"
 								}
 							]
 						}
@@ -641,7 +857,7 @@
 							"variable": [
 								{
 									"key": "bus_schedule_id",
-									"value": "88"
+									"value": "177"
 								}
 							]
 						}
@@ -681,7 +897,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/pre-booking?from=1&to=12&schedule_id=88&date=2080-11-01&seat_id[]=74&seat_id[]=75",
+							"raw": "{{url}}/api/pre-booking?from=1&to=9&schedule_id=177&date=2080-11-30&seat_id[]=43",
 							"host": [
 								"{{url}}"
 							],
@@ -696,27 +912,38 @@
 								},
 								{
 									"key": "to",
-									"value": "12"
+									"value": "9"
 								},
 								{
 									"key": "schedule_id",
-									"value": "88"
+									"value": "177"
 								},
 								{
 									"key": "date",
-									"value": "2080-11-01"
+									"value": "2080-11-30"
 								},
 								{
 									"key": "seat_id[]",
-									"value": "74"
+									"value": "1",
+									"disabled": true
 								},
 								{
 									"key": "seat_id[]",
-									"value": "75"
+									"value": "20",
+									"disabled": true
 								},
 								{
 									"key": "seat_id[]",
-									"value": "49",
+									"value": "43"
+								},
+								{
+									"key": "seat_id[]",
+									"value": "51",
+									"disabled": true
+								},
+								{
+									"key": "seat_id[]",
+									"value": "00111",
 									"disabled": true
 								}
 							]
@@ -795,7 +1022,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"schedule_id\": 88,\n    \"route_id\": 1,\n    \"drop_location\": \"DJE\",\n    \"pickup_location\": \"kalanki\",\n    // \"rate\": 15,\n    // \"qty\": 1,\n    // \"discount\": 2,\n    // \"total\": 30,\n    \"contact_name\": \"XYZ  augx\",\n    \"contact_phone\": \"98713264\",\n    // \"paid\": ,\n    // \"due\": ,\n    // \"return\": ,\n    // \"bus_details\": \"\",\n    \"seat_id\": [\n        74\n        ,\n        75\n    ]\n    // \"payment_status\": \"pending\",\n    // \"status\": \"OnBooking\",\n    // \"t_price\": 30,\n    ,\n    \"sub_route_price\": \n    // null\n    {\n        \"from_id\": null,\n        \"to_id\": null,\n        \"sub_route_from\": null,\n        \"sub_route_to\": null,\n        \"price\": null,\n        \"discount\":null \n    }\n}",
+							"raw": "{\n    \"schedule_id\": 177,\n    \"route_id\": 1,\n    \"drop_location\": \"DJE\",\n    \"pickup_location\": \"kalanki\",\n    // \"rate\": 15,\n    // \"qty\": 1,\n    // \"discount\": 2,\n    // \"total\": 30,\n    \"contact_name\": \"XYZ  augx\",\n    \"contact_phone\": \"98713264\",\n    // \"paid\": ,\n    // \"due\": ,\n    // \"return\": ,\n    // \"bus_details\": \"\",\n    \"seat_id\": [\n        41\n        // ,\n        // 75\n    ]\n    // \"payment_status\": \"pending\",\n    // \"status\": \"OnBooking\",\n    // \"t_price\": 30,\n    ,\n    \"sub_route_price\": \n    // null\n    {\n        \"from_id\": 1,\n        \"to_id\": 9,\n        \"sub_route_from\": null,\n        \"sub_route_to\": null,\n        \"price\": null,\n        \"discount\":null \n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -867,7 +1094,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/my-booking?from_date=2080-03-31&to_date=2080-03-31",
+							"raw": "{{url}}/api/my-booking?paginate=1&limit=5&page=1&from_date=2080-06-29&to_date=2080-12-31",
 							"host": [
 								"{{url}}"
 							],
@@ -877,13 +1104,25 @@
 							],
 							"query": [
 								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
 									"key": "from_date",
-									"value": "2080-03-31",
+									"value": "2080-06-29",
 									"description": "Departure Date From"
 								},
 								{
 									"key": "to_date",
-									"value": "2080-03-31",
+									"value": "2080-12-31",
 									"description": "Departure Date To"
 								}
 							]
@@ -970,13 +1209,36 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/location",
+							"raw": "{{url}}/api/location?paginate=1&limit=5&page=1&search_keyword=&city_type=",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"location"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "city_type",
+									"value": "",
+									"description": "||Main,Sub"
+								}
 							]
 						}
 					},
@@ -1003,7 +1265,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/location/main",
+							"raw": "{{url}}/api/location/main?paginate=1&limit=5&page=1&search_keyword=",
 							"host": [
 								"{{url}}"
 							],
@@ -1011,6 +1273,24 @@
 								"api",
 								"location",
 								"main"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								}
 							]
 						}
 					},
@@ -1037,7 +1317,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/location/sub",
+							"raw": "{{url}}/api/location/sub?paginate=1&limit=5&page=1&search_keyword=",
 							"host": [
 								"{{url}}"
 							],
@@ -1045,6 +1325,24 @@
 								"api",
 								"location",
 								"sub"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								}
 							]
 						}
 					},
@@ -1061,26 +1359,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/our-service/all",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"our-service",
-								"all"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "our service paginated",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/api/our-service?limit=8&page=1",
+							"raw": "{{url}}/api/our-service?paginate=1&limit=5&page=1&search_keyword=",
 							"host": [
 								"{{url}}"
 							],
@@ -1090,12 +1369,20 @@
 							],
 							"query": [
 								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
 									"key": "limit",
-									"value": "8"
+									"value": "5"
 								},
 								{
 									"key": "page",
 									"value": "1"
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
 								}
 							]
 						}
@@ -1159,34 +1446,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/our-service/:id/gallery/all",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"our-service",
-								":id",
-								"gallery",
-								"all"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "our service gallery paginated",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/api/our-service/:id/gallery?limit=8&page=1",
+							"raw": "{{url}}/api/our-service/:id/gallery",
 							"host": [
 								"{{url}}"
 							],
@@ -1195,16 +1455,6 @@
 								"our-service",
 								":id",
 								"gallery"
-							],
-							"query": [
-								{
-									"key": "limit",
-									"value": "8"
-								},
-								{
-									"key": "page",
-									"value": "1"
-								}
 							],
 							"variable": [
 								{

@@ -30,7 +30,7 @@ components:
       scheme: noauth
 tags:
   - name: Authentication
-  - name: Authentication > social
+  - name: Authentication > social login
   - name: association
   - name: banner
   - name: bus schedule
@@ -49,7 +49,7 @@ paths:
   /api/login/{provider}/callback:
     get:
       tags:
-        - Authentication > social
+        - Authentication > social login
       summary: login callback
       parameters:
         - name: token
@@ -64,108 +64,6 @@ paths:
             type: string
           required: true
           example: google
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/user-detail:
-    get:
-      tags:
-        - Authentication
-      summary: get profile
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    post:
-      tags:
-        - Authentication
-      summary: update profile
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                first_name:
-                  type: string
-                  example: customer
-                last_name:
-                  type: integer
-                  example: '1'
-                image:
-                  type: string
-                  format: binary
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/password-change:
-    post:
-      tags:
-        - Authentication
-      summary: change password
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                old_password:
-                  type: integer
-                  example: '1234'
-                new_password:
-                  type: integer
-                  example: '12345'
-                new_password_confirmation:
-                  type: integer
-                  example: '12345'
-                _method:
-                  type: string
-                  example: PUT
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/register:
-    post:
-      tags:
-        - Authentication
-      summary: register
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                first_name:
-                  type: string
-                  example: tomnjerry
-                last_name:
-                  type: string
-                  example: jerry
-                phone:
-                  type: integer
-                  example: '987654321'
-                email:
-                  type: string
-                  example: tomnjerry8963@gmail.com
-                password:
-                  type: string
-                  example: P@ssw0rd
-                password_confirmation:
-                  type: string
-                  example: P@ssw0rd
       responses:
         '200':
           description: Successful response
@@ -231,15 +129,138 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/user-detail:
+    get:
+      tags:
+        - Authentication
+      summary: user detail
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Authentication
+      summary: update user detail
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                  example: customer
+                last_name:
+                  type: integer
+                  example: '1'
+                image:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/password-change:
+    post:
+      tags:
+        - Authentication
+      summary: password change
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                old_password:
+                  type: integer
+                  example: '1234'
+                new_password:
+                  type: integer
+                  example: '12345'
+                new_password_confirmation:
+                  type: integer
+                  example: '12345'
+                _method:
+                  type: string
+                  example: PUT
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/register:
+    post:
+      tags:
+        - Authentication
+      summary: register
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                  example: tomnjerry
+                last_name:
+                  type: string
+                  example: jerry
+                phone:
+                  type: integer
+                  example: '987654321'
+                email:
+                  type: string
+                  example: customer110@customer.com
+                password:
+                  type: string
+                  example: P@ssw0rd
+                password_confirmation:
+                  type: string
+                  example: P@ssw0rd
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/resend-account-verification-mail:
     post:
       tags:
         - Authentication
-      summary: resend email verification mail
+      summary: resend email verification mail otp
       requestBody:
         content: {}
       security:
         - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/account-verification:
+    post:
+      tags:
+        - Authentication
+      summary: account verification
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: integer
+                  example: '12231'
+                email:
+                  type: string
       responses:
         '200':
           description: Successful response
@@ -259,6 +280,46 @@ paths:
                 email:
                   type: string
                   example: tomnjerry8963@gmail.com
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/reset-password-mail-otp:
+    post:
+      tags:
+        - Authentication
+      summary: reset password mail otp
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: tomnjerry8963@gmail.com
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/reset-password-otp-verification:
+    post:
+      tags:
+        - Authentication
+      summary: reset password otp verification
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: integer
+                  example: '1234'
+                email:
+                  type: string
       responses:
         '200':
           description: Successful response
@@ -284,6 +345,20 @@ paths:
                 token:
                   type: integer
                   example: '12231'
+                email:
+                  type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/delete-user:
+    delete:
+      tags:
+        - Authentication
+      summary: delete user
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: Successful response
@@ -294,6 +369,39 @@ paths:
       tags:
         - association
       summary: association
+      parameters:
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          description: 1||0
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+          description: '||name'
+        - name: status
+          in: query
+          schema:
+            type: string
+          description: '||Enabled,Disabled'
+          example: Enabled
+        - name: highlight
+          in: query
+          schema:
+            type: string
+          description: 1||0
       responses:
         '200':
           description: Successful response
@@ -314,6 +422,26 @@ paths:
       tags:
         - banner
       summary: banner
+      parameters:
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -325,6 +453,21 @@ paths:
         - bus schedule
       summary: search bus
       parameters:
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
         - name: from
           in: query
           schema:
@@ -334,12 +477,17 @@ paths:
           in: query
           schema:
             type: integer
-          example: '12'
+          example: '9'
         - name: date
           in: query
           schema:
             type: string
-          example: '2080-11-01'
+          example: '2080-11-30'
+        - name: shift
+          in: query
+          schema:
+            type: string
+          description: '||null,all,day,night'
       responses:
         '200':
           description: Successful response
@@ -356,7 +504,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '88'
+          example: '177'
       responses:
         '200':
           description: Successful response
@@ -379,22 +527,22 @@ paths:
           in: query
           schema:
             type: integer
-          example: '12'
+          example: '9'
         - name: schedule_id
           in: query
           schema:
             type: integer
-          example: '88'
+          example: '177'
         - name: date
           in: query
           schema:
             type: string
-          example: '2080-11-01'
+          example: '2080-11-30'
         - name: seat_id[]
           in: query
           schema:
             type: integer
-          example: '74'
+          example: '43'
       responses:
         '200':
           description: Successful response
@@ -435,18 +583,17 @@ paths:
             schema:
               type: object
               example:
-                schedule_id: 88
+                schedule_id: 177
                 route_id: 1
                 drop_location: DJE
                 pickup_location: kalanki
                 contact_name: XYZ  augx
                 contact_phone: '98713264'
                 seat_id:
-                  - 74
-                  - 75
+                  - 41
                 sub_route_price:
-                  from_id: null
-                  to_id: null
+                  from_id: 1
+                  to_id: 9
                   sub_route_from: null
                   sub_route_to: null
                   price: null
@@ -487,18 +634,33 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
         - name: from_date
           in: query
           schema:
             type: string
           description: Departure Date From
-          example: '2080-03-31'
+          example: '2080-06-29'
         - name: to_date
           in: query
           schema:
             type: string
           description: Departure Date To
-          example: '2080-03-31'
+          example: '2080-12-31'
       responses:
         '200':
           description: Successful response
@@ -542,6 +704,31 @@ paths:
       summary: location list
       security:
         - noauthAuth: []
+      parameters:
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: city_type
+          in: query
+          schema:
+            type: string
+          description: '||Main,Sub'
       responses:
         '200':
           description: Successful response
@@ -554,6 +741,26 @@ paths:
       summary: location main list
       security:
         - noauthAuth: []
+      parameters:
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -566,16 +773,26 @@ paths:
       summary: location sub list
       security:
         - noauthAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/our-service/all:
-    get:
-      tags:
-        - our service, gallery
-      summary: our service
+      parameters:
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -585,18 +802,27 @@ paths:
     get:
       tags:
         - our service, gallery
-      summary: our service paginated
+      summary: our service
       parameters:
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
         - name: limit
           in: query
           schema:
             type: integer
-          example: '8'
+          example: '5'
         - name: page
           in: query
           schema:
             type: integer
           example: '1'
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -636,39 +862,12 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/our-service/{id}/gallery/all:
+  /api/our-service/{id}/gallery:
     get:
       tags:
         - our service, gallery
       summary: our service gallery
       parameters:
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/our-service/{id}/gallery:
-    get:
-      tags:
-        - our service, gallery
-      summary: our service gallery paginated
-      parameters:
-        - name: limit
-          in: query
-          schema:
-            type: integer
-          example: '8'
-        - name: page
-          in: query
-          schema:
-            type: integer
-          example: '1'
         - name: id
           in: path
           schema:
