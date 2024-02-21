@@ -18,7 +18,11 @@ info:
 servers:
   - url: https://buspark.scodus.com
     description: Base URL
+  - url: http://buspark.scodus.com
+    description: Base URL
   - url: https://ticketing.madani.com.np
+    description: Base URL
+  - url: http://ticketing.madani.com.np
     description: Base URL
 components:
   securitySchemes:
@@ -219,7 +223,7 @@ paths:
                   example: '987654321'
                 email:
                   type: string
-                  example: customer110@customer.com
+                  example: feyeloh509@fahih.com
                 password:
                   type: string
                   example: P@ssw0rd
@@ -232,6 +236,20 @@ paths:
           content:
             application/json: {}
   /api/resend-account-verification-mail:
+    post:
+      tags:
+        - Authentication
+      summary: resend email verification mail
+      requestBody:
+        content: {}
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/resend-account-verification-otp-mail:
     post:
       tags:
         - Authentication

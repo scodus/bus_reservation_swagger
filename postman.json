@@ -380,7 +380,7 @@
 								},
 								{
 									"key": "email",
-									"value": "customer110@customer.com",
+									"value": "feyeloh509@fahih.com",
 									"type": "text"
 								},
 								{
@@ -452,13 +452,13 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/resend-account-verification-mail",
+							"raw": "{{url}}/api/resend-account-verification-otp-mail",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"resend-account-verification-mail"
+								"resend-account-verification-otp-mail"
 							]
 						}
 					},
