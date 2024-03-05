@@ -1,15 +1,65 @@
 {
 	"info": {
-		"_postman_id": "dc0131c9-cd9c-4e1e-aaaa-c0978262ab9a",
-		"name": "BUSPARK Admin/Samiti APIs (v2)",
+		"_postman_id": "5f141dcd-4073-4737-832a-cacb187b2021",
+		"name": "BUSPARK Client/Customer APIs",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "15009917",
-		"_collection_link": "https://bikash-projects.postman.co/workspace/Bikash's-Workspace~07b4d747-08b6-4eac-9f94-41a4bad205fa/collection/15009917-dc0131c9-cd9c-4e1e-aaaa-c0978262ab9a?action=share&source=collection_link&creator=15009917"
+		"_collection_link": "https://bikash-projects.postman.co/workspace/Bikash's-Workspace~07b4d747-08b6-4eac-9f94-41a4bad205fa/collection/15009917-5f141dcd-4073-4737-832a-cacb187b2021?action=share&source=collection_link&creator=15009917"
 	},
 	"item": [
 		{
 			"name": "Authentication",
 			"item": [
+				{
+					"name": "social login",
+					"item": [
+						{
+							"name": "login callback",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const response = pm.response.json()",
+											"pm.environment.set('access_token', response.data.token)",
+											"pm.environment.set('refresh_token', response.data.refresh_token)"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/login/:provider/callback?token=ya29.a0AfB_byB43ueGGGkUA2qKbWMagbPzUgBbGk1hEQH0oH5Nq3XLVlOg02bf-1u_jYpca9OVJYqlJq5LfvYl0CaEe-dAK6vMmjEKTzJj5aE2mfwVA9MKt4X0aDDOBXHu34y7FuXsnp_dup2_FURod6Yp8Pma_U-AzH0gW94SaCgYKATMSARISFQHGX2MiiZoFL1yKXHx4Pin8iajn_Q0171",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"login",
+										":provider",
+										"callback"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "ya29.a0AfB_byB43ueGGGkUA2qKbWMagbPzUgBbGk1hEQH0oH5Nq3XLVlOg02bf-1u_jYpca9OVJYqlJq5LfvYl0CaEe-dAK6vMmjEKTzJj5aE2mfwVA9MKt4X0aDDOBXHu34y7FuXsnp_dup2_FURod6Yp8Pma_U-AzH0gW94SaCgYKATMSARISFQHGX2MiiZoFL1yKXHx4Pin8iajn_Q0171"
+										}
+									],
+									"variable": [
+										{
+											"key": "provider",
+											"value": "google"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
 				{
 					"name": "login",
 					"event": [
@@ -33,7 +83,13 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "deepaksamiti@gmail.com",
+									"value": "augxdeveloper@gmail.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "P@ssw0rd",
 									"type": "text",
 									"disabled": true
 								},
@@ -46,65 +102,40 @@
 								{
 									"key": "password",
 									"value": "P@ssw0rd",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "customer1@customer.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "bikashxaus@gmail.com",
+									"value": "augxdeveloper@gmail.com",
 									"type": "text",
 									"disabled": true
-								},
-								{
-									"key": "email",
-									"value": "admin@admin.com",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "email",
-									"value": "aayushpandey616@gmail.com",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "email",
-									"value": "samiti1@samiti.com",
-									"type": "text"
 								},
 								{
 									"key": "password",
 									"value": "P@ssw0rd",
 									"type": "text",
 									"disabled": true
-								},
-								{
-									"key": "email",
-									"value": "samiti1@gmail.com",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "email",
-									"value": "counter1@counter.com",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "password",
-									"value": "1234",
-									"type": "text",
-									"disabled": true
 								}
 							]
 						},
 						"url": {
-							"raw": "{{url}}/api/v2/login",
+							"raw": "{{url}}/api/login",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"v2",
 								"login"
 							]
 						}
@@ -138,13 +169,12 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/v2/logout",
+							"raw": "{{url}}/api/logout",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"v2",
 								"logout"
 							]
 						}
@@ -159,7 +189,7 @@
 							"script": {
 								"exec": [
 									"const response = pm.response.json()\r",
-									"pm.environment.set('access_token', response.data.access_token)\r",
+									"pm.environment.set('access_token', response.data.token)\r",
 									"pm.environment.set('refresh_token', response.data.refresh_token)"
 								],
 								"type": "text/javascript"
@@ -177,13 +207,12 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/v2/refresh-token/:refresh_token",
+							"raw": "{{url}}/api/refresh-token/:refresh_token",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"v2",
 								"refresh-token",
 								":refresh_token"
 							],
@@ -213,13 +242,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/v2/user-detail",
+							"raw": "{{url}}/api/user-detail",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"v2",
 								"user-detail"
 							]
 						}
@@ -227,7 +255,7 @@
 					"response": []
 				},
 				{
-					"name": "user detail update",
+					"name": "update user detail",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -246,7 +274,7 @@
 							"formdata": [
 								{
 									"key": "first_name",
-									"value": "samiti",
+									"value": "customer",
 									"type": "text"
 								},
 								{
@@ -257,23 +285,17 @@
 								{
 									"key": "image",
 									"type": "file",
-									"src": "/C:/Users/August/Downloads/QRDown.png"
-								},
-								{
-									"key": "_method",
-									"value": "PUT",
-									"type": "text"
+									"src": "/C:/Users/August/Downloads/Compressed/test-images/1.jpg"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{url}}/api/v2/user-detail",
+							"raw": "{{url}}/api/user-detail",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"v2",
 								"user-detail"
 							]
 						}
@@ -321,14 +343,155 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/api/v2/password-change",
+							"raw": "{{url}}/api/password-change",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"v2",
 								"password-change"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "tomnjerry",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "jerry",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "987654321",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "feyeloh509@fahih.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "P@ssw0rd",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "P@ssw0rd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "resend email verification mail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/resend-account-verification-mail",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"resend-account-verification-mail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "resend email verification mail otp",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/resend-account-verification-otp-mail",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"resend-account-verification-otp-mail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "account verification",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "token",
+									"value": "12231",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/account-verification",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"account-verification"
 							]
 						}
 					},
@@ -344,19 +507,18 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "bikashxaus@gmail.com",
+									"value": "tomnjerry8963@gmail.com",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{url}}/api/v2/reset-password-mail",
+							"raw": "{{url}}/api/reset-password-mail",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"v2",
 								"reset-password-mail"
 							]
 						}
@@ -373,19 +535,18 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "bikashxaus@gmail.com",
+									"value": "tomnjerry8963@gmail.com",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{url}}/api/v2/reset-password-mail-otp",
+							"raw": "{{url}}/api/reset-password-mail-otp",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"v2",
 								"reset-password-mail-otp"
 							]
 						}
@@ -413,13 +574,12 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/api/v2/reset-password-otp-verification",
+							"raw": "{{url}}/api/reset-password-otp-verification",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"v2",
 								"reset-password-otp-verification"
 							]
 						}
@@ -446,7 +606,7 @@
 								},
 								{
 									"key": "token",
-									"value": "kGbD",
+									"value": "12231",
 									"type": "text"
 								},
 								{
@@ -458,13 +618,12 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/api/v2/reset-password",
+							"raw": "{{url}}/api/reset-password",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"v2",
 								"reset-password"
 							]
 						}
@@ -487,13 +646,12 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/v2/delete-user",
+							"raw": "{{url}}/api/delete-user",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"v2",
 								"delete-user"
 							]
 						}
@@ -506,35 +664,17 @@
 			"name": "association",
 			"item": [
 				{
-					"name": "list",
+					"name": "association",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
-						"header": [
-							{
-								"key": "association-id",
-								"value": "59",
-								"description": "nullable",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"url": {
-							"raw": "{{url}}/api/v2/association?paginate=1&limit=5&page=1&search_keyword=&status=Enabled&highlight=",
+							"raw": "{{url}}/api/association?paginate=1&limit=5&page=1&search_keyword=&status=Enabled&highlight=",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"v2",
 								"association"
 							],
 							"query": [
@@ -565,26 +705,6 @@
 									"key": "highlight",
 									"value": "",
 									"description": "1||0"
-								},
-								{
-									"key": "perPage",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "currentPage",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "columns",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "pageName",
-									"value": "",
-									"disabled": true
 								}
 							]
 						}
@@ -592,43 +712,19 @@
 					"response": []
 				},
 				{
-					"name": "single",
+					"name": "association single",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
-						"header": [
-							{
-								"key": "association-id",
-								"value": "",
-								"description": "nullable",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"url": {
-							"raw": "{{url}}/api/v2/association/:slug",
+							"raw": "{{url}}/api/association/test7",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"v2",
 								"association",
-								":slug"
-							],
-							"variable": [
-								{
-									"key": "slug",
-									"value": "sundar-bihani-yatayat-pvt-ltd"
-								}
+								"test7"
 							]
 						}
 					},
@@ -637,45 +733,26 @@
 			]
 		},
 		{
-			"name": "bus",
+			"name": "banner",
 			"item": [
 				{
-					"name": "list",
+					"name": "banner",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
-						"header": [
-							{
-								"key": "association-id",
-								"value": "18",
-								"description": "nullable",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"url": {
-							"raw": "{{url}}/api/v2/bus?paginate=1&limit=5&page=1&status=Enabled&search_keyword&route_id=&company_id=",
+							"raw": "{{url}}/api/banner?paginate=1&limit=5&page=1&search_keyword=",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"v2",
-								"bus"
+								"banner"
 							],
 							"query": [
 								{
 									"key": "paginate",
-									"value": "1",
-									"description": "1||0"
+									"value": "1"
 								},
 								{
 									"key": "limit",
@@ -684,97 +761,10 @@
 								{
 									"key": "page",
 									"value": "1"
-								},
-								{
-									"key": "status",
-									"value": "Enabled",
-									"description": "||Enabled,Disabled"
 								},
 								{
 									"key": "search_keyword",
-									"value": null,
-									"description": "||code,from_location_id,to_location_id"
-								},
-								{
-									"key": "route_id",
 									"value": ""
-								},
-								{
-									"key": "company_id",
-									"value": ""
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "single",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/api/v2/bus/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"bus",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "38"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "bus seats",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/api/v2/bus/:id/seats",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"bus",
-								":id",
-								"seats"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "38"
 								}
 							]
 						}
@@ -784,164 +774,28 @@
 			]
 		},
 		{
-			"name": "bus-schedule",
+			"name": "bus schedule",
 			"item": [
 				{
-					"name": "for booking",
-					"item": [
-						{
-							"name": "search list",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{access_token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text",
-										"disabled": true
-									},
-									{
-										"key": "association-id",
-										"value": "18",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "{{url}}/api/v2/bus-schedule/search/for-booking?paginate=1&limit=5&page=1&from=1&to=12&date=2080-11-30&shift=",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"v2",
-										"bus-schedule",
-										"search",
-										"for-booking"
-									],
-									"query": [
-										{
-											"key": "paginate",
-											"value": "1"
-										},
-										{
-											"key": "limit",
-											"value": "5"
-										},
-										{
-											"key": "page",
-											"value": "1"
-										},
-										{
-											"key": "from",
-											"value": "1",
-											"description": "||from_location_id"
-										},
-										{
-											"key": "to",
-											"value": "12",
-											"description": "||to_location_id"
-										},
-										{
-											"key": "date",
-											"value": "2080-11-30",
-											"description": "||departure_date"
-										},
-										{
-											"key": "shift",
-											"value": "",
-											"description": "||null,all,day,night"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "single (get bus seat)",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{access_token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
-								"url": {
-									"raw": "{{url}}/api/v2/bus-schedule/:bus_schedule_id/for-booking",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"v2",
-										"bus-schedule",
-										":bus_schedule_id",
-										"for-booking"
-									],
-									"variable": [
-										{
-											"key": "bus_schedule_id",
-											"value": "127"
-										}
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "list",
+					"name": "search bus",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [
 							{
-								"key": "association-id",
-								"value": "59",
-								"type": "text"
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/v2/bus-schedule?paginate=1&limit=5&page=1&status=&booking_status=",
+							"raw": "{{url}}/api/search-bus?paginate=1&limit=5&page=1&from=1&to=9&date=2080-11-30&shift=",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"v2",
-								"bus-schedule"
+								"search-bus"
 							],
 							"query": [
 								{
@@ -957,62 +811,21 @@
 									"value": "1"
 								},
 								{
-									"key": "status",
-									"value": "",
-									"description": "||Active,Inactive"
-								},
-								{
-									"key": "booking_status",
-									"value": "",
-									"description": "||Open,Close"
-								},
-								{
 									"key": "from",
-									"value": "1",
-									"description": "||from_location_id",
-									"disabled": true
+									"value": "1"
 								},
 								{
 									"key": "to",
-									"value": "9",
-									"description": "||to_location_id",
-									"disabled": true
+									"value": "9"
+								},
+								{
+									"key": "date",
+									"value": "2080-11-30"
 								},
 								{
 									"key": "shift",
 									"value": "",
-									"description": "||null,all,day,night",
-									"disabled": true
-								},
-								{
-									"key": "date",
-									"value": "2080-11-30",
-									"description": "||departure_date",
-									"disabled": true
-								},
-								{
-									"key": "departure_date",
-									"value": "2080-11-30",
-									"description": "||departure_date",
-									"disabled": true
-								},
-								{
-									"key": "route_id",
-									"value": "",
-									"description": "||route_id",
-									"disabled": true
-								},
-								{
-									"key": "from_date",
-									"value": "2080-11-01",
-									"description": "||departure_date",
-									"disabled": true
-								},
-								{
-									"key": "to_date",
-									"value": "2080-11-30",
-									"description": "||departure_date",
-									"disabled": true
+									"description": "||null,all,day,night"
 								}
 							]
 						}
@@ -1020,937 +833,31 @@
 					"response": []
 				},
 				{
-					"name": "list by departure date and route",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "association-id",
-								"value": "18",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/v2/bus-schedule-search?paginate=1&limit=5&page=1&status=&booking_status=&departure_date=2080-08-30&route_id=1",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"bus-schedule-search"
-							],
-							"query": [
-								{
-									"key": "paginate",
-									"value": "1"
-								},
-								{
-									"key": "limit",
-									"value": "5"
-								},
-								{
-									"key": "page",
-									"value": "1"
-								},
-								{
-									"key": "status",
-									"value": "",
-									"description": "||Active,Inactive"
-								},
-								{
-									"key": "booking_status",
-									"value": "",
-									"description": "||Open,Close"
-								},
-								{
-									"key": "departure_date",
-									"value": "2080-08-30"
-								},
-								{
-									"key": "route_id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "list search by dates",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "association-id",
-								"value": "59",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/v2/bus-schedule-search-by-dates?paginate=1&limit=5&page=1&from_date=2080-04-29&to_date=2080-12-29",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"bus-schedule-search-by-dates"
-							],
-							"query": [
-								{
-									"key": "perPage",
-									"value": "1",
-									"disabled": true
-								},
-								{
-									"key": "currentPage",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "paginate",
-									"value": "1"
-								},
-								{
-									"key": "limit",
-									"value": "5"
-								},
-								{
-									"key": "page",
-									"value": "1"
-								},
-								{
-									"key": "from_date",
-									"value": "2080-04-29"
-								},
-								{
-									"key": "to_date",
-									"value": "2080-12-29"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "single",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/api/v2/bus-schedule/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"bus-schedule",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "153"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get route buses",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "association-id",
-								"value": "18",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/v2/bus-schedule/route/:route_id/buses",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"bus-schedule",
-								"route",
-								":route_id",
-								"buses"
-							],
-							"variable": [
-								{
-									"key": "route_id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get bus route",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "association-id",
-								"value": "",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/v2/bus-schedule/bus/:bus_id/route",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"bus-schedule",
-								"bus",
-								":bus_id",
-								"route"
-							],
-							"variable": [
-								{
-									"key": "bus_id",
-									"value": "22"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "store",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "route_id",
-									"value": "1",
-									"type": "text"
-								},
-								{
-									"key": "bus_id",
-									"value": "38",
-									"type": "text"
-								},
-								{
-									"key": "departure_date",
-									"value": "2080-11-01",
-									"type": "text"
-								},
-								{
-									"key": "departure_date_ad",
-									"value": "2023-11-07",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "departure_time",
-									"value": "20:00",
-									"type": "text"
-								},
-								{
-									"key": "status",
-									"value": "Active",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/v2/bus-schedule",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"bus-schedule"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"_method\": \"PUT\",\r\n    //route_id:1\r\n    //bus_id:38\r\n    //departure_date:2080-04-03\r\n    //deparute_date_ad:2023-07-19\r\n    \"departure_time\": \"21:00\",\r\n    \"status\": \"Active\",\r\n    \"is_discount_available\": 1,\r\n    \"main_route_discount\": 3,\r\n    \"sub_route_discount\": [\r\n        {\r\n            \"from_id\": 1, //can't change\r\n            \"to_id\": 9, //can't change\r\n            \"price\": 12, //can't change\r\n            \"discount\":2,\r\n            \"status\": \"Active\" //can't change\r\n        },\r\n        {\r\n            \"from_id\": 8, //can't change\r\n            \"to_id\": 9, //can't change\r\n            \"price\": 10, //can't change\r\n            \"discount\": null,\r\n            \"status\": \"Active\" //can't change\r\n        }\r\n    ]\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/v2/bus-schedule/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"bus-schedule",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "127"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "status change",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "_method",
-									"value": "PUT",
-									"type": "text"
-								},
-								{
-									"key": "status",
-									"value": "Active",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/v2/bus-schedule/:id/status-change",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"bus-schedule",
-								":id",
-								"status-change"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "120"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "booking status change",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "_method",
-									"value": "PUT",
-									"type": "text"
-								},
-								{
-									"key": "booking_status",
-									"value": "Open",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/v2/bus-schedule/:id/booking-status-change",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"bus-schedule",
-								":id",
-								"booking-status-change"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "120"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "departure time change",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "_method",
-									"value": "PUT",
-									"type": "text"
-								},
-								{
-									"key": "departure_time",
-									"value": "21:00",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/v2/bus-schedule/:id/departure-time-change",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"bus-schedule",
-								":id",
-								"departure-time-change"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "120"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "scheduled bus seats",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/api/v2/bus-schedule/:id/bus-seats",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"bus-schedule",
-								":id",
-								"bus-seats"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "177",
-									"description": "170"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "scheduled bus seats enable disable",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"seat_id\": [\r\n        53,\r\n        41,\r\n        54,\r\n        50,\r\n        46\r\n    ]\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/v2/bus-schedule/:id/bus-seats/enable-disable",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"bus-schedule",
-								":id",
-								"bus-seats",
-								"enable-disable"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "120"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "scheduled bus seats enabled Availability",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"seat_id\": [\r\n        53,\r\n        41,\r\n        54\r\n    ],\r\n    \"available_to\": \"Online\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/v2/bus-schedule/:id/bus-seats/available-to",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"bus-schedule",
-								":id",
-								"bus-seats",
-								"available-to"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "120"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "scheduled bus seats Get Counters",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "association-id",
-								"value": "59",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/v2/bus-schedule/:id/counters?paginate=1&limit=5&page=1",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"bus-schedule",
-								":id",
-								"counters"
-							],
-							"query": [
-								{
-									"key": "paginate",
-									"value": "1"
-								},
-								{
-									"key": "limit",
-									"value": "5"
-								},
-								{
-									"key": "page",
-									"value": "1"
-								}
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "77",
-									"description": "89"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "scheduled bus seats Counter Assign",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"seat_id\": [\r\n        49\r\n         ,\r\n        53\r\n        // ,\r\n        // 54,\r\n        // 41\r\n    ],\r\n    \"counter_availability\": 21\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/v2/bus-schedule/:id/bus-seats/counter-assign",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"bus-schedule",
-								":id",
-								"bus-seats",
-								"counter-assign"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "170"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "bus schedule->route bus facility type price",
+					"name": "get bus seat",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [],
 						"body": {
 							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "_method",
-									"value": "PUT",
-									"type": "text"
-								},
-								{
-									"key": "is_discount_available",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "main_route_discount",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "sub_route_discount",
-									"value": "",
-									"type": "text"
-								}
-							]
+							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/v2/bus-schedule/:id/route-bus-facility-type-price",
+							"raw": "{{url}}/api/get-bus-seats/:bus_schedule_id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"v2",
-								"bus-schedule",
-								":id",
-								"route-bus-facility-type-price"
+								"get-bus-seats",
+								":bus_schedule_id"
 							],
 							"variable": [
 								{
-									"key": "id",
+									"key": "bus_schedule_id",
 									"value": "177"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "store sub route discount",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"_method\": \"PUT\",\r\n    \"is_discount_available\": 1,\r\n    \"main_route_discount\": 3,\r\n    \"sub_route_discount\": [\r\n        {\r\n            \"from_id\": 1, //can't change\r\n            \"to_id\": 9, //can't change\r\n            \"price\": 12, //can't change\r\n            \"discount\": 2,\r\n            \"status\": \"Active\" //can't change\r\n        },\r\n        {\r\n            \"from_id\": 8, //can't change\r\n            \"to_id\": 9, //can't change\r\n            \"price\": 10, //can't change\r\n            \"discount\": 4,\r\n            \"status\": \"Active\" //can't change\r\n        }\r\n    ]\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/v2/bus-schedule/sub-route-discount/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"bus-schedule",
-								"sub-route-discount",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "127"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "bus schedule - departure list",
-			"item": [
-				{
-					"name": "list",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "association-id",
-								"value": "8",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/v2/departure-list-search?paginate=1&limit=5&page=1&departure_date=2080-11-30&association_id=&company_id=",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"departure-list-search"
-							],
-							"query": [
-								{
-									"key": "paginate",
-									"value": "1"
-								},
-								{
-									"key": "limit",
-									"value": "5"
-								},
-								{
-									"key": "page",
-									"value": "1"
-								},
-								{
-									"key": "departure_date",
-									"value": "2080-11-30"
-								},
-								{
-									"key": "association_id",
-									"value": ""
-								},
-								{
-									"key": "company_id",
-									"value": ""
 								}
 							]
 						}
@@ -1990,14 +897,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/v2/bus-booking/pre-booking?from=1&to=2&schedule_id=107&date=2080-11-30&seat_id[]=41&seat_id[]=42",
+							"raw": "{{url}}/api/pre-booking?from=1&to=9&schedule_id=177&date=2080-11-30&seat_id[]=43",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"v2",
-								"bus-booking",
 								"pre-booking"
 							],
 							"query": [
@@ -2007,11 +912,11 @@
 								},
 								{
 									"key": "to",
-									"value": "2"
+									"value": "9"
 								},
 								{
 									"key": "schedule_id",
-									"value": "107"
+									"value": "177"
 								},
 								{
 									"key": "date",
@@ -2019,12 +924,27 @@
 								},
 								{
 									"key": "seat_id[]",
-									"value": "41",
-									"description": "seat_id is array where seat_id = [53,54]"
+									"value": "1",
+									"disabled": true
 								},
 								{
 									"key": "seat_id[]",
-									"value": "42"
+									"value": "20",
+									"disabled": true
+								},
+								{
+									"key": "seat_id[]",
+									"value": "43"
+								},
+								{
+									"key": "seat_id[]",
+									"value": "51",
+									"disabled": true
+								},
+								{
+									"key": "seat_id[]",
+									"value": "00111",
+									"disabled": true
 								}
 							]
 						}
@@ -2047,23 +967,38 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"schedule_id\": 170,\r\n    \"seat_id\": [\r\n        41,\r\n        42\r\n    ]\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "schedule_id",
+									"value": "88",
+									"type": "text"
+								},
+								{
+									"key": "seat_id[]",
+									"value": "74",
+									"type": "text"
+								},
+								{
+									"key": "seat_id[]",
+									"value": "75",
+									"type": "text"
+								},
+								{
+									"key": "seat_id[]",
+									"value": "49",
+									"type": "text",
+									"disabled": true
 								}
-							}
+							]
 						},
 						"url": {
-							"raw": "{{url}}/api/v2/bus-booking/pre-booking-timeout",
+							"raw": "{{url}}/api/pre-booking-timeout",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"v2",
-								"bus-booking",
 								"pre-booking-timeout"
 							]
 						}
@@ -2087,7 +1022,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"schedule_id\": 170,\n    \"route_id\": 1,\n    \"pickup_location\": \"X-place\",\n    \"drop_location\": \"X-place\",\n    \"discount\": 1,\n    \"paid\": 15,\n    // \"rate\": 12,\n    // \"qty\": 2,\n    // \"t_price\": 30,\n    // \"total\": 30,\n    // \"due\": \"\",\n    // \"return\": \"\",\n    \"contact_phone\": \"98xxxxxxxx\",\n    \"contact_name\": \"X-man Mu\",\n    // \"bus_details\": \"\",\n    \"seat_id\": \n    [\n        43\n        ,\n        54\n    ]\n    // \"payment_status\": \"pending\",\n    // \"status\": \"OnBooking\",\n    ,\n    \"sub_route_price\":\n    //null\n    // [\n        {\n            \"from_id\": 1,\n            \"to_id\": 9,\n            \"sub_route_from\": \"KTM\",\n            \"sub_route_to\": \"Kohalpur\",\n            \"price\": 12,\n            \"discount\": 2\n        }\n    // ]\n}",
+							"raw": "{\n    \"schedule_id\": 177,\n    \"route_id\": 1,\n    \"drop_location\": \"DJE\",\n    \"pickup_location\": \"kalanki\",\n    // \"rate\": 15,\n    // \"qty\": 1,\n    // \"discount\": 2,\n    // \"total\": 30,\n    \"contact_name\": \"XYZ  augx\",\n    \"contact_phone\": \"98713264\",\n    // \"paid\": ,\n    // \"due\": ,\n    // \"return\": ,\n    // \"bus_details\": \"\",\n    \"seat_id\": [\n        41\n        // ,\n        // 75\n    ]\n    // \"payment_status\": \"pending\",\n    // \"status\": \"OnBooking\",\n    // \"t_price\": 30,\n    ,\n    \"sub_route_price\": \n    // null\n    {\n        \"from_id\": 1,\n        \"to_id\": 9,\n        \"sub_route_from\": null,\n        \"sub_route_to\": null,\n        \"price\": null,\n        \"discount\":null \n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2095,107 +1030,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/v2/bus-booking/store",
+							"raw": "{{url}}/api/bus-booking",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"v2",
-								"bus-booking",
-								"store"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update booking details",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"_method\": \"PUT\",\n    \"drop_location\": \"1X-place00\",\n    \"pickup_location\": \"2A-place00\",\n    \"contact_phone\": \"98xxxxx000\",\n    \"contact_name\": \"X-man 00000\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/v2/bus-booking/:id/update-detail",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"bus-booking",
-								":id",
-								"update-detail"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "725"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update booking seats",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"_method\": \"PUT\",\n    \"new_booked_seat_id\": [\n        55\n    ],\n    \"old_booked_seat_id\": [\n        \n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/v2/bus-booking/:id/update-booked-seat",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"bus-booking",
-								":id",
-								"update-booked-seat"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "720"
-								}
+								"bus-booking"
 							]
 						}
 					},
@@ -2217,21 +1058,20 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/v2/bus-booking/:id/cancel",
+							"raw": "{{url}}/api/bus-booking/:booking_id/cancel",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"v2",
 								"bus-booking",
-								":id",
+								":booking_id",
 								"cancel"
 							],
 							"variable": [
 								{
-									"key": "id",
-									"value": "670"
+									"key": "booking_id",
+									"value": "555"
 								}
 							]
 						}
@@ -2239,56 +1079,7 @@
 					"response": []
 				},
 				{
-					"name": "seat wise cancel",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"new_booked_seat_id\": [\r\n        48\r\n    ] //seats_to_remain\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/api/v2/bus-booking/:id/seat-cancel",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"bus-booking",
-								":id",
-								"seat-cancel"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "723"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Users/My booking - users",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"name": "my booking history",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -2302,70 +1093,14 @@
 						},
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
 						"url": {
-							"raw": "{{url}}/api/v2/bus-booking/users-my-booking/users?role_id=",
+							"raw": "{{url}}/api/my-booking?paginate=1&limit=5&page=1&from_date=2080-06-29&to_date=2080-12-31",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"v2",
-								"bus-booking",
-								"users-my-booking",
-								"users"
-							],
-							"query": [
-								{
-									"key": "role_id",
-									"value": ""
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Users/My booking - history",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "association-id",
-								"value": "8",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/v2/bus-booking/users-my-booking?paginate=1&limit=5&page=1&from_date=2080-01-31&to_date=2080-12-01&user_id=&role_id=&route_id=",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"bus-booking",
-								"users-my-booking"
+								"my-booking"
 							],
 							"query": [
 								{
@@ -2382,454 +1117,13 @@
 								},
 								{
 									"key": "from_date",
-									"value": "2080-01-31",
+									"value": "2080-06-29",
 									"description": "Departure Date From"
 								},
 								{
 									"key": "to_date",
-									"value": "2080-12-01",
+									"value": "2080-12-31",
 									"description": "Departure Date To"
-								},
-								{
-									"key": "user_id",
-									"value": ""
-								},
-								{
-									"key": "role_id",
-									"value": ""
-								},
-								{
-									"key": "route_id",
-									"value": ""
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "list",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "association-id",
-								"value": "",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/v2/bus-booking?paginate=1&limit=5&page=1&from_date=&to_date&bus_schedule_id=&status",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"bus-booking"
-							],
-							"query": [
-								{
-									"key": "paginate",
-									"value": "1"
-								},
-								{
-									"key": "limit",
-									"value": "5"
-								},
-								{
-									"key": "page",
-									"value": "1"
-								},
-								{
-									"key": "from_date",
-									"value": "",
-									"description": "||departure_date from"
-								},
-								{
-									"key": "to_date",
-									"value": null,
-									"description": "||departure_date to"
-								},
-								{
-									"key": "bus_schedule_id",
-									"value": "",
-									"description": "||Bus Schedule ID"
-								},
-								{
-									"key": "status",
-									"value": null,
-									"description": "||Confirmed|Cancelled"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "list confirmed",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "association-id",
-								"value": "",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/v2/bus-booking-search?paginate=1&limit=5&page=1&from_date=&to_date&bus_schedule_id=89",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"bus-booking-search"
-							],
-							"query": [
-								{
-									"key": "paginate",
-									"value": "1"
-								},
-								{
-									"key": "limit",
-									"value": "5"
-								},
-								{
-									"key": "page",
-									"value": "1"
-								},
-								{
-									"key": "from_date",
-									"value": "",
-									"description": "||departure_date from"
-								},
-								{
-									"key": "to_date",
-									"value": null,
-									"description": "||departure_date to"
-								},
-								{
-									"key": "bus_schedule_id",
-									"value": "89",
-									"description": "||Bus Schedule ID"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "list cancelled",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "association-id",
-								"value": "8",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/v2/bus-booking-cancelled-search?paginate=1&limit=5&page=1&from_date=&to_date=&bus_schedule_id=89",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"bus-booking-cancelled-search"
-							],
-							"query": [
-								{
-									"key": "paginate",
-									"value": "1"
-								},
-								{
-									"key": "limit",
-									"value": "5"
-								},
-								{
-									"key": "page",
-									"value": "1"
-								},
-								{
-									"key": "from_date",
-									"value": ""
-								},
-								{
-									"key": "to_date",
-									"value": ""
-								},
-								{
-									"key": "bus_schedule_id",
-									"value": "89"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "single",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/v2/bus-booking/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"bus-booking",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "687"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "chalani",
-			"item": [
-				{
-					"name": "list",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "association-id",
-								"value": "8",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/v2/chalani-list-search?paginate=1&limit=5&page=1&departure_date=2080-11-30&bus_id=26",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"chalani-list-search"
-							],
-							"query": [
-								{
-									"key": "paginate",
-									"value": "1"
-								},
-								{
-									"key": "limit",
-									"value": "5"
-								},
-								{
-									"key": "page",
-									"value": "1"
-								},
-								{
-									"key": "departure_date",
-									"value": "2080-11-30"
-								},
-								{
-									"key": "bus_id",
-									"value": "26"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "company",
-			"item": [
-				{
-					"name": "list",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "association-id",
-								"value": "167",
-								"description": "nullable",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/v2/company?paginate=1&limit=5&page=1&search_keyword=&status=Enabled",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"company"
-							],
-							"query": [
-								{
-									"key": "paginate",
-									"value": "1",
-									"description": "1||0"
-								},
-								{
-									"key": "limit",
-									"value": "5"
-								},
-								{
-									"key": "page",
-									"value": "1"
-								},
-								{
-									"key": "search_keyword",
-									"value": "",
-									"description": "||company_name"
-								},
-								{
-									"key": "status",
-									"value": "Enabled",
-									"description": "||Enabled,Disabled"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "single",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "association-id",
-								"value": "",
-								"description": "nullable",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/v2/company/:slug",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"company",
-								":slug"
-							],
-							"variable": [
-								{
-									"key": "slug",
-									"value": "hamilton-and-rowland-co"
 								}
 							]
 						}
@@ -2877,13 +1171,12 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/api/v2/contact-us",
+							"raw": "{{url}}/api/contact-us",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"v2",
 								"contact-us"
 							]
 						}
@@ -2896,35 +1189,38 @@
 			"name": "location",
 			"item": [
 				{
-					"name": "list",
+					"name": "location list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "{{url}}/api/v2/location?paginate=1&limit=5&page=1&status=Enabled&search_keyword=",
+							"raw": "{{url}}/api/location?paginate=1&limit=5&page=1&search_keyword=&city_type=",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"v2",
 								"location"
 							],
 							"query": [
 								{
 									"key": "paginate",
-									"value": "1",
-									"description": "1||0"
+									"value": "1"
 								},
 								{
 									"key": "limit",
@@ -2935,14 +1231,13 @@
 									"value": "1"
 								},
 								{
-									"key": "status",
-									"value": "Enabled",
-									"description": "||Enabled,Disabled"
+									"key": "search_keyword",
+									"value": ""
 								},
 								{
-									"key": "search_keyword",
+									"key": "city_type",
 									"value": "",
-									"description": "||city"
+									"description": "||Main,Sub"
 								}
 							]
 						}
@@ -2950,284 +1245,34 @@
 					"response": []
 				},
 				{
-					"name": "single",
+					"name": "location main list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "{{url}}/api/v2/location/:id",
+							"raw": "{{url}}/api/location/main?paginate=1&limit=5&page=1&search_keyword=",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"v2",
 								"location",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "12"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "single by slug",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/api/v2/location/by-slug/:slug",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"location",
-								"by-slug",
-								":slug"
-							],
-							"variable": [
-								{
-									"key": "slug",
-									"value": "finn-wiggins"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "permission",
-			"item": [
-				{
-					"name": "list",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/api/v2/permission?paginate=1&limit=5&page=1&search_keyword=",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"permission"
-							],
-							"query": [
-								{
-									"key": "paginate",
-									"value": "1",
-									"description": "1||0"
-								},
-								{
-									"key": "limit",
-									"value": "5"
-								},
-								{
-									"key": "page",
-									"value": "1"
-								},
-								{
-									"key": "search_keyword",
-									"value": "",
-									"description": "||name"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "single",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/api/v2/permission/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"permission",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "3"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "role",
-			"item": [
-				{
-					"name": "list",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/api/v2/role?paginate=1&limit=5&page=1&search_keyword=",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"role"
-							],
-							"query": [
-								{
-									"key": "paginate",
-									"value": "1",
-									"description": "1||0"
-								},
-								{
-									"key": "limit",
-									"value": "5"
-								},
-								{
-									"key": "page",
-									"value": "1"
-								},
-								{
-									"key": "search_keyword",
-									"value": "",
-									"description": "||name"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "single",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/api/v2/role/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"role",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "3"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "role - users",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/api/v2/role/:id/users?paginate=1&limit=5&page=1&status=&search_keyword=",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"role",
-								":id",
-								"users"
+								"main"
 							],
 							"query": [
 								{
@@ -3241,69 +1286,50 @@
 								{
 									"key": "page",
 									"value": "1"
-								},
-								{
-									"key": "status",
-									"value": "",
-									"description": "||Enabled,Disabled"
 								},
 								{
 									"key": "search_keyword",
 									"value": ""
 								}
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "3"
-								}
 							]
 						}
 					},
 					"response": []
-				}
-			]
-		},
-		{
-			"name": "route",
-			"item": [
+				},
 				{
-					"name": "list",
+					"name": "location sub list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "GET",
-						"header": [
-							{
-								"key": "association-id",
-								"value": "59",
-								"description": "nullable",
-								"type": "text"
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
 							}
-						],
+						},
 						"url": {
-							"raw": "{{url}}/api/v2/route?paginate=1&limit=5&page=1&status=Enabled&search_keyword=",
+							"raw": "{{url}}/api/location/sub?paginate=1&limit=5&page=1&search_keyword=",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"v2",
-								"route"
+								"location",
+								"sub"
 							],
 							"query": [
 								{
 									"key": "paginate",
-									"value": "1",
-									"description": "1||0"
+									"value": "1"
 								},
 								{
 									"key": "limit",
@@ -3314,14 +1340,49 @@
 									"value": "1"
 								},
 								{
-									"key": "status",
-									"value": "Enabled",
-									"description": "||Enabled,Disabled"
+									"key": "search_keyword",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "our service, gallery",
+			"item": [
+				{
+					"name": "our service",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/our-service?paginate=1&limit=5&page=1&search_keyword=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"our-service"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "page",
+									"value": "1"
 								},
 								{
 									"key": "search_keyword",
-									"value": "",
-									"description": "||code,from_location_id,to_location_id"
+									"value": ""
 								}
 							]
 						}
@@ -3329,36 +1390,19 @@
 					"response": []
 				},
 				{
-					"name": "single",
+					"name": "our service single id",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
-						"header": [
-							{
-								"key": "association-id",
-								"value": "",
-								"description": "nullable",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"url": {
-							"raw": "{{url}}/api/v2/route/:id",
+							"raw": "{{url}}/api/our-service/by/:id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"v2",
-								"route",
+								"our-service",
+								"by",
 								":id"
 							],
 							"variable": [
@@ -3370,63 +1414,26 @@
 						}
 					},
 					"response": []
-				}
-			]
-		},
-		{
-			"name": "sales report",
-			"item": [
+				},
 				{
-					"name": "list counter online",
+					"name": "our service single by slug",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
-						"header": [
-							{
-								"key": "association-id",
-								"value": "",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"url": {
-							"raw": "{{url}}/api/v2/sales-report-list-counter-online?paginate=1&limit=5&page=1&from_date=2078-04-17&to_date=2080-11-30",
+							"raw": "{{url}}/api/our-service/:slug",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"v2",
-								"sales-report-list-counter-online"
+								"our-service",
+								":slug"
 							],
-							"query": [
+							"variable": [
 								{
-									"key": "paginate",
-									"value": "1"
-								},
-								{
-									"key": "limit",
-									"value": "5"
-								},
-								{
-									"key": "page",
-									"value": "1"
-								},
-								{
-									"key": "from_date",
-									"value": "2078-04-17"
-								},
-								{
-									"key": "to_date",
-									"value": "2080-11-30"
+									"key": "slug",
+									"value": "quae-id-aut-commodo"
 								}
 							]
 						}
@@ -3434,61 +1441,629 @@
 					"response": []
 				},
 				{
-					"name": "list all user",
+					"name": "our service gallery",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
-						"header": [
-							{
-								"key": "association-id",
-								"value": "",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"url": {
-							"raw": "{{url}}/api/v2/sales-report-list-all-user?paginate=1&limit=5&page=1&from_date=2078-04-17&to_date=2080-11-30",
+							"raw": "{{url}}/api/our-service/:id/gallery",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"v2",
-								"sales-report-list-all-user"
+								"our-service",
+								":id",
+								"gallery"
 							],
-							"query": [
+							"variable": [
 								{
-									"key": "paginate",
+									"key": "id",
 									"value": "1"
-								},
-								{
-									"key": "limit",
-									"value": "5"
-								},
-								{
-									"key": "page",
-									"value": "1"
-								},
-								{
-									"key": "from_date",
-									"value": "2078-04-17"
-								},
-								{
-									"key": "to_date",
-									"value": "2080-11-30"
 								}
 							]
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "our service gallery single by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/our-service-gallery/by/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"our-service-gallery",
+								"by",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "22"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "payment",
+			"item": [
+				{
+					"name": "esewa",
+					"item": [
+						{
+							"name": "transaction_success-verification POST",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "oid",
+											"value": "258",
+											"type": "text"
+										},
+										{
+											"key": "amt",
+											"value": "2500",
+											"type": "text"
+										},
+										{
+											"key": "refId",
+											"value": "0004Q1T",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/payment/esewa/success",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"payment",
+										"esewa",
+										"success"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "transaction_failure POST",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "booking_id",
+											"value": "102",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/payment/esewa/fail",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"payment",
+										"esewa",
+										"fail"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "khalti",
+					"item": [
+						{
+							"name": "transaction_success-verification v2",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "pidx",
+											"value": "Hx2sWTCDfidjpVTvgv2Q9o",
+											"type": "text"
+										},
+										{
+											"key": "amount",
+											"value": "2000",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "9800000001",
+											"type": "text"
+										},
+										{
+											"key": "purchase_order_id",
+											"value": "373",
+											"type": "text"
+										},
+										{
+											"key": "purchase_order_name",
+											"value": "test",
+											"type": "text"
+										},
+										{
+											"key": "txnId",
+											"value": "TuVk37VvA5PMgrAjm2rrtD",
+											"type": "text"
+										},
+										{
+											"key": "transaction_id",
+											"value": "TuVk37VvA5PMgrAjm2rrtD",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/payment/khalti/success",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"payment",
+										"khalti",
+										"success"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "transaction_success-verification v1",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "pidx",
+											"value": "dH8yXAvRYdUSJ2EsDcbzWB",
+											"type": "text"
+										},
+										{
+											"key": "amount",
+											"value": "2000",
+											"type": "text"
+										},
+										{
+											"key": "mobile",
+											"value": "9860898042",
+											"type": "text"
+										},
+										{
+											"key": "purchase_order_id",
+											"value": "614",
+											"type": "text"
+										},
+										{
+											"key": "purchase_order_name",
+											"value": "hamro job",
+											"type": "text"
+										},
+										{
+											"key": "txnId",
+											"value": "cBpJjFvZdiUFAqfJWJTV3a",
+											"type": "text"
+										},
+										{
+											"key": "transaction_id",
+											"value": "cBpJjFvZdiUFAqfJWJTV3a",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/payment/khalti/success/app",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"payment",
+										"khalti",
+										"success",
+										"app"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "verification v1",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Key test_secret_key_8cd8d5a4ec4d44b18d7c75863457308f",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"token\":\"BsZ3iarPqQB4puqQ3jSCsQ\",\r\n    \"amount\": 2000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://khalti.com/api/v2/payment/verify/",
+									"protocol": "https",
+									"host": [
+										"khalti",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"payment",
+										"verify",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "transaction_failure POST",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "booking_id",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/payment/khalti/fail",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"payment",
+										"khalti",
+										"fail"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "transaction_initiate-payment POST",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// pm.visualizer.set();"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{customer_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"return_url\": \"http://localhost:3000/ticket-info\",\r\n\"website_url\": \"http://localhost:3000\",\r\n\"amount\":2000,\r\n\"purchase_order_id\": 111,\r\n\"purchase_order_name\": \"test\",\r\n\"modes\": [\"KHALTI\"]\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/payment/khalti/initiate",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"payment",
+										"khalti",
+										"initiate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Lookup v2",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Key test_secret_key_8cd8d5a4ec4d44b18d7c75863457308f",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"pidx\": \"Hx2sWTCDfidjpVTvgv2Q9o\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://a.khalti.com/api/v2/epayment/lookup/",
+									"protocol": "https",
+									"host": [
+										"a",
+										"khalti",
+										"com"
+									],
+									"path": [
+										"api",
+										"v2",
+										"epayment",
+										"lookup",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "connectips",
+					"item": [
+						{
+							"name": "transaction_success-verification POST",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"PRN\": \"dsfdsf\",\r\n    \"AMT\": 2500,\r\n    \"mobile\": 9876543210,\r\n    \"PID\": 238,\r\n    \"BID\": \"BID\",\r\n    \"UID\": \"UID\",\r\n    \"RU\": \"RU\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/payment/connectips/success",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"payment",
+										"connectips",
+										"success"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "transaction_failure POST",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "booking_id",
+											"value": "102",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/payment/connectips/fail",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"payment",
+										"connectips",
+										"fail"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "prabhupay",
+					"item": [
+						{
+							"name": "transaction_success-verification POST",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"transId\": \"dsfdsf\",\r\n    \"sellingCurrencyAmount\": 2500,\r\n    \"accountingCurrencyAmount\": 2500,\r\n    \"status\": 200\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/payment/prabhupay/success",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"payment",
+										"prabhupay",
+										"success"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "transaction_failure POST Copy",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "booking_id",
+											"value": "102",
+											"type": "text"
+										},
+										{
+											"key": "amt",
+											"value": "2500",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "refId",
+											"value": "0004Q1T",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/payment/prabhupay/fail",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"payment",
+										"prabhupay",
+										"fail"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "fonepay",
+					"item": [
+						{
+							"name": "transaction_success-verification POST",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"PRN\": \"dsfdsf\",\r\n    \"AMT\": 2500,\r\n    \"mobile\": 9876543210,\r\n    \"PID\": 238,\r\n    \"BID\": \"BID\",\r\n    \"UID\": \"UID\",\r\n    \"RU\": \"RU\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/payment/fonepay/success",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"payment",
+										"fonepay",
+										"success"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "transaction_failure POST",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "booking_id",
+											"value": "102",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/payment/fonepay/fail",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"payment",
+										"fonepay",
+										"fail"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		},
@@ -3499,140 +2074,15 @@
 					"name": "site-setting",
 					"request": {
 						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text",
-								"disabled": true
-							}
-						],
+						"header": [],
 						"url": {
-							"raw": "{{url}}/api/v2/site-setting",
+							"raw": "{{url}}/api/site-setting",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"v2",
 								"site-setting"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "user",
-			"item": [
-				{
-					"name": "list",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "association-id",
-								"value": "",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/v2/user?paginate=1&limit=5&page=1&status=&search_keyword=",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"user"
-							],
-							"query": [
-								{
-									"key": "paginate",
-									"value": "1",
-									"description": "1||0"
-								},
-								{
-									"key": "limit",
-									"value": "5"
-								},
-								{
-									"key": "page",
-									"value": "1"
-								},
-								{
-									"key": "status",
-									"value": "",
-									"description": "||Active,Inactive"
-								},
-								{
-									"key": "search_keyword",
-									"value": ""
-								},
-								{
-									"key": "roles[]",
-									"value": "SuperAdmin",
-									"disabled": true
-								},
-								{
-									"key": "roles[]",
-									"value": "Counter",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "single",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "association-id",
-								"value": "",
-								"description": "nullable",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/v2/user/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"user",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "1"
-								}
 							]
 						}
 					},
