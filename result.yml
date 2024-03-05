@@ -34,46 +34,24 @@ components:
       scheme: noauth
 tags:
   - name: Authentication
-  - name: Authentication > social login
   - name: association
-  - name: banner
-  - name: bus schedule
+  - name: bus
+  - name: bus-schedule
+  - name: bus-schedule > for booking
+  - name: bus schedule - departure list
   - name: bus booking
+  - name: chalani
+  - name: company
   - name: contact-us
   - name: location
-  - name: our service, gallery
-  - name: payment
-  - name: payment > esewa
-  - name: payment > khalti
-  - name: payment > connectips
-  - name: payment > prabhupay
-  - name: payment > fonepay
+  - name: permission
+  - name: role
+  - name: route
+  - name: sales report
   - name: site-setting
+  - name: user
 paths:
-  /api/login/{provider}/callback:
-    get:
-      tags:
-        - Authentication > social login
-      summary: login callback
-      parameters:
-        - name: token
-          in: query
-          schema:
-            type: string
-          example: >-
-            ya29.a0AfB_byB43ueGGGkUA2qKbWMagbPzUgBbGk1hEQH0oH5Nq3XLVlOg02bf-1u_jYpca9OVJYqlJq5LfvYl0CaEe-dAK6vMmjEKTzJj5aE2mfwVA9MKt4X0aDDOBXHu34y7FuXsnp_dup2_FURod6Yp8Pma_U-AzH0gW94SaCgYKATMSARISFQHGX2MiiZoFL1yKXHx4Pin8iajn_Q0171
-        - name: provider
-          in: path
-          schema:
-            type: string
-          required: true
-          example: google
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/login:
+  /api/v2/login:
     post:
       tags:
         - Authentication
@@ -86,16 +64,16 @@ paths:
               properties:
                 email:
                   type: string
-                  example: augxdeveloper@gmail.com
+                  example: counter1@counter.com
                 password:
-                  type: string
-                  example: P@ssw0rd
+                  type: integer
+                  example: '1234'
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /api/logout:
+  /api/v2/logout:
     post:
       tags:
         - Authentication
@@ -109,7 +87,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/refresh-token/{refresh_token}:
+  /api/v2/refresh-token/{refresh_token}:
     post:
       tags:
         - Authentication
@@ -133,7 +111,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/user-detail:
+  /api/v2/user-detail:
     get:
       tags:
         - Authentication
@@ -148,7 +126,7 @@ paths:
     post:
       tags:
         - Authentication
-      summary: update user detail
+      summary: user detail update
       requestBody:
         content:
           multipart/form-data:
@@ -157,13 +135,16 @@ paths:
               properties:
                 first_name:
                   type: string
-                  example: customer
+                  example: samiti
                 last_name:
                   type: integer
                   example: '1'
                 image:
                   type: string
                   format: binary
+                _method:
+                  type: string
+                  example: PUT
       security:
         - bearerAuth: []
       responses:
@@ -171,7 +152,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/password-change:
+  /api/v2/password-change:
     post:
       tags:
         - Authentication
@@ -201,90 +182,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/register:
-    post:
-      tags:
-        - Authentication
-      summary: register
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                first_name:
-                  type: string
-                  example: tomnjerry
-                last_name:
-                  type: string
-                  example: jerry
-                phone:
-                  type: integer
-                  example: '987654321'
-                email:
-                  type: string
-                  example: feyeloh509@fahih.com
-                password:
-                  type: string
-                  example: P@ssw0rd
-                password_confirmation:
-                  type: string
-                  example: P@ssw0rd
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/resend-account-verification-mail:
-    post:
-      tags:
-        - Authentication
-      summary: resend email verification mail
-      requestBody:
-        content: {}
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/resend-account-verification-otp-mail:
-    post:
-      tags:
-        - Authentication
-      summary: resend email verification mail otp
-      requestBody:
-        content: {}
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/account-verification:
-    post:
-      tags:
-        - Authentication
-      summary: account verification
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                token:
-                  type: integer
-                  example: '12231'
-                email:
-                  type: string
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/reset-password-mail:
+  /api/v2/reset-password-mail:
     post:
       tags:
         - Authentication
@@ -297,13 +195,13 @@ paths:
               properties:
                 email:
                   type: string
-                  example: tomnjerry8963@gmail.com
+                  example: bikashxaus@gmail.com
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /api/reset-password-mail-otp:
+  /api/v2/reset-password-mail-otp:
     post:
       tags:
         - Authentication
@@ -316,13 +214,13 @@ paths:
               properties:
                 email:
                   type: string
-                  example: tomnjerry8963@gmail.com
+                  example: bikashxaus@gmail.com
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /api/reset-password-otp-verification:
+  /api/v2/reset-password-otp-verification:
     post:
       tags:
         - Authentication
@@ -343,7 +241,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/reset-password:
+  /api/v2/reset-password:
     post:
       tags:
         - Authentication
@@ -361,8 +259,8 @@ paths:
                   type: string
                   example: P@ssw0rd
                 token:
-                  type: integer
-                  example: '12231'
+                  type: string
+                  example: kGbD
                 email:
                   type: string
       responses:
@@ -370,7 +268,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/delete-user:
+  /api/v2/delete-user:
     delete:
       tags:
         - Authentication
@@ -382,12 +280,20 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/association:
+  /api/v2/association:
     get:
       tags:
         - association
-      summary: association
+      summary: list
+      security:
+        - bearerAuth: []
       parameters:
+        - name: association-id
+          in: header
+          schema:
+            type: integer
+          description: nullable
+          example: '59'
         - name: paginate
           in: query
           schema:
@@ -425,26 +331,49 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/association/test7:
+  /api/v2/association/{slug}:
     get:
       tags:
         - association
-      summary: association single
+      summary: single
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: association-id
+          in: header
+          schema:
+            type: string
+          description: nullable
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: sundar-bihani-yatayat-pvt-ltd
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /api/banner:
+  /api/v2/bus:
     get:
       tags:
-        - banner
-      summary: banner
+        - bus
+      summary: list
+      security:
+        - bearerAuth: []
       parameters:
+        - name: association-id
+          in: header
+          schema:
+            type: integer
+          description: nullable
+          example: '18'
         - name: paginate
           in: query
           schema:
             type: integer
+          description: 1||0
           example: '1'
         - name: limit
           in: query
@@ -456,7 +385,22 @@ paths:
           schema:
             type: integer
           example: '1'
+        - name: status
+          in: query
+          schema:
+            type: string
+          description: '||Enabled,Disabled'
+          example: Enabled
         - name: search_keyword
+          in: query
+          schema:
+            type: string
+          description: '||code,from_location_id,to_location_id'
+        - name: route_id
+          in: query
+          schema:
+            type: string
+        - name: company_id
           in: query
           schema:
             type: string
@@ -465,12 +409,57 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/search-bus:
+  /api/v2/bus/{id}:
     get:
       tags:
-        - bus schedule
-      summary: search bus
+        - bus
+      summary: single
+      security:
+        - bearerAuth: []
       parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '38'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/bus/{id}/seats:
+    get:
+      tags:
+        - bus
+      summary: bus seats
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '38'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/bus-schedule/search/for-booking:
+    get:
+      tags:
+        - bus-schedule > for booking
+      summary: search list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: association-id
+          in: header
+          schema:
+            type: integer
+          example: '18'
         - name: paginate
           in: query
           schema:
@@ -490,16 +479,19 @@ paths:
           in: query
           schema:
             type: integer
+          description: '||from_location_id'
           example: '1'
         - name: to
           in: query
           schema:
             type: integer
-          example: '9'
+          description: '||to_location_id'
+          example: '12'
         - name: date
           in: query
           schema:
             type: string
+          description: '||departure_date'
           example: '2080-11-30'
         - name: shift
           in: query
@@ -511,13 +503,557 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/get-bus-seats/{bus_schedule_id}:
+  /api/v2/bus-schedule/{bus_schedule_id}/for-booking:
     get:
       tags:
-        - bus schedule
-      summary: get bus seat
+        - bus-schedule > for booking
+      summary: single (get bus seat)
+      security:
+        - bearerAuth: []
       parameters:
         - name: bus_schedule_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '127'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/bus-schedule:
+    get:
+      tags:
+        - bus-schedule
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: association-id
+          in: header
+          schema:
+            type: integer
+          example: '59'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: status
+          in: query
+          schema:
+            type: string
+          description: '||Active,Inactive'
+        - name: booking_status
+          in: query
+          schema:
+            type: string
+          description: '||Open,Close'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - bus-schedule
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                route_id:
+                  type: integer
+                  example: '1'
+                bus_id:
+                  type: integer
+                  example: '38'
+                departure_date:
+                  type: string
+                  example: '2080-11-01'
+                departure_date_ad:
+                  type: string
+                  example: '2023-11-07'
+                departure_time:
+                  type: string
+                  example: '20:00'
+                status:
+                  type: string
+                  example: Active
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/bus-schedule-search:
+    get:
+      tags:
+        - bus-schedule
+      summary: list by departure date and route
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: association-id
+          in: header
+          schema:
+            type: integer
+          example: '18'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: status
+          in: query
+          schema:
+            type: string
+          description: '||Active,Inactive'
+        - name: booking_status
+          in: query
+          schema:
+            type: string
+          description: '||Open,Close'
+        - name: departure_date
+          in: query
+          schema:
+            type: string
+          example: '2080-08-30'
+        - name: route_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/bus-schedule-search-by-dates:
+    get:
+      tags:
+        - bus-schedule
+      summary: list search by dates
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: association-id
+          in: header
+          schema:
+            type: integer
+          example: '59'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: from_date
+          in: query
+          schema:
+            type: string
+          example: '2080-04-29'
+        - name: to_date
+          in: query
+          schema:
+            type: string
+          example: '2080-12-29'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/bus-schedule/{id}:
+    get:
+      tags:
+        - bus-schedule
+      summary: single
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '153'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - bus-schedule
+      summary: update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                _method: PUT
+                departure_time: '21:00'
+                status: Active
+                is_discount_available: 1
+                main_route_discount: 3
+                sub_route_discount:
+                  - from_id: 1
+                    to_id: 9
+                    price: 12
+                    discount: 2
+                    status: Active
+                  - from_id: 8
+                    to_id: 9
+                    price: 10
+                    discount: null
+                    status: Active
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '127'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/bus-schedule/route/{route_id}/buses:
+    get:
+      tags:
+        - bus-schedule
+      summary: get route buses
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: association-id
+          in: header
+          schema:
+            type: integer
+          example: '18'
+        - name: route_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/bus-schedule/bus/{bus_id}/route:
+    get:
+      tags:
+        - bus-schedule
+      summary: get bus route
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: association-id
+          in: header
+          schema:
+            type: string
+        - name: bus_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '22'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/bus-schedule/{id}/status-change:
+    post:
+      tags:
+        - bus-schedule
+      summary: status change
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                _method:
+                  type: string
+                  example: PUT
+                status:
+                  type: string
+                  example: Active
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '120'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/bus-schedule/{id}/booking-status-change:
+    post:
+      tags:
+        - bus-schedule
+      summary: booking status change
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                _method:
+                  type: string
+                  example: PUT
+                booking_status:
+                  type: string
+                  example: Open
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '120'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/bus-schedule/{id}/departure-time-change:
+    post:
+      tags:
+        - bus-schedule
+      summary: departure time change
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                _method:
+                  type: string
+                  example: PUT
+                departure_time:
+                  type: string
+                  example: '21:00'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '120'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/bus-schedule/{id}/bus-seats:
+    get:
+      tags:
+        - bus-schedule
+      summary: scheduled bus seats
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          description: '170'
+          example: '177'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/bus-schedule/{id}/bus-seats/enable-disable:
+    post:
+      tags:
+        - bus-schedule
+      summary: scheduled bus seats enable disable
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                seat_id:
+                  - 53
+                  - 41
+                  - 54
+                  - 50
+                  - 46
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '120'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/bus-schedule/{id}/bus-seats/available-to:
+    post:
+      tags:
+        - bus-schedule
+      summary: scheduled bus seats enabled Availability
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                seat_id:
+                  - 53
+                  - 41
+                  - 54
+                available_to: Online
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '120'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/bus-schedule/{id}/counters:
+    get:
+      tags:
+        - bus-schedule
+      summary: scheduled bus seats Get Counters
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: association-id
+          in: header
+          schema:
+            type: integer
+          example: '59'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          description: '89'
+          example: '77'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/bus-schedule/{id}/bus-seats/counter-assign:
+    post:
+      tags:
+        - bus-schedule
+      summary: scheduled bus seats Counter Assign
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                seat_id:
+                  - 49
+                  - 53
+                counter_availability: 21
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '170'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/bus-schedule/{id}/route-bus-facility-type-price:
+    get:
+      tags:
+        - bus-schedule
+      summary: bus schedule->route bus facility type price
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
           in: path
           schema:
             type: integer
@@ -528,7 +1064,92 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/pre-booking:
+  /api/v2/bus-schedule/sub-route-discount/{id}:
+    post:
+      tags:
+        - bus-schedule
+      summary: store sub route discount
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                _method: PUT
+                is_discount_available: 1
+                main_route_discount: 3
+                sub_route_discount:
+                  - from_id: 1
+                    to_id: 9
+                    price: 12
+                    discount: 2
+                    status: Active
+                  - from_id: 8
+                    to_id: 9
+                    price: 10
+                    discount: 4
+                    status: Active
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '127'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/departure-list-search:
+    get:
+      tags:
+        - bus schedule - departure list
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: association-id
+          in: header
+          schema:
+            type: integer
+          example: '8'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: departure_date
+          in: query
+          schema:
+            type: string
+          example: '2080-11-30'
+        - name: association_id
+          in: query
+          schema:
+            type: string
+        - name: company_id
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/bus-booking/pre-booking:
     get:
       tags:
         - bus booking
@@ -545,12 +1166,12 @@ paths:
           in: query
           schema:
             type: integer
-          example: '9'
+          example: '2'
         - name: schedule_id
           in: query
           schema:
             type: integer
-          example: '177'
+          example: '107'
         - name: date
           in: query
           schema:
@@ -560,29 +1181,28 @@ paths:
           in: query
           schema:
             type: integer
-          example: '43'
+          description: seat_id is array where seat_id = [53,54]
+          example: '41'
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /api/pre-booking-timeout:
+  /api/v2/bus-booking/pre-booking-timeout:
     post:
       tags:
         - bus booking
       summary: pre booking timeout
       requestBody:
         content:
-          multipart/form-data:
+          application/json:
             schema:
               type: object
-              properties:
-                schedule_id:
-                  type: integer
-                  example: '88'
-                seat_id[]:
-                  type: integer
-                  example: '49'
+              example:
+                schedule_id: 170
+                seat_id:
+                  - 41
+                  - 42
       security:
         - bearerAuth: []
       responses:
@@ -590,7 +1210,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/bus-booking:
+  /api/v2/bus-booking/store:
     post:
       tags:
         - bus booking
@@ -601,21 +1221,24 @@ paths:
             schema:
               type: object
               example:
-                schedule_id: 177
+                schedule_id: 170
                 route_id: 1
-                drop_location: DJE
-                pickup_location: kalanki
-                contact_name: XYZ  augx
-                contact_phone: '98713264'
+                pickup_location: X-place
+                drop_location: X-place
+                discount: 1
+                paid: 15
+                contact_phone: 98xxxxxxxx
+                contact_name: X-man Mu
                 seat_id:
-                  - 41
+                  - 43
+                  - 54
                 sub_route_price:
                   from_id: 1
                   to_id: 9
-                  sub_route_from: null
-                  sub_route_to: null
-                  price: null
-                  discount: null
+                  sub_route_from: KTM
+                  sub_route_to: Kohalpur
+                  price: 12
+                  discount: 2
       security:
         - bearerAuth: []
       responses:
@@ -623,7 +1246,66 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/bus-booking/{booking_id}/cancel:
+  /api/v2/bus-booking/{id}/update-detail:
+    post:
+      tags:
+        - bus booking
+      summary: update booking details
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                _method: PUT
+                drop_location: 1X-place00
+                pickup_location: 2A-place00
+                contact_phone: 98xxxxx000
+                contact_name: X-man 00000
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '725'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/bus-booking/{id}/update-booked-seat:
+    post:
+      tags:
+        - bus booking
+      summary: update booking seats
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                _method: PUT
+                new_booked_seat_id:
+                  - 55
+                old_booked_seat_id: []
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '720'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/bus-booking/{id}/cancel:
     post:
       tags:
         - bus booking
@@ -633,25 +1315,74 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: booking_id
+        - name: id
           in: path
           schema:
             type: integer
           required: true
-          example: '555'
+          example: '670'
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /api/my-booking:
-    get:
+  /api/v2/bus-booking/{id}/seat-cancel:
+    post:
       tags:
         - bus booking
-      summary: my booking history
+      summary: seat wise cancel
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                new_booked_seat_id:
+                  - 48
       security:
         - bearerAuth: []
       parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '723'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/bus-booking/users-my-booking/users:
+    get:
+      tags:
+        - bus booking
+      summary: Users/My booking - users
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: role_id
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/bus-booking/users-my-booking:
+    get:
+      tags:
+        - bus booking
+      summary: Users/My booking - history
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: association-id
+          in: header
+          schema:
+            type: integer
+          example: '8'
         - name: paginate
           in: query
           schema:
@@ -672,19 +1403,309 @@ paths:
           schema:
             type: string
           description: Departure Date From
-          example: '2080-06-29'
+          example: '2080-01-31'
         - name: to_date
           in: query
           schema:
             type: string
           description: Departure Date To
-          example: '2080-12-31'
+          example: '2080-12-01'
+        - name: user_id
+          in: query
+          schema:
+            type: string
+        - name: role_id
+          in: query
+          schema:
+            type: string
+        - name: route_id
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /api/contact-us:
+  /api/v2/bus-booking:
+    get:
+      tags:
+        - bus booking
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: association-id
+          in: header
+          schema:
+            type: string
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: from_date
+          in: query
+          schema:
+            type: string
+          description: '||departure_date from'
+        - name: to_date
+          in: query
+          schema:
+            type: string
+          description: '||departure_date to'
+        - name: bus_schedule_id
+          in: query
+          schema:
+            type: string
+          description: '||Bus Schedule ID'
+        - name: status
+          in: query
+          schema:
+            type: string
+          description: '||Confirmed|Cancelled'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/bus-booking-search:
+    get:
+      tags:
+        - bus booking
+      summary: list confirmed
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: association-id
+          in: header
+          schema:
+            type: string
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: from_date
+          in: query
+          schema:
+            type: string
+          description: '||departure_date from'
+        - name: to_date
+          in: query
+          schema:
+            type: string
+          description: '||departure_date to'
+        - name: bus_schedule_id
+          in: query
+          schema:
+            type: integer
+          description: '||Bus Schedule ID'
+          example: '89'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/bus-booking-cancelled-search:
+    get:
+      tags:
+        - bus booking
+      summary: list cancelled
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: association-id
+          in: header
+          schema:
+            type: integer
+          example: '8'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: from_date
+          in: query
+          schema:
+            type: string
+        - name: to_date
+          in: query
+          schema:
+            type: string
+        - name: bus_schedule_id
+          in: query
+          schema:
+            type: integer
+          example: '89'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/bus-booking/{id}:
+    get:
+      tags:
+        - bus booking
+      summary: single
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '687'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/chalani-list-search:
+    get:
+      tags:
+        - chalani
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: association-id
+          in: header
+          schema:
+            type: integer
+          example: '8'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: departure_date
+          in: query
+          schema:
+            type: string
+          example: '2080-11-30'
+        - name: bus_id
+          in: query
+          schema:
+            type: integer
+          example: '26'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/company:
+    get:
+      tags:
+        - company
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: association-id
+          in: header
+          schema:
+            type: integer
+          description: nullable
+          example: '167'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          description: 1||0
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+          description: '||company_name'
+        - name: status
+          in: query
+          schema:
+            type: string
+          description: '||Enabled,Disabled'
+          example: Enabled
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/company/{slug}:
+    get:
+      tags:
+        - company
+      summary: single
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: association-id
+          in: header
+          schema:
+            type: string
+          description: nullable
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: hamilton-and-rowland-co
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/contact-us:
     post:
       tags:
         - contact-us
@@ -715,18 +1736,19 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/location:
+  /api/v2/location:
     get:
       tags:
         - location
-      summary: location list
+      summary: list
       security:
-        - noauthAuth: []
+        - bearerAuth: []
       parameters:
         - name: paginate
           in: query
           schema:
             type: integer
+          description: 1||0
           example: '1'
         - name: limit
           in: query
@@ -738,154 +1760,268 @@ paths:
           schema:
             type: integer
           example: '1'
+        - name: status
+          in: query
+          schema:
+            type: string
+          description: '||Enabled,Disabled'
+          example: Enabled
         - name: search_keyword
           in: query
           schema:
             type: string
-        - name: city_type
-          in: query
-          schema:
-            type: string
-          description: '||Main,Sub'
+          description: '||city'
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /api/location/main:
+  /api/v2/location/{id}:
     get:
       tags:
         - location
-      summary: location main list
+      summary: single
       security:
-        - noauthAuth: []
-      parameters:
-        - name: paginate
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: limit
-          in: query
-          schema:
-            type: integer
-          example: '5'
-        - name: page
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: search_keyword
-          in: query
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/location/sub:
-    get:
-      tags:
-        - location
-      summary: location sub list
-      security:
-        - noauthAuth: []
-      parameters:
-        - name: paginate
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: limit
-          in: query
-          schema:
-            type: integer
-          example: '5'
-        - name: page
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: search_keyword
-          in: query
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/our-service:
-    get:
-      tags:
-        - our service, gallery
-      summary: our service
-      parameters:
-        - name: paginate
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: limit
-          in: query
-          schema:
-            type: integer
-          example: '5'
-        - name: page
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: search_keyword
-          in: query
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/our-service/by/{id}:
-    get:
-      tags:
-        - our service, gallery
-      summary: our service single id
+        - bearerAuth: []
       parameters:
         - name: id
           in: path
           schema:
             type: integer
           required: true
-          example: '1'
+          example: '12'
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /api/our-service/{slug}:
+  /api/v2/location/by-slug/{slug}:
     get:
       tags:
-        - our service, gallery
-      summary: our service single by slug
+        - location
+      summary: single by slug
+      security:
+        - bearerAuth: []
       parameters:
         - name: slug
           in: path
           schema:
             type: string
           required: true
-          example: quae-id-aut-commodo
+          example: finn-wiggins
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /api/our-service/{id}/gallery:
+  /api/v2/permission:
     get:
       tags:
-        - our service, gallery
-      summary: our service gallery
+        - permission
+      summary: list
+      security:
+        - bearerAuth: []
       parameters:
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          description: 1||0
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+          description: '||name'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/permission/{id}:
+    get:
+      tags:
+        - permission
+      summary: single
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/role:
+    get:
+      tags:
+        - role
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          description: 1||0
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+          description: '||name'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/role/{id}:
+    get:
+      tags:
+        - role
+      summary: single
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/role/{id}/users:
+    get:
+      tags:
+        - role
+      summary: role - users
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: status
+          in: query
+          schema:
+            type: string
+          description: '||Enabled,Disabled'
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/route:
+    get:
+      tags:
+        - route
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: association-id
+          in: header
+          schema:
+            type: integer
+          description: nullable
+          example: '59'
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          description: 1||0
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: status
+          in: query
+          schema:
+            type: string
+          description: '||Enabled,Disabled'
+          example: Enabled
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+          description: '||code,from_location_id,to_location_id'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/route/{id}:
+    get:
+      tags:
+        - route
+      summary: single
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: association-id
+          in: header
+          schema:
+            type: string
+          description: nullable
         - name: id
           in: path
           schema:
@@ -897,370 +2033,161 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/our-service-gallery/by/{id}:
+  /api/v2/sales-report-list-counter-online:
     get:
       tags:
-        - our service, gallery
-      summary: our service gallery single by id
+        - sales report
+      summary: list counter online
+      security:
+        - bearerAuth: []
       parameters:
+        - name: association-id
+          in: header
+          schema:
+            type: string
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: from_date
+          in: query
+          schema:
+            type: string
+          example: '2078-04-17'
+        - name: to_date
+          in: query
+          schema:
+            type: string
+          example: '2080-11-30'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/sales-report-list-all-user:
+    get:
+      tags:
+        - sales report
+      summary: list all user
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: association-id
+          in: header
+          schema:
+            type: string
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: from_date
+          in: query
+          schema:
+            type: string
+          example: '2078-04-17'
+        - name: to_date
+          in: query
+          schema:
+            type: string
+          example: '2080-11-30'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/site-setting:
+    get:
+      tags:
+        - site-setting
+      summary: site-setting
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/user:
+    get:
+      tags:
+        - user
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: association-id
+          in: header
+          schema:
+            type: string
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          description: 1||0
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: status
+          in: query
+          schema:
+            type: string
+          description: '||Active,Inactive'
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/user/{id}:
+    get:
+      tags:
+        - user
+      summary: single
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: association-id
+          in: header
+          schema:
+            type: string
+          description: nullable
         - name: id
           in: path
           schema:
             type: integer
           required: true
-          example: '22'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/payment/esewa/success:
-    post:
-      tags:
-        - payment > esewa
-      summary: transaction_success-verification POST
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                oid:
-                  type: integer
-                  example: '258'
-                amt:
-                  type: integer
-                  example: '2500'
-                refId:
-                  type: string
-                  example: 0004Q1T
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/payment/esewa/fail:
-    post:
-      tags:
-        - payment > esewa
-      summary: transaction_failure POST
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                booking_id:
-                  type: integer
-                  example: '102'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/payment/khalti/success:
-    post:
-      tags:
-        - payment > khalti
-      summary: transaction_success-verification v2
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                pidx:
-                  type: string
-                  example: Hx2sWTCDfidjpVTvgv2Q9o
-                amount:
-                  type: integer
-                  example: '2000'
-                mobile:
-                  type: integer
-                  example: '9800000001'
-                purchase_order_id:
-                  type: integer
-                  example: '373'
-                purchase_order_name:
-                  type: string
-                  example: test
-                txnId:
-                  type: string
-                  example: TuVk37VvA5PMgrAjm2rrtD
-                transaction_id:
-                  type: string
-                  example: TuVk37VvA5PMgrAjm2rrtD
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/payment/khalti/success/app:
-    post:
-      tags:
-        - payment > khalti
-      summary: transaction_success-verification v1
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                pidx:
-                  type: string
-                  example: dH8yXAvRYdUSJ2EsDcbzWB
-                amount:
-                  type: integer
-                  example: '2000'
-                mobile:
-                  type: integer
-                  example: '9860898042'
-                purchase_order_id:
-                  type: integer
-                  example: '614'
-                purchase_order_name:
-                  type: string
-                  example: hamro job
-                txnId:
-                  type: string
-                  example: cBpJjFvZdiUFAqfJWJTV3a
-                transaction_id:
-                  type: string
-                  example: cBpJjFvZdiUFAqfJWJTV3a
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/v2/payment/verify/:
-    post:
-      tags:
-        - payment > khalti
-      summary: verification v1
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                token: BsZ3iarPqQB4puqQ3jSCsQ
-                amount: 2000
-      parameters:
-        - name: Authorization
-          in: header
-          schema:
-            type: string
-          example: Key test_secret_key_8cd8d5a4ec4d44b18d7c75863457308f
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/payment/khalti/fail:
-    post:
-      tags:
-        - payment > khalti
-      summary: transaction_failure POST
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                booking_id:
-                  type: string
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/payment/khalti/initiate:
-    post:
-      tags:
-        - payment > khalti
-      summary: transaction_initiate-payment POST
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                return_url: http://localhost:3000/ticket-info
-                website_url: http://localhost:3000
-                amount: 2000
-                purchase_order_id: 111
-                purchase_order_name: test
-                modes:
-                  - KHALTI
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/v2/epayment/lookup/:
-    post:
-      tags:
-        - payment > khalti
-      summary: Lookup v2
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                pidx: Hx2sWTCDfidjpVTvgv2Q9o
-      parameters:
-        - name: Authorization
-          in: header
-          schema:
-            type: string
-          example: Key test_secret_key_8cd8d5a4ec4d44b18d7c75863457308f
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/payment/connectips/success:
-    post:
-      tags:
-        - payment > connectips
-      summary: transaction_success-verification POST
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                PRN: dsfdsf
-                AMT: 2500
-                mobile: 9876543210
-                PID: 238
-                BID: BID
-                UID: UID
-                RU: RU
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/payment/connectips/fail:
-    post:
-      tags:
-        - payment > connectips
-      summary: transaction_failure POST
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                booking_id:
-                  type: integer
-                  example: '102'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/payment/prabhupay/success:
-    post:
-      tags:
-        - payment > prabhupay
-      summary: transaction_success-verification POST
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                transId: dsfdsf
-                sellingCurrencyAmount: 2500
-                accountingCurrencyAmount: 2500
-                status: 200
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/payment/prabhupay/fail:
-    post:
-      tags:
-        - payment > prabhupay
-      summary: transaction_failure POST Copy
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                booking_id:
-                  type: integer
-                  example: '102'
-                amt:
-                  type: integer
-                  example: '2500'
-                refId:
-                  type: string
-                  example: 0004Q1T
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/payment/fonepay/success:
-    post:
-      tags:
-        - payment > fonepay
-      summary: transaction_success-verification POST
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                PRN: dsfdsf
-                AMT: 2500
-                mobile: 9876543210
-                PID: 238
-                BID: BID
-                UID: UID
-                RU: RU
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/payment/fonepay/fail:
-    post:
-      tags:
-        - payment > fonepay
-      summary: transaction_failure POST
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                booking_id:
-                  type: integer
-                  example: '102'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/site-setting:
-    get:
-      tags:
-        - site-setting
-      summary: site-setting
+          example: '1'
       responses:
         '200':
           description: Successful response
